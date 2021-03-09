@@ -121,7 +121,8 @@ public class TournamentJumperResult {
 
     @Override
     public int hashCode() {
-        return Objects.hash(databaseId, rank, athleteName, distanceFirst, pointsFirst, distanceSecond, pointsSecond, totalPoints, tournamentId);
+        return Objects.hash(databaseId, rank, athleteName, distanceFirst, pointsFirst, distanceSecond, pointsSecond,
+                totalPoints, tournamentId);
     }
 
     @Override
