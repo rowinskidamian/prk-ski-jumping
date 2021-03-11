@@ -1,4 +1,4 @@
-package main.java.prk.ski.jumping;
+package prk.ski.jumping;
 
 public class Main {
 

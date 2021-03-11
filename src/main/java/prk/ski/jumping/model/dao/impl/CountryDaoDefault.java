@@ -1,10 +1,10 @@
-package main.java.prk.ski.jumping.model.dao.impl;
+package prk.ski.jumping.model.dao.impl;
 
 import java.util.List;
 
-import main.java.prk.ski.jumping.model.dao.CountryDao;
-import main.java.prk.ski.jumping.model.domain.Country;
-import main.java.prk.ski.jumping.model.domain.CountryDB;
+import prk.ski.jumping.model.dao.CountryDao;
+import prk.ski.jumping.model.domain.Country;
+import prk.ski.jumping.model.domain.CountryDB;
 
 public class CountryDaoDefault implements CountryDao {
 	
