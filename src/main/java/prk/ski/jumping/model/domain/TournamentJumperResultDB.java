@@ -1,4 +1,4 @@
-package main.java.prk.ski.jumping.model.domain;
+package prk.ski.jumping.model.domain;
 
 import java.util.HashMap;
 import java.util.List;

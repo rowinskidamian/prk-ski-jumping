@@ -1,6 +1,6 @@
-package main.java.prk.ski.jumping.model.dao;
+package prk.ski.jumping.model.dao;
 
-import main.java.prk.ski.jumping.model.domain.TournamentWorldCup;
+import prk.ski.jumping.model.domain.TournamentWorldCup;
 
 public interface TournamentWorldCupDao {
 

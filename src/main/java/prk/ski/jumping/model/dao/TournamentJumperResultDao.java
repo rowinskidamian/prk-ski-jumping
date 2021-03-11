@@ -1,6 +1,6 @@
-package main.java.prk.ski.jumping.model.dao;
+package prk.ski.jumping.model.dao;
 
-import main.java.prk.ski.jumping.model.domain.TournamentJumperResult;
+import prk.ski.jumping.model.domain.TournamentJumperResult;
 
 import java.util.List;
 import java.util.Optional;

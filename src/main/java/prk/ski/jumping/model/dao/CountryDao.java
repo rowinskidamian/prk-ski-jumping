@@ -1,8 +1,8 @@
-package main.java.prk.ski.jumping.model.dao;
+package prk.ski.jumping.model.dao;
 
 import java.util.List;
 
-import main.java.prk.ski.jumping.model.domain.Country;
+import prk.ski.jumping.model.domain.Country;
 
 public interface CountryDao {
 	
