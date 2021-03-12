@@ -22,7 +22,7 @@ public class ParserService {
         this.tournamentJumperResultDao = tournamentJumperResultDao;
     }
 
-    public void addTournamentsToDatabase() {
+    public void addTournamentListToDatabase() {
         List<TournamentWorldCup> tournamentWorldCupList = tournamentParser.getAll();
         for (TournamentWorldCup twc : tournamentWorldCupList) {
             tournamentWorldCupDao.create(twc);
@@ -30,11 +30,11 @@ public class ParserService {
     }
 
     public void printTournamentWorldCupList() {
-        List<TournamentWorldCup> database = tournamentParser.getAll();
-        database.forEach(System.out::println);
+        List<TournamentWorldCup> databaseRecordList = tournamentWorldCupDao.getAll();
+        databaseRecordList.forEach(System.out::println);
     }
 
-    public void addResultsForTournament(TournamentWorldCup tournamentWorldCup) {
+    public void addResultListForTournament(TournamentWorldCup tournamentWorldCup) {
         List<TournamentJumperResult> tournamentJumperResultList = resultParser.getResultListFor(tournamentWorldCup);
         for (TournamentJumperResult tjr : tournamentJumperResultList) {
             tournamentJumperResultDao.create(tjr);
