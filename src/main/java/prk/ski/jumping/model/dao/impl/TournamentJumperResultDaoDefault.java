@@ -11,8 +11,7 @@ public class TournamentJumperResultDaoDefault implements TournamentJumperResultD
 
     private TournamentJumperResultDB tournamentJumperResultDB;
 
-    public TournamentJumperResultDaoDefault() {
-        this.tournamentJumperResultDB = new TournamentJumperResultDB();
+    public TournamentJumperResultDaoDefault() {tournamentJumperResultDB = new TournamentJumperResultDB();
     }
 
     @Override
