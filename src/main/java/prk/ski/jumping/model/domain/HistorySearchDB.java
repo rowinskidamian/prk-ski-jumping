@@ -6,13 +6,13 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class TournamentJumperResultDB {
+public class HistorySearchDB {
 
     private static long currentDbIndex = 0;
     private static HashMap<Long, TournamentJumperResult> database;
 
-    public TournamentJumperResultDB() {
-        if(database == null) database = new HashMap<>();
+    public HistorySearchDB() {
+        if (database == null) database = new HashMap<>();
     }
 
     public void create(TournamentJumperResult tjr) {
