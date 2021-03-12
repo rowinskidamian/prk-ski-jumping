@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class TournamentJumperResult {
 
-    private long databaseId;
+    private long id;
     private int rank;
     private String athleteName;
     private double distanceFirst;
@@ -17,10 +17,10 @@ public class TournamentJumperResult {
     public TournamentJumperResult() {
     }
 
-    public TournamentJumperResult(long databaseId, int rank, String athleteName, double distanceFirst,
+    public TournamentJumperResult(long id, int rank, String athleteName, double distanceFirst,
                                   double pointsFirst, double distanceSecond, double pointsSecond, double totalPoints,
                                   long tournamentId) {
-        this.databaseId = databaseId;
+        this.id = id;
         this.rank = rank;
         this.athleteName = athleteName;
         this.distanceFirst = distanceFirst;
@@ -31,12 +31,12 @@ public class TournamentJumperResult {
         this.tournamentId = tournamentId;
     }
 
-    public long getDatabaseId() {
-        return databaseId;
+    public long getId() {
+        return id;
     }
 
-    public void setDatabaseId(long databaseId) {
-        this.databaseId = databaseId;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public int getRank() {
@@ -108,7 +108,7 @@ public class TournamentJumperResult {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TournamentJumperResult that = (TournamentJumperResult) o;
-        return databaseId == that.databaseId &&
+        return id == that.id &&
                 rank == that.rank &&
                 Double.compare(that.distanceFirst, distanceFirst) == 0 &&
                 Double.compare(that.pointsFirst, pointsFirst) == 0 &&
@@ -121,14 +121,14 @@ public class TournamentJumperResult {
 
     @Override
     public int hashCode() {
-        return Objects.hash(databaseId, rank, athleteName, distanceFirst, pointsFirst, distanceSecond, pointsSecond,
+        return Objects.hash(id, rank, athleteName, distanceFirst, pointsFirst, distanceSecond, pointsSecond,
                 totalPoints, tournamentId);
     }
 
     @Override
     public String toString() {
         return "TournamentJumperResult{" +
-                "databaseId=" + databaseId +
+                "id=" + id +
                 ", rank=" + rank +
                 ", athleteName='" + athleteName + '\'' +
                 ", distanceFirst=" + distanceFirst +

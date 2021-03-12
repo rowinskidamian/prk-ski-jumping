@@ -12,11 +12,11 @@ public class TournamentJumperResultDB {
     private static HashMap<Long, TournamentJumperResult> database;
 
     public TournamentJumperResultDB() {
-        if(database != null) database = new HashMap<>();
+        if(database == null) database = new HashMap<>();
     }
 
     public void create(TournamentJumperResult tjr) {
-        tjr.setDatabaseId(currentDbIndex);
+        tjr.setId(currentDbIndex);
         database.put(currentDbIndex, tjr);
         currentDbIndex++;
     }
