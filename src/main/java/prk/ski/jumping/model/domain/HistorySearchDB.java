@@ -9,39 +9,39 @@ import java.util.stream.Collectors;
 public class HistorySearchDB {
 
     private static long currentDbIndex = 0;
-    private static HashMap<Long, TournamentJumperResult> database;
+    private static HashMap<Long, HistorySearch> database;
 
     public HistorySearchDB() {
         if (database == null) database = new HashMap<>();
     }
 
     public void create(HistorySearch historySearch) {
-        historySearch.setDatabaseId(currentDbIndex);
+        historySearch.setId(currentDbIndex);
         database.put(currentDbIndex, historySearch);
         currentDbIndex++;
     }
 
-    public Optional<TournamentJumperResult> getById(long id) {
+    public Optional<HistorySearch> getById(long id) {
         boolean isPresent = database.containsKey(id);
         return isPresent ? Optional.of(database.get(id)) : Optional.empty();
     }
 
-    public List<TournamentJumperResult> getAll() {
+    public List<HistorySearch> getAll() {
         return database.keySet().stream()
                 .map(database::get)
                 .collect(Collectors.toList());
     }
 
-    public void update(TournamentJumperResult tjr, long id) {
-        Optional<TournamentJumperResult> optionalResult = getById(id);
+    public void update(HistorySearch historySearch, long id) {
+        Optional<HistorySearch> optionalResult = getById(id);
         optionalResult.orElseThrow(() -> new NoSuchElementException("There is no record for given id."));
-        database.put(id, tjr);
+        database.put(id, historySearch);
     }
 
-    public void delete(TournamentJumperResult tjr, long id) {
-        Optional<TournamentJumperResult> optionalResult = getById(id);
+    public void delete(HistorySearch historySearch, long id) {
+        Optional<HistorySearch> optionalResult = getById(id);
         optionalResult.orElseThrow(() -> new NoSuchElementException("There is no record for given id."));
-        database.remove(id, tjr);
+        database.remove(id, historySearch);
     }
 
 }
