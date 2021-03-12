@@ -16,7 +16,7 @@ public class TournamentJumperResultDB {
     }
 
     public void create(TournamentJumperResult tjr) {
-        tjr.setDatabaseId(currentDbIndex);
+        tjr.setId(currentDbIndex);
         database.put(currentDbIndex, tjr);
         currentDbIndex++;
     }

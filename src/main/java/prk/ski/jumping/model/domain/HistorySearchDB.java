@@ -15,9 +15,9 @@ public class HistorySearchDB {
         if (database == null) database = new HashMap<>();
     }
 
-    public void create(TournamentJumperResult tjr) {
-        tjr.setDatabaseId(currentDbIndex);
-        database.put(currentDbIndex, tjr);
+    public void create(HistorySearch historySearch) {
+        historySearch.setDatabaseId(currentDbIndex);
+        database.put(currentDbIndex, historySearch);
         currentDbIndex++;
     }
 
