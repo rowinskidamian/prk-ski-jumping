@@ -6,12 +6,12 @@ import java.util.Objects;
 
 public class TournamentWorldCup {
     private long id;
-    private LocalDateTime date;
+    private LocalDate date;
     private String place;
     private String gender;
     private String link;
 
-    public TournamentWorldCup(long id, LocalDateTime date, String place, String gender, String link) {
+    public TournamentWorldCup(long id, LocalDate date, String place, String gender, String link) {
         this.id = id;
         this.date = date;
         this.place = place;
@@ -24,7 +24,7 @@ public class TournamentWorldCup {
         return id;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
@@ -45,7 +45,7 @@ public class TournamentWorldCup {
         this.id = id;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
