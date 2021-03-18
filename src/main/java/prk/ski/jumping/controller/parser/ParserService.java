@@ -39,6 +39,21 @@ public class ParserService {
         }
     }
 
+    public void addTournamentListByURL(String URL) {
+        try {
+            List<TournamentWorldCup> tournamentWorldCupList = tournamentParser.getTournamentList(URL);
+
+            for (TournamentWorldCup twc : tournamentWorldCupList) {
+                tournamentWorldCupDao.create(twc);
+
+                //Parser test below
+                System.out.println(twc.getId() + " " + twc.getPlace() + " " + twc.getDate() + "\n link: " + twc.getLink());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void addResultListByTournamentURL(String tournamentURL) {
         try {
             List<TournamentJumperResult> tournamentJumperResultList = resultParser.getResultListFor(tournamentURL);
