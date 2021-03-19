@@ -40,17 +40,17 @@ public class ParserService {
     }
 
     public void addTournamentListByURL(String URL) {
+        List<TournamentWorldCup> tournamentWorldCupList = null;
         try {
-            List<TournamentWorldCup> tournamentWorldCupList = tournamentParser.getTournamentList(URL);
-
-            for (TournamentWorldCup twc : tournamentWorldCupList) {
-                tournamentWorldCupDao.create(twc);
-
-                //Parser test below
-                System.out.println(twc.getId() + " " + twc.getPlace() + " " + twc.getDate() + "\n link: " + twc.getLink());
-            }
+            tournamentWorldCupList = tournamentParser.getTournamentList(URL);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        for (TournamentWorldCup twc : tournamentWorldCupList) {
+            tournamentWorldCupDao.create(twc);
+            //Parser test below
+            System.out.println(twc.getId() + " " + twc.getPlace() + " " + twc.getDate() + "\n link: " + twc.getLink());
         }
     }
 
