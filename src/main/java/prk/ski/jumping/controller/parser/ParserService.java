@@ -1,11 +1,11 @@
 package prk.ski.jumping.controller.parser;
 
+import prk.ski.jumping.exception.ParsingException;
 import prk.ski.jumping.model.dao.TournamentJumperResultDao;
 import prk.ski.jumping.model.dao.TournamentWorldCupDao;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
 import prk.ski.jumping.model.domain.TournamentWorldCup;
 
-import java.io.IOException;
 import java.util.List;
 
 public class ParserService {
@@ -32,7 +32,7 @@ public class ParserService {
         databaseRecordList.forEach(System.out::println);
     }
 
-    public void addResultListForTournament(TournamentWorldCup tournamentWorldCup) {
+    public void addResultListForTournament(TournamentWorldCup tournamentWorldCup) throws ParsingException {
         List<TournamentJumperResult> tournamentJumperResultList = resultParser.getResultListFor(tournamentWorldCup);
         for (TournamentJumperResult tjr : tournamentJumperResultList) {
             tournamentJumperResultDao.create(tjr);
@@ -60,7 +60,7 @@ public class ParserService {
             for (TournamentJumperResult tjr : tournamentJumperResultList) {
                 tournamentJumperResultDao.create(tjr);
             }
-        } catch (IOException e) {
+        } catch (ParsingException e) {
             e.printStackTrace();
         }
     }
