@@ -6,6 +6,7 @@ import prk.ski.jumping.model.dao.TournamentWorldCupDao;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
 import prk.ski.jumping.model.domain.TournamentWorldCup;
 
+import java.io.IOException;
 import java.util.List;
 
 public class ParserService {
@@ -36,6 +37,21 @@ public class ParserService {
         List<TournamentJumperResult> tournamentJumperResultList = resultParser.getResultListFor(tournamentWorldCup);
         for (TournamentJumperResult tjr : tournamentJumperResultList) {
             tournamentJumperResultDao.create(tjr);
+        }
+    }
+
+    public void addTournamentListByURL(String URL) {
+        List<TournamentWorldCup> tournamentWorldCupList = null;
+        try {
+            tournamentWorldCupList = tournamentParser.getTournamentList(URL);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (TournamentWorldCup twc : tournamentWorldCupList) {
+            tournamentWorldCupDao.create(twc);
+            //Parser test below
+            System.out.println(twc.getId() + " " + twc.getPlace() + " " + twc.getDate() + "\n link: " + twc.getLink());
         }
     }
 
