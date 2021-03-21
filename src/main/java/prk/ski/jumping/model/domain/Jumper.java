@@ -7,23 +7,22 @@ public class Jumper {
     private String name;
     private String surname;
     private String origin;
-    private double firstDistance;
-    private double firstPoints;
-    private double secondDistance;
-    private double secondPoints;
+    private int goldMedals;
+    private int silverMedals;
+    private int bronzeMedals;
     private double totalPoints;
+    private long idHistory;
 
-    public Jumper(long id, String name, String surname, String origin, double firstDistance, double firstPoints,
-                  double secondDistance, double secondPoints, double totalPoints) {
+    public Jumper(long id, String name, String surname, String origin, int goldMedals, int silverMedals, int bronzeMedals, double totalPoints, long idHistory) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.origin = origin;
-        this.firstDistance = firstDistance;
-        this.firstPoints = firstPoints;
-        this.secondDistance = secondDistance;
-        this.secondPoints = secondPoints;
+        this.goldMedals = goldMedals;
+        this.silverMedals = silverMedals;
+        this.bronzeMedals = bronzeMedals;
         this.totalPoints = totalPoints;
+        this.idHistory = idHistory;
     }
 
     // getters
@@ -31,9 +30,7 @@ public class Jumper {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
     public String getSurname() {
         return surname;
@@ -43,25 +40,21 @@ public class Jumper {
         return origin;
     }
 
-    public double getFirstDistance() {
-        return firstDistance;
+    public int getGoldMedals() {
+        return goldMedals;
     }
 
-    public double getFirstPoints() {
-        return firstPoints;
-    }
+    public int getSilverMedals() { return silverMedals; }
 
-    public double getSecondDistance() {
-        return secondDistance;
-    }
-
-    public double getSecondPoints() {
-        return secondPoints;
+    public int getBronzeMedals() {
+        return bronzeMedals;
     }
 
     public double getTotalPoints() {
         return totalPoints;
     }
+
+    public long getIdHistory() { return idHistory; }
 
     // setters
     public void setName(String name) {
@@ -80,25 +73,21 @@ public class Jumper {
         this.origin = country;
     }
 
-    public void setFirstDistance(double distance) {
-        this.firstDistance = distance;
+    public void setGoldMedals(int amount) {
+        this.goldMedals = amount;
     }
 
-    public void setFirstPoints(double points) {
-        this.firstPoints = points;
-    }
+    public void setSilverMedals(int amount) { this.silverMedals = amount; }
 
-    public void setSecondDistance(double distance) {
-        this.secondDistance = distance;
-    }
-
-    public void setSecondPoints(double points) {
-        this.secondPoints = points;
+    public void setBronzeMedals(int amount) {
+        this.bronzeMedals = amount;
     }
 
     public void setTotalPoints(double points) {
         this.totalPoints = points;
     }
+
+    public void setIdHistory(long idHistory) { this.idHistory = idHistory; }
 
     public boolean equals(Object other) {
         if (this == other)
@@ -110,20 +99,19 @@ public class Jumper {
         Jumper jumper = (Jumper) other;
 
         return id == jumper.id && name == jumper.name && surname == jumper.surname && origin == jumper.origin
-                && firstDistance == jumper.firstDistance && firstPoints == jumper.firstPoints
-                && secondDistance == jumper.secondDistance && secondPoints == jumper.secondPoints
-                && totalPoints == jumper.totalPoints;
+                && goldMedals == jumper.goldMedals && silverMedals == jumper.silverMedals
+                && bronzeMedals == jumper.bronzeMedals && totalPoints == jumper.totalPoints
+                && idHistory == jumper.idHistory;
     }
 
     public int hashCode() {
-        return (int) Objects.hash(name, surname, origin, firstDistance, firstPoints, secondDistance, secondPoints,
-                totalPoints);
+        return (int) Objects.hash(name, surname, origin, goldMedals, silverMedals, bronzeMedals, totalPoints, idHistory);
     }
 
     public String toString() {
-        String jumper = "Jumper {" + "id = " + id + ",name = " + name + ",surname = " + surname + ",origin = " + origin
-                + ",firstJumpDistance = " + firstDistance + ",firstPoints = " + firstPoints + ",secondDistance = "
-                + secondDistance + ",secondPoints = " + secondPoints + ",totalPoints = " + totalPoints + "}";
+        String jumper = "Jumper {id = " + id + ",name = " + name + ",surname = " + surname + ",origin = " + origin
+                + ",goldMedals = " + goldMedals + ",silverMedals = " + silverMedals + ",bronzeMedals = "
+                + bronzeMedals + ",totalPoints = " + totalPoints +  ",idHistory = " + idHistory + "}";
         return jumper;
     }
 }
