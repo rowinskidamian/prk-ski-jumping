@@ -47,12 +47,10 @@ public class ResultParser {
             }
             return tjrList;
 
-
         } catch (IOException ex) {
             ex.getStackTrace();
             throw new ParsingException("Błąd podczas wczytywania danych.");
         }
-
 
     }
 }
