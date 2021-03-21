@@ -43,17 +43,17 @@ public class ResultParser {
             System.out.println("points " + totalPoints);
             System.out.println("------------------");
 
-//            TournamentJumperResult tjr = new TournamentJumperResult();
-//            tjr.setRank(Integer.parseInt(rank));
-//            tjr.setAthleteName(athleteName);
-////            tjr.setDistanceFirst();
-////            tjr.setPointsFirst();
-////            tjr.setDistanceSecond();
-////            tjr.setPointsSecond();
-//            tjr.setTotalPoints(Double.parseDouble(totalPoints));
-//            tjr.setTournamentId(999);
+            TournamentJumperResult tjr = new TournamentJumperResult();
+            tjr.setRank(Integer.parseInt(rank));
+            tjr.setAthleteName(athleteName);
+//            tjr.setDistanceFirst();
+//            tjr.setPointsFirst();
+//            tjr.setDistanceSecond();
+//            tjr.setPointsSecond();
+            tjr.setTotalPoints(Double.parseDouble(totalPoints));
+            tjr.setTournamentId(999);
 
-//            System.out.println(tjr);
+            System.out.println(tjr);
         }
 
 
