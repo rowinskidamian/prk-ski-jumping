@@ -25,6 +25,9 @@ public class Jumper {
         this.idHistory = idHistory;
     }
 
+    public Jumper() {
+    }
+
     // getters
     public long getId() {
         return id;

@@ -2,21 +2,57 @@ package prk.ski.jumping.controller.analyzer;
 
 import prk.ski.jumping.model.domain.Jumper;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
-import prk.ski.jumping.model.domain.TournamentWorldCup;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class JumperAnalyzer {
 
-    public List<Jumper> getJumperAnalysis(List<TournamentJumperResult> resultList, List<TournamentWorldCup> tournamentList) {
+    public List<Jumper> getJumperAnalysis(List<TournamentJumperResult> resultList) {
+        Map<String, Jumper> jumperMap = new HashMap<>();
         List<Jumper> jumperList = new ArrayList<>();
-        int goldMedals = 0;
-        int silverMedals = 0;
-        int bronzeMedals = 0;
 
+        for (TournamentJumperResult tournamentJumperResult : resultList) {
+            String athleteName = tournamentJumperResult.getAthleteName();
+            boolean containsJumper = jumperMap.containsKey(athleteName);
 
-        return jumperList;
+            if(!containsJumper) {
+                Jumper jumper = new Jumper();
+                jumper.setAthleteName(athleteName);
+            }
+
+            Jumper currentJumper = jumperMap.get(athleteName);
+
+            int rank = tournamentJumperResult.getRank();
+            switch (rank) {
+                case 1:
+                    int goldMedals = currentJumper.getGoldMedals();
+                    goldMedals++;
+                    currentJumper.setGoldMedals(goldMedals);
+                case 2:
+                    int silverMedals = currentJumper.getSilverMedals();
+                    silverMedals++;
+                    currentJumper.setSilverMedals(silverMedals);
+                case 3:
+                    int bronzeMedals = currentJumper.getBronzeMedals();
+                    bronzeMedals++;
+                    currentJumper.setBronzeMedals(bronzeMedals);
+            }
+
+            double totalPoints = currentJumper.getTotalPoints();
+            double pointsFromTournament = tournamentJumperResult.getTotalPoints();
+            totalPoints += pointsFromTournament;
+            currentJumper.setTotalPoints(totalPoints);
+
+            jumperMap.put(athleteName, currentJumper);
+        }
+
+        return jumperMap.keySet().stream()
+                .map(jumperMap::get)
+                .collect(Collectors.toList());
     }
 
 }
