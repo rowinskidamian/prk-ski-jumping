@@ -1,5 +1,6 @@
 package prk.ski.jumping.controller.parser;
 
+import prk.ski.jumping.exception.ParsingException;
 import prk.ski.jumping.model.dao.TournamentJumperResultDao;
 import prk.ski.jumping.model.dao.TournamentWorldCupDao;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
@@ -14,15 +15,12 @@ public class ParserService {
     private TournamentWorldCupDao tournamentWorldCupDao;
     private TournamentJumperResultDao tournamentJumperResultDao;
 
-    public ParserService(TournamentWorldCupDao tournamentWorldCupDao,
-                         TournamentJumperResultDao tournamentJumperResultDao) {
+    public ParserService() {
         this.resultParser = new ResultParser();
         this.tournamentParser = new TournamentParser();
-        this.tournamentWorldCupDao = tournamentWorldCupDao;
-        this.tournamentJumperResultDao = tournamentJumperResultDao;
     }
 
-    public void addTournamentsToDatabase() {
+    public void addTournamentListToDatabase() {
         List<TournamentWorldCup> tournamentWorldCupList = tournamentParser.getAll();
         for (TournamentWorldCup twc : tournamentWorldCupList) {
             tournamentWorldCupDao.create(twc);
@@ -30,14 +28,25 @@ public class ParserService {
     }
 
     public void printTournamentWorldCupList() {
-        List<TournamentWorldCup> database = tournamentParser.getAll();
-        database.forEach(System.out::println);
+        List<TournamentWorldCup> databaseRecordList = tournamentWorldCupDao.getAll();
+        databaseRecordList.forEach(System.out::println);
     }
 
-    public void addResultsForTournament(TournamentWorldCup tournamentWorldCup) {
+    public void addResultListForTournament(TournamentWorldCup tournamentWorldCup) throws ParsingException {
         List<TournamentJumperResult> tournamentJumperResultList = resultParser.getResultListFor(tournamentWorldCup);
         for (TournamentJumperResult tjr : tournamentJumperResultList) {
             tournamentJumperResultDao.create(tjr);
+        }
+    }
+
+    public void addResultListByTournamentURL(String tournamentURL) {
+        try {
+            List<TournamentJumperResult> tournamentJumperResultList = resultParser.getResultListFor(tournamentURL);
+            for (TournamentJumperResult tjr : tournamentJumperResultList) {
+                tournamentJumperResultDao.create(tjr);
+            }
+        } catch (ParsingException e) {
+            e.printStackTrace();
         }
     }
 
@@ -46,5 +55,11 @@ public class ParserService {
         database.forEach(System.out::println);
     }
 
+    public void setTournamentWorldCupDao(TournamentWorldCupDao tournamentWorldCupDao) {
+        this.tournamentWorldCupDao = tournamentWorldCupDao;
+    }
 
+    public void setTournamentJumperResultDao(TournamentJumperResultDao tournamentJumperResultDao) {
+        this.tournamentJumperResultDao = tournamentJumperResultDao;
+    }
 }
