@@ -6,6 +6,7 @@ import prk.ski.jumping.model.dao.TournamentWorldCupDao;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
 import prk.ski.jumping.model.domain.TournamentWorldCup;
 
+import java.io.IOException;
 import java.util.List;
 
 public class ParserService {
