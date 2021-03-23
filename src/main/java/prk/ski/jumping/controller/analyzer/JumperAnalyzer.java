@@ -3,19 +3,20 @@ package prk.ski.jumping.controller.analyzer;
 import prk.ski.jumping.model.domain.Jumper;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class JumperAnalyzer {
 
-    public List<Jumper> getJumperAnalysis(List<TournamentJumperResult> resultList) {
+    public Set<String> getAthleteListForTournaments(List<TournamentJumperResult> tjr) {
+        return new HashSet<>();
+    }
+
+    public List<Jumper> getJumperAnalysis(List<TournamentJumperResult> resultTournamentList, Set<String> athletesNames) {
         Map<String, Jumper> jumperMap = new HashMap<>();
         List<Jumper> jumperList = new ArrayList<>();
 
-        for (TournamentJumperResult tournamentJumperResult : resultList) {
+        for (TournamentJumperResult tournamentJumperResult : resultTournamentList) {
             String athleteName = tournamentJumperResult.getAthleteName();
             boolean containsJumper = jumperMap.containsKey(athleteName);
 
