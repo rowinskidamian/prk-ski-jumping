@@ -6,6 +6,7 @@ public class TournamentJumperResult {
 
     private long id;
     private int rank;
+    private String origin;
     private String athleteName;
     private double totalPoints;
     private long tournamentId;
@@ -13,9 +14,10 @@ public class TournamentJumperResult {
     public TournamentJumperResult() {
     }
 
-    public TournamentJumperResult(long id, int rank, String athleteName, double totalPoints, long tournamentId) {
+    public TournamentJumperResult(long id, int rank, String origin, String athleteName, double totalPoints, long tournamentId) {
         this.id = id;
         this.rank = rank;
+        this.origin = origin;
         this.athleteName = athleteName;
         this.totalPoints = totalPoints;
         this.tournamentId = tournamentId;
@@ -32,6 +34,8 @@ public class TournamentJumperResult {
     public int getRank() {
         return rank;
     }
+
+    public String getOrigin() { return origin; }
 
     public void setRank(int rank) {
         this.rank = rank;
