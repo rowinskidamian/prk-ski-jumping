@@ -41,11 +41,6 @@ public class CountryAnalyzer {
             } else if (tjr.getRank() == 3) {
                 currentCountry.setBronzeMedals(currentCountry.getBronzeMedals() + 1);
             }
-//            switch (tjr.getRank()) {
-//                case 1: currentCountry.setGoldMedals(currentCountry.getGoldMedals() + 1);
-//                case 2: currentCountry.setSilverMedals(currentCountry.getSilverMedals() + 1);
-//                case 3: currentCountry.setBronzeMedals(currentCountry.getBronzeMedals() + 1);
-//            }
 
             //setting total points
             currentCountry.setTotalPoints(currentCountry.getTotalPoints() + tjr.getTotalPoints());
