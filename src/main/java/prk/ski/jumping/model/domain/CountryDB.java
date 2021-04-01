@@ -7,12 +7,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class CountryDB {
-
     private static long currentDbIndex = 0;
     private static HashMap<Long, Country> database;
 
     public CountryDB() { if (database == null) database = new HashMap<>(); }
-
     public void create(Country country) {
         country.setId(currentDbIndex);
         database.put(currentDbIndex, country);

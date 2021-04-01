@@ -8,17 +8,19 @@ public class Country {
     private int goldMedals;
     private int silverMedals;
     private int bronzeMedals;
+    private double totalPoints;
     private long idHistory;
 
-    public Country(long id, String name, int goldMedals, int silverMedals, int bronzeMedals, long idHistory) {
+    public Country(long id, String name, int goldMedals, int silverMedals, int bronzeMedals, long idHistory, double totalPoints) {
         this.id = id;
         this.name = name;
         this.goldMedals = goldMedals;
         this.silverMedals = silverMedals;
         this.bronzeMedals = bronzeMedals;
         this.idHistory = idHistory;
+        this.totalPoints = totalPoints;
     }
-
+    public Country(){};
     // getters
     public long getId() {
         return id;
@@ -39,6 +41,8 @@ public class Country {
     }
 
     public long getIdHistory() { return idHistory; }
+
+    public double getTotalPoints() { return totalPoints; }
 
     // setters
     public void setId(long id) {
@@ -61,6 +65,8 @@ public class Country {
 
     public void setIdHistory(long id) { this.idHistory = idHistory; }
 
+    public void setTotalPoints(double totalPoints) { this.totalPoints = totalPoints; }
+
     public boolean equals(Object other) {
         if (this == other)
             return true;
@@ -71,16 +77,16 @@ public class Country {
         Country country = (Country) other;
 
         return id == country.id && name == country.name && goldMedals == country.goldMedals && silverMedals == country.silverMedals
-                && bronzeMedals == country.bronzeMedals && idHistory == country.idHistory;
+                && bronzeMedals == country.bronzeMedals && idHistory == country.idHistory && totalPoints == country.totalPoints;
     }
 
     public int hashCode() {
-        return (int) Objects.hash(id, name, goldMedals, silverMedals, bronzeMedals, idHistory);
+        return (int) Objects.hash(id, name, goldMedals, silverMedals, bronzeMedals, idHistory, totalPoints);
     }
 
     public String toString() {
         String country = "Country {" + "id = " + id + ", name = " + name + ", goldMedals = " + goldMedals + ", silverMedals = "
-                + silverMedals + ", bronzeMedals = " + bronzeMedals + ", idHistory = " + idHistory + "}";
+                + silverMedals + ", bronzeMedals = " + bronzeMedals + ", totalPoints = " + totalPoints + ", idHistory = " + idHistory + "}";
         return country;
     }
 }

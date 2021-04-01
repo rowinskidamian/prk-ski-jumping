@@ -95,7 +95,7 @@ public class TournamentJumperResult {
         return "TournamentJumperResult{" +
                 "id=" + id +
                 ", rank=" + rank +
-                ", origin='" + origin + '\'' +
+                ", origin=" + origin +
                 ", athleteName='" + athleteName + '\'' +
                 ", totalPoints=" + totalPoints +
                 ", tournamentId=" + tournamentId +

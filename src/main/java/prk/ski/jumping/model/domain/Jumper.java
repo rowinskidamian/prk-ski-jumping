@@ -31,7 +31,7 @@ public class Jumper {
         return id;
     }
 
-    public String getAthleteName() { return athleteName; };
+    public String getAthleteName() { return athleteName; }
 
     public String getOrigin() {
         return origin;
@@ -53,7 +53,7 @@ public class Jumper {
 
     public long getIdHistory() { return idHistory; }
 
-    // setter
+    // setters
     public void setId(long id) {
         this.id = id;
     }

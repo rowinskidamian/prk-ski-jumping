@@ -34,10 +34,12 @@ public class TournamentParser {
             Elements placeElement = cupElement.getElementsByClass("bb-xs pb-xs-1_1 g-xs-11 g-sm-6 g-md-4 g-lg-4 justify-left bold");
             Elements genderElement = cupElement.getElementsByClass("split-row__item split-row__item_text_medium justify-center reset-padding bold");
 
+
             LocalDate date = LocalDate.parse(dateElement.text(), formatter);
             String place = placeElement.text();
             String gender = genderElement.text();
             String link = placeElement.attr("href");
+
 
             if(checkIfTournamentIsGroup(link)) {
                 TournamentWorldCup cup = new TournamentWorldCup(123, date, place, gender, link);
