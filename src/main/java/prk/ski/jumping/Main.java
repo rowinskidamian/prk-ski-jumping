@@ -26,11 +26,11 @@ public class Main {
 		List<Country> listOfCountries = analyzer.getCountryAnalysis(testingList);
 
 		for (Country c : listOfCountries) {
-			System.out.println(c.getName() + " jest null bo nie ma pola \"origin\" w TournamentJumperResult, trzeba też zrobić żeby ustawiło ten origin w ResultParserze");
+			System.out.println(c.getName() + " ");
 			System.out.print(c.getGoldMedals() + " ");
 			System.out.print(c.getSilverMedals() + " ");
 			System.out.print(c.getBronzeMedals() + " ");
-			System.out.print(c.getTotalPoints() + " ");
+			System.out.println(c.getTotalPoints() + " ");
 		}
 
 

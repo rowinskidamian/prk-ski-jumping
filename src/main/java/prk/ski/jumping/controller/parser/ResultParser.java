@@ -39,10 +39,13 @@ public class ResultParser {
                         ("g-lg-1 g-md-1 g-sm-1 g-xs-2 justify-right pr-1 gray bold").text();
                 String totalPoints = element.getElementsByClass
                         ("g-lg-2 g-md-2 g-sm-3 g-xs-5 justify-right blue bold ").text();
+                Elements originElement = element.getElementsByClass("country__name-short");
+
                 TournamentJumperResult tjr = new TournamentJumperResult();
                 tjr.setRank(Integer.parseInt(rank));
                 tjr.setAthleteName(athleteName);
                 tjr.setTotalPoints(Double.parseDouble(totalPoints));
+                tjr.setOrigin(originElement.text());
                 tjrList.add(tjr);
             }
             return tjrList;

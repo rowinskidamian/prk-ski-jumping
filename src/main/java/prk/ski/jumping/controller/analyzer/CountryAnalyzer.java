@@ -6,6 +6,9 @@ import prk.ski.jumping.model.domain.TournamentJumperResult;
 
 import java.util.*;
 
+/**
+ * @author RadosławParol
+ */
 public class CountryAnalyzer {
 
     public Set<String> getCountryListForTournaments(List<TournamentJumperResult> tjr) {

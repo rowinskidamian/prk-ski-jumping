@@ -37,6 +37,8 @@ public class TournamentJumperResult {
 
     public String getOrigin() { return origin; }
 
+    public void setOrigin(String origin) { this.origin = origin; }
+
     public void setRank(int rank) {
         this.rank = rank;
     }
@@ -73,13 +75,13 @@ public class TournamentJumperResult {
         return id == that.id &&
                 rank == that.rank &&
                 Double.compare(that.totalPoints, totalPoints) == 0 &&
-                tournamentId == that.tournamentId &&
+                tournamentId == that.tournamentId && origin == that.origin &&
                 Objects.equals(athleteName, that.athleteName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, rank, athleteName, totalPoints, tournamentId);
+        return Objects.hash(id, rank, origin, athleteName, totalPoints, tournamentId);
     }
 
     @Override
@@ -87,9 +89,12 @@ public class TournamentJumperResult {
         return "TournamentJumperResult{" +
                 "id=" + id +
                 ", rank=" + rank +
+                ", origin=" + origin +
                 ", athleteName='" + athleteName + '\'' +
                 ", totalPoints=" + totalPoints +
                 ", tournamentId=" + tournamentId +
                 '}';
     }
+
+
 }

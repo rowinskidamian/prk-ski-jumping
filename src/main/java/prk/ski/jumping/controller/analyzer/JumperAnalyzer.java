@@ -6,6 +6,8 @@ import prk.ski.jumping.model.domain.TournamentJumperResult;
 import java.util.*;
 import java.util.stream.Collectors;
 
+
+
 public class JumperAnalyzer {
 
     public Set<String> getAthleteListForTournaments(List<TournamentJumperResult> tjr) {
