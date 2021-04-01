@@ -6,6 +6,10 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * @author DamianRowinski
+ */
+
 public class HistorySearchDB {
 
     private static long currentDbIndex = 0;

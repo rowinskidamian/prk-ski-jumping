@@ -1,7 +1,12 @@
 package prk.ski.jumping.model.domain;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
+
+/**
+ * @author DamianRowinski
+ */
 
 public class HistorySearch {
 
@@ -10,16 +15,21 @@ public class HistorySearch {
     private LocalDate searchDate;
     private String searchType;
     private int tournamentAmount;
+    private List<Long> tournamentIdList;
+    private List<String> athleteCountryList;
 
     public HistorySearch() {
     }
 
-    public HistorySearch(long id, String searchName, LocalDate searchDate, String searchType, int tournamentAmount) {
+    public HistorySearch(long id, String searchName, LocalDate searchDate, String searchType, int tournamentAmount,
+                         List<Long> tournamentIdList, List<String> athleteCountryList) {
         this.id = id;
         this.searchName = searchName;
         this.searchDate = searchDate;
         this.searchType = searchType;
         this.tournamentAmount = tournamentAmount;
+        this.tournamentIdList = tournamentIdList;
+        this.athleteCountryList = athleteCountryList;
     }
 
     public long getId() {
@@ -62,21 +72,33 @@ public class HistorySearch {
         this.tournamentAmount = tournamentAmount;
     }
 
+    public List<Long> getTournamentIdList() {
+        return tournamentIdList;
+    }
+
+    public void setTournamentIdList(List<Long> tournamentIdList) {
+        this.tournamentIdList = tournamentIdList;
+    }
+
+    public List<String> getAthleteCountryList() {
+        return athleteCountryList;
+    }
+
+    public void setAthleteCountryList(List<String> athleteCountryList) {
+        this.athleteCountryList = athleteCountryList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        HistorySearch history = (HistorySearch) o;
-        return id == history.id &&
-                tournamentAmount == history.tournamentAmount &&
-                Objects.equals(searchName, history.searchName) &&
-                Objects.equals(searchDate, history.searchDate) &&
-                Objects.equals(searchType, history.searchType);
+        HistorySearch that = (HistorySearch) o;
+        return id == that.id && tournamentAmount == that.tournamentAmount && Objects.equals(searchName, that.searchName) && Objects.equals(searchDate, that.searchDate) && Objects.equals(searchType, that.searchType) && Objects.equals(tournamentIdList, that.tournamentIdList) && Objects.equals(athleteCountryList, that.athleteCountryList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, searchName, searchDate, searchType, tournamentAmount);
+        return Objects.hash(id, searchName, searchDate, searchType, tournamentAmount, tournamentIdList, athleteCountryList);
     }
 
     @Override
@@ -87,6 +109,8 @@ public class HistorySearch {
                 ", searchDate=" + searchDate +
                 ", searchType='" + searchType + '\'' +
                 ", tournamentAmount=" + tournamentAmount +
+                ", tournamentIdList=" + tournamentIdList +
+                ", athleteCountryList=" + athleteCountryList +
                 '}';
     }
 }

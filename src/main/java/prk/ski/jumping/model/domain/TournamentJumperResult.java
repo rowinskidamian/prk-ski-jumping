@@ -2,10 +2,15 @@ package prk.ski.jumping.model.domain;
 
 import java.util.Objects;
 
+/**
+ * @author DamianRowinski
+ */
+
 public class TournamentJumperResult {
 
     private long id;
     private int rank;
+    private String origin;
     private String athleteName;
     private double totalPoints;
     private long tournamentId;
@@ -13,9 +18,10 @@ public class TournamentJumperResult {
     public TournamentJumperResult() {
     }
 
-    public TournamentJumperResult(long id, int rank, String athleteName, double totalPoints, long tournamentId) {
+    public TournamentJumperResult(long id, int rank, String origin, String athleteName, double totalPoints, long tournamentId) {
         this.id = id;
         this.rank = rank;
+        this.origin = origin;
         this.athleteName = athleteName;
         this.totalPoints = totalPoints;
         this.tournamentId = tournamentId;
@@ -35,6 +41,14 @@ public class TournamentJumperResult {
 
     public void setRank(int rank) {
         this.rank = rank;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
     }
 
     public String getAthleteName() {
@@ -66,16 +80,14 @@ public class TournamentJumperResult {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TournamentJumperResult that = (TournamentJumperResult) o;
-        return id == that.id &&
-                rank == that.rank &&
-                Double.compare(that.totalPoints, totalPoints) == 0 &&
-                tournamentId == that.tournamentId &&
-                Objects.equals(athleteName, that.athleteName);
+        return id == that.id && rank == that.rank && Double.compare(that.totalPoints, totalPoints) == 0
+                && tournamentId == that.tournamentId && Objects.equals(origin, that.origin)
+                && Objects.equals(athleteName, that.athleteName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, rank, athleteName, totalPoints, tournamentId);
+        return Objects.hash(id, rank, origin, athleteName, totalPoints, tournamentId);
     }
 
     @Override
@@ -83,6 +95,7 @@ public class TournamentJumperResult {
         return "TournamentJumperResult{" +
                 "id=" + id +
                 ", rank=" + rank +
+                ", origin='" + origin + '\'' +
                 ", athleteName='" + athleteName + '\'' +
                 ", totalPoints=" + totalPoints +
                 ", tournamentId=" + tournamentId +

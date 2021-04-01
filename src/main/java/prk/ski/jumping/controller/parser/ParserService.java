@@ -9,6 +9,10 @@ import prk.ski.jumping.model.domain.TournamentWorldCup;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author DamianRowinski
+ */
+
 public class ParserService {
 
     private ResultParser resultParser;

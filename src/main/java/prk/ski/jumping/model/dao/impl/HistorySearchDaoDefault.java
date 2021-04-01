@@ -7,6 +7,10 @@ import prk.ski.jumping.model.domain.HistorySearchDB;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author DamianRowinski
+ */
+
 public class HistorySearchDaoDefault implements HistorySearchDao {
 
     private HistorySearchDB historySearchDB;
