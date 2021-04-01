@@ -4,8 +4,7 @@ import java.util.Objects;
 
 public class Jumper {
     private long id;
-    private String name;
-    private String surname;
+    private String athleteName;
     private String origin;
     private int goldMedals;
     private int silverMedals;
@@ -13,10 +12,9 @@ public class Jumper {
     private double totalPoints;
     private long idHistory;
 
-    public Jumper(long id, String name, String surname, String origin, int goldMedals, int silverMedals, int bronzeMedals, double totalPoints, long idHistory) {
+    public Jumper(long id, String athleteName, String origin, int goldMedals, int silverMedals, int bronzeMedals, double totalPoints, long idHistory) {
         this.id = id;
-        this.name = name;
-        this.surname = surname;
+        this.athleteName = athleteName;
         this.origin = origin;
         this.goldMedals = goldMedals;
         this.silverMedals = silverMedals;
@@ -33,11 +31,7 @@ public class Jumper {
         return id;
     }
 
-    public String getName() { return name; }
-
-    public String getSurname() {
-        return surname;
-    }
+    public String getAthleteName() { return athleteName; };
 
     public String getOrigin() {
         return origin;
@@ -59,17 +53,13 @@ public class Jumper {
 
     public long getIdHistory() { return idHistory; }
 
-    // setters
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    // setter
     public void setId(long id) {
         this.id = id;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setAthleteName(String athleteName) {
+        this.athleteName = athleteName;
     }
 
     public void setOrigin(String country) {
@@ -101,18 +91,18 @@ public class Jumper {
             return false;
         Jumper jumper = (Jumper) other;
 
-        return id == jumper.id && name == jumper.name && surname == jumper.surname && origin == jumper.origin
+        return id == jumper.id && athleteName == jumper.athleteName && origin == jumper.origin
                 && goldMedals == jumper.goldMedals && silverMedals == jumper.silverMedals
                 && bronzeMedals == jumper.bronzeMedals && totalPoints == jumper.totalPoints
                 && idHistory == jumper.idHistory;
     }
 
     public int hashCode() {
-        return (int) Objects.hash(name, surname, origin, goldMedals, silverMedals, bronzeMedals, totalPoints, idHistory);
+        return (int) Objects.hash(athleteName, origin, goldMedals, silverMedals, bronzeMedals, totalPoints, idHistory);
     }
 
     public String toString() {
-        String jumper = "Jumper {id = " + id + ",name = " + name + ",surname = " + surname + ",origin = " + origin
+        String jumper = "Jumper {id = " + id + ",athleteName = " + athleteName + ",origin = " + origin
                 + ",goldMedals = " + goldMedals + ",silverMedals = " + silverMedals + ",bronzeMedals = "
                 + bronzeMedals + ",totalPoints = " + totalPoints +  ",idHistory = " + idHistory + "}";
         return jumper;
