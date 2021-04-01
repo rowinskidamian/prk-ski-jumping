@@ -7,6 +7,10 @@ import prk.ski.jumping.model.domain.TournamentJumperResultDB;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author DamianRowinski
+ */
+
 public class TournamentJumperResultDaoDefault implements TournamentJumperResultDao {
 
     private TournamentJumperResultDB tournamentJumperResultDB;

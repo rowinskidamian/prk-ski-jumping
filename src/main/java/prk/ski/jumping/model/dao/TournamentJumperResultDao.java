@@ -5,12 +5,16 @@ import prk.ski.jumping.model.domain.TournamentJumperResult;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author DamianRowinski
+ */
+
 public interface TournamentJumperResultDao {
 
-    public void create(TournamentJumperResult tournamentJumperResult);
-    public Optional<TournamentJumperResult> getById(long id);
-    public List<TournamentJumperResult> getAll();
-    public void update(TournamentJumperResult tjr, long id);
-    public void delete(TournamentJumperResult tjr, long id);
+    void create(TournamentJumperResult tournamentJumperResult);
+    Optional<TournamentJumperResult> getById(long id);
+    List<TournamentJumperResult> getAll();
+    void update(TournamentJumperResult tjr, long id);
+    void delete(TournamentJumperResult tjr, long id);
 
 }

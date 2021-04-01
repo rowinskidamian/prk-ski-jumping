@@ -6,13 +6,19 @@ import prk.ski.jumping.model.domain.TournamentJumperResult;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * @author DamianRowinski
+ */
+
 public class JumperAnalyzer {
 
-    public Set<String> getAthleteListForTournaments(List<TournamentJumperResult> tjr) {
-        return new HashSet<>();
+    public Set<String> getJumperNamesListForTournament(List<TournamentJumperResult> tournamentParticipantsResults) {
+        return tournamentParticipantsResults.stream()
+                .map(TournamentJumperResult::getAthleteName)
+                .collect(Collectors.toSet());
     }
 
-    public List<Jumper> getJumperAnalysis(List<TournamentJumperResult> resultTournamentList, Set<String> athletesNames) {
+    public List<Jumper> getJumperAnalysisFor(List<TournamentJumperResult> resultTournamentList) {
         Map<String, Jumper> jumperMap = new HashMap<>();
         List<Jumper> jumperList = new ArrayList<>();
 

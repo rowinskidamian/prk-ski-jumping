@@ -2,6 +2,10 @@ package prk.ski.jumping.model.domain;
 
 import java.util.Objects;
 
+/**
+ * @author DamianRowinski
+ */
+
 public class TournamentJumperResult {
 
     private long id;
