@@ -2,6 +2,10 @@ package prk.ski.jumping.model.domain;
 
 import java.util.Objects;
 
+/**
+ * @author DamianRowinski
+ */
+
 public class TournamentJumperResult {
 
     private long id;
@@ -35,12 +39,16 @@ public class TournamentJumperResult {
         return rank;
     }
 
-    public String getOrigin() { return origin; }
-
-    public void setOrigin(String origin) { this.origin = origin; }
-
     public void setRank(int rank) {
         this.rank = rank;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
     }
 
     public String getAthleteName() {
@@ -72,11 +80,9 @@ public class TournamentJumperResult {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TournamentJumperResult that = (TournamentJumperResult) o;
-        return id == that.id &&
-                rank == that.rank &&
-                Double.compare(that.totalPoints, totalPoints) == 0 &&
-                tournamentId == that.tournamentId && origin == that.origin &&
-                Objects.equals(athleteName, that.athleteName);
+        return id == that.id && rank == that.rank && Double.compare(that.totalPoints, totalPoints) == 0
+                && tournamentId == that.tournamentId && Objects.equals(origin, that.origin)
+                && Objects.equals(athleteName, that.athleteName);
     }
 
     @Override
@@ -95,6 +101,4 @@ public class TournamentJumperResult {
                 ", tournamentId=" + tournamentId +
                 '}';
     }
-
-
 }
