@@ -1,0 +1,44 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* nawigacja */
+.navbar.is-fixed-top {
+  padding: 16px 0;
+}
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+.logo {
+  display: block;
+  height: 33px;
+}
+
+.control-panel {
+  margin-bottom: 30px;
+}
+
+/* tabelki */
+.table.list {
+  margin: 20px;
+  margin-top: 140px;
+}
+
+.table tr {
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.table tr:hover {
+  cursor: pointer;
+}
+
+.table tr.is-selected {
+  background-color: #3298dc;
+}
