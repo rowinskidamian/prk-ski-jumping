@@ -17,7 +17,6 @@ public class CountryDaoDefault implements CountryDao {
 		countryDB = new CountryDB();
 	}
 
-
 	@Override
 	public void create(Country country) { countryDB.create(country); }
 	@Override
