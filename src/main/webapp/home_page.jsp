@@ -43,11 +43,14 @@
         <div class="container">
             <p class="title is-1">Witaj w Ski Jumping Analyzer</p>
             <p class="subtitle is-4">
-                Miejscu gdzie możesz dokonać analizy ostatnich wyników turniejów w
-                skokach narciarskich!
+<%--                Miejscu gdzie możesz dokonać analizy ostatnich wyników turniejów w--%>
+<%--                skokach narciarskich!--%>
+    ${country1.name}
             </p>
         </div>
     </div>
 </section>
+
+
 </body>
 </html>
