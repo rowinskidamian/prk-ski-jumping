@@ -19,10 +19,11 @@ public class TournamentJumperResultDB {
         if(database == null) database = new HashMap<>();
     }
 
-    public void create(TournamentJumperResult tjr) {
+    public TournamentJumperResult create(TournamentJumperResult tjr) {
         tjr.setId(currentDbIndex);
         database.put(currentDbIndex, tjr);
         currentDbIndex++;
+        return tjr;
     }
 
     public Optional<TournamentJumperResult> getById(long id) {

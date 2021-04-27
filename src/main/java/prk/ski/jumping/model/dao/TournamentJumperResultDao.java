@@ -13,9 +13,9 @@ import java.util.Optional;
 public interface TournamentJumperResultDao {
 
     TournamentJumperResult create(TournamentJumperResult tournamentJumperResult) throws DataBaseException;
-    Optional<TournamentJumperResult> getById(long id);
-    List<TournamentJumperResult> getAll();
-    void update(TournamentJumperResult tjr, long id);
-    void delete(TournamentJumperResult tjr, long id);
+    Optional<TournamentJumperResult> getById(long id) throws DataBaseException;
+    List<TournamentJumperResult> getAll() throws DataBaseException;
+    void update(TournamentJumperResult tjr) throws DataBaseException;
+    void delete(long id) throws DataBaseException;
 
 }

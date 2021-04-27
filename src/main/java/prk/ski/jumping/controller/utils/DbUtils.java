@@ -14,8 +14,7 @@ public class DbUtils {
     static final String DB_PASSWORD = "coderowo";
 
     public static Connection connectToDatabase() throws SQLException {
-        Connection connection = DriverManager.getConnection(DATABASE_URL, DB_USERNAME, DB_PASSWORD);
-        return connection;
+        return DriverManager.getConnection(DATABASE_URL, DB_USERNAME, DB_PASSWORD);
     }
 
 }
