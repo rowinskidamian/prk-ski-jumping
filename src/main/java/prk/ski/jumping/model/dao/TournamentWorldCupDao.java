@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TournamentWorldCupDao {
-    public void create(TournamentWorldCup cup);
+    public TournamentWorldCup create(TournamentWorldCup cup);
     public Optional<TournamentWorldCup> getById(long id);
     public List<TournamentWorldCup> getAll();
     public void update(TournamentWorldCup cup, long id);
