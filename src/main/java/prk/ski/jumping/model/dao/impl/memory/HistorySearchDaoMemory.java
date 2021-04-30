@@ -1,4 +1,4 @@
-package prk.ski.jumping.model.dao.impl;
+package prk.ski.jumping.model.dao.impl.memory;
 
 import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.dao.HistorySearchDao;

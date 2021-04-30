@@ -37,16 +37,18 @@ public class TournamentJumperResultDB {
                 .collect(Collectors.toList());
     }
 
-    public void update(TournamentJumperResult tjr, long id) {
-        Optional<TournamentJumperResult> optionalResult = getById(id);
-        optionalResult.orElseThrow(() -> new NoSuchElementException("There is no record for given id."));
-        database.put(id, tjr);
+    public void update(TournamentJumperResult tjr) {
+        Optional<TournamentJumperResult> optionalResult = getById(tjr.getId());
+        optionalResult.orElseThrow(() -> new NoSuchElementException
+                ("Nie można usunąć z bazy. Nie ma rekordu o podanym id."));
+        database.put(tjr.getId(), tjr);
     }
 
-    public void delete(TournamentJumperResult tjr, long id) {
+    public void delete(long id) {
         Optional<TournamentJumperResult> optionalResult = getById(id);
-        optionalResult.orElseThrow(() -> new NoSuchElementException("There is no record for given id."));
-        database.remove(id, tjr);
+        optionalResult.orElseThrow(() -> new NoSuchElementException
+                ("Nie można usunąć z bazy. Nie ma rekordu o podanym id."));
+        database.remove(id);
     }
 
 }

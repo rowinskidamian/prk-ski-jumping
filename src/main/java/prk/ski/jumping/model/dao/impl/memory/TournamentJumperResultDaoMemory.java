@@ -1,5 +1,6 @@
-package prk.ski.jumping.model.dao.impl;
+package prk.ski.jumping.model.dao.impl.memory;
 
+import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.dao.TournamentJumperResultDao;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
 import prk.ski.jumping.model.domain.TournamentJumperResultDB;
@@ -19,27 +20,27 @@ public class TournamentJumperResultDaoMemory implements TournamentJumperResultDa
     }
 
     @Override
-    public TournamentJumperResult create(TournamentJumperResult tournamentJumperResult) {
+    public TournamentJumperResult create(TournamentJumperResult tournamentJumperResult) throws DataBaseException {
         return tournamentJumperResultDB.create(tournamentJumperResult);
     }
 
     @Override
-    public Optional<TournamentJumperResult> getById(long id) {
+    public Optional<TournamentJumperResult> getById(long id) throws DataBaseException {
         return tournamentJumperResultDB.getById(id);
     }
 
     @Override
-    public List<TournamentJumperResult> getAll() {
+    public List<TournamentJumperResult> getAll() throws DataBaseException {
         return tournamentJumperResultDB.getAll();
     }
 
     @Override
-    public void update(TournamentJumperResult tjr, long id) {
-        tournamentJumperResultDB.update(tjr, id);
+    public void update(TournamentJumperResult tjr) throws DataBaseException {
+        tournamentJumperResultDB.update(tjr);
     }
 
     @Override
-    public void delete(TournamentJumperResult tjr, long id) {
-        tournamentJumperResultDB.delete(tjr, id);
+    public void delete(long id) throws DataBaseException {
+        tournamentJumperResultDB.delete(id);
     }
 }
