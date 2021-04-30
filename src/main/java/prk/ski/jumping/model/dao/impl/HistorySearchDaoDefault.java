@@ -1,8 +1,8 @@
 package prk.ski.jumping.model.dao.impl;
 
+import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.dao.HistorySearchDao;
 import prk.ski.jumping.model.domain.HistorySearch;
-import prk.ski.jumping.model.domain.HistorySearchDB;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,35 +13,29 @@ import java.util.Optional;
 
 public class HistorySearchDaoDefault implements HistorySearchDao {
 
-    private HistorySearchDB historySearchDB;
 
-    public HistorySearchDaoDefault() {
-        historySearchDB = new HistorySearchDB();
+    @Override
+    public HistorySearch create(HistorySearch historySearch) throws DataBaseException {
+        return null;
     }
 
     @Override
-    public void create(HistorySearch historySearch) {
-        historySearchDB.create(historySearch);
+    public Optional<HistorySearch> getById(long id) throws DataBaseException {
+        return Optional.empty();
     }
 
     @Override
-    public Optional<HistorySearch> getById(long id) {
-        return historySearchDB.getById(id);
+    public List<HistorySearch> getAll() throws DataBaseException {
+        return null;
     }
 
     @Override
-    public List<HistorySearch> getAll() {
-        return historySearchDB.getAll();
+    public void update(HistorySearch historySearch) throws DataBaseException {
+
     }
 
     @Override
-    public void update(HistorySearch historySearch, long id) {
-        historySearchDB.update(historySearch, id);
-    }
+    public void delete(long id) throws DataBaseException {
 
-    @Override
-    public void delete(HistorySearch historySearch, long id) {
-        historySearchDB.delete(historySearch, id);
     }
-
 }
