@@ -34,7 +34,6 @@ public class TournamentJumperResultDaoDefault implements TournamentJumperResultD
                 if (resultSet.next()) {
                     long id = resultSet.getLong(1);
                     tjr.setId(id);
-                    return tjr;
                 }
             }
 
@@ -42,8 +41,7 @@ public class TournamentJumperResultDaoDefault implements TournamentJumperResultD
             ex.printStackTrace();
             throw new DataBaseException("Nie można dodać nowego rekordu do bazy danych.");
         }
-
-        throw new DataBaseException("Nie można dodać nowego rekordu do bazy danych.");
+        return tjr;
     }
 
     @Override

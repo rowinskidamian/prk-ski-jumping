@@ -19,10 +19,11 @@ public class HistorySearchDB {
         if (database == null) database = new HashMap<>();
     }
 
-    public void create(HistorySearch historySearch) {
+    public HistorySearch create(HistorySearch historySearch) {
         historySearch.setId(currentDbIndex);
         database.put(currentDbIndex, historySearch);
         currentDbIndex++;
+        return historySearch;
     }
 
     public Optional<HistorySearch> getById(long id) {
@@ -36,16 +37,16 @@ public class HistorySearchDB {
                 .collect(Collectors.toList());
     }
 
-    public void update(HistorySearch historySearch, long id) {
-        Optional<HistorySearch> optionalResult = getById(id);
-        optionalResult.orElseThrow(() -> new NoSuchElementException("There is no record for given id."));
-        database.put(id, historySearch);
+    public void update(HistorySearch historySearch) {
+        Optional<HistorySearch> optionalResult = getById(historySearch.getId());
+        optionalResult.orElseThrow(() -> new NoSuchElementException("Brak rekordu w bazie o podanym id."));
+        database.put(historySearch.getId(), historySearch);
     }
 
-    public void delete(HistorySearch historySearch, long id) {
+    public void delete(long id) {
         Optional<HistorySearch> optionalResult = getById(id);
-        optionalResult.orElseThrow(() -> new NoSuchElementException("There is no record for given id."));
-        database.remove(id, historySearch);
+        optionalResult.orElseThrow(() -> new NoSuchElementException("Brak rekordu w bazie o podanym id."));
+        database.remove(id);
     }
 
 }

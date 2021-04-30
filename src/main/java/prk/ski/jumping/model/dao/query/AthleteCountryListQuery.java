@@ -1,5 +1,9 @@
 package prk.ski.jumping.model.dao.query;
 
+/**
+ * @author DamianRowinski
+ */
+
 public enum AthleteCountryListQuery {
 
     CREATE ("INSERT INTO athlete_country_list (search_id, name) values (?,?) "),
