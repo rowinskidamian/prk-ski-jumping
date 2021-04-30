@@ -1,7 +1,9 @@
 package prk.ski.jumping.model.dao;
 
+import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
 
+import javax.xml.crypto.Data;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,10 +13,11 @@ import java.util.Optional;
 
 public interface TournamentJumperResultDao {
 
-    void create(TournamentJumperResult tournamentJumperResult);
-    Optional<TournamentJumperResult> getById(long id);
-    List<TournamentJumperResult> getAll();
-    void update(TournamentJumperResult tjr, long id);
-    void delete(TournamentJumperResult tjr, long id);
+    TournamentJumperResult create(TournamentJumperResult tournamentJumperResult) throws DataBaseException;
+    Optional<TournamentJumperResult> getById(long id) throws DataBaseException;
+    List<TournamentJumperResult> getByTournamentId(long id) throws DataBaseException;
+    List<TournamentJumperResult> getAll() throws DataBaseException;
+    void update(TournamentJumperResult tjr) throws DataBaseException;
+    void delete(long id) throws DataBaseException;
 
 }

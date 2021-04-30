@@ -2,9 +2,7 @@ package prk.ski.jumping.model.dao.impl;
 
 import prk.ski.jumping.model.dao.JumperDao;
 import prk.ski.jumping.model.domain.Jumper;
-import prk.ski.jumping.model.domain.JumperDB;
-import prk.ski.jumping.model.domain.TournamentWorldCup;
-import prk.ski.jumping.model.domain.TournamentWorldCupDB;
+import prk.ski.jumping.model.domain.memory.JumperDB;
 
 import java.util.List;
 import java.util.Optional;

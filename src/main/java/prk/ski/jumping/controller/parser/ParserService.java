@@ -1,5 +1,6 @@
 package prk.ski.jumping.controller.parser;
 
+import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.exception.ParsingException;
 import prk.ski.jumping.model.dao.TournamentJumperResultDao;
 import prk.ski.jumping.model.dao.TournamentWorldCupDao;
@@ -37,7 +38,7 @@ public class ParserService {
         databaseRecordList.forEach(System.out::println);
     }
 
-    public void addResultListForTournament(TournamentWorldCup tournamentWorldCup) throws ParsingException {
+    public void addResultListForTournament(TournamentWorldCup tournamentWorldCup) throws ParsingException, DataBaseException {
         List<TournamentJumperResult> tournamentJumperResultList = resultParser.getResultListFor(tournamentWorldCup);
         for (TournamentJumperResult tjr : tournamentJumperResultList) {
             tournamentJumperResultDao.create(tjr);
@@ -59,7 +60,7 @@ public class ParserService {
         }
     }
 
-    public void addResultListByTournamentURL(String tournamentURL) {
+    public void addResultListByTournamentURL(String tournamentURL) throws DataBaseException {
         try {
             List<TournamentJumperResult> tournamentJumperResultList = resultParser.getResultListFor(tournamentURL);
             for (TournamentJumperResult tjr : tournamentJumperResultList) {
@@ -70,7 +71,7 @@ public class ParserService {
         }
     }
 
-    public void printTournamentResultListFromDatabase() {
+    public void printTournamentResultListFromDatabase() throws DataBaseException {
         List<TournamentJumperResult> database = tournamentJumperResultDao.getAll();
         database.forEach(System.out::println);
     }

@@ -1,5 +1,6 @@
 package prk.ski.jumping.model.dao;
 
+import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.domain.HistorySearch;
 
 import java.util.List;
@@ -11,10 +12,10 @@ import java.util.Optional;
 
 public interface HistorySearchDao {
 
-    void create(HistorySearch historySearch);
-    Optional<HistorySearch> getById(long id);
-    List<HistorySearch> getAll();
-    void update(HistorySearch historySearch, long id);
-    void delete(HistorySearch historySearch, long id);
+    HistorySearch create(HistorySearch historySearch) throws DataBaseException;
+    Optional<HistorySearch> getById(long id) throws DataBaseException;
+    List<HistorySearch> getAll() throws DataBaseException;
+    void update(HistorySearch historySearch) throws DataBaseException;
+    void delete(long id) throws DataBaseException;
 
 }

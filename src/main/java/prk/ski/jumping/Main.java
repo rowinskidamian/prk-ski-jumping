@@ -1,15 +1,11 @@
 package prk.ski.jumping;
 
 import prk.ski.jumping.controller.analyzer.CountryAnalyzer;
-import prk.ski.jumping.controller.parser.ParserService;
 import prk.ski.jumping.controller.parser.ResultParser;
 import prk.ski.jumping.exception.ParsingException;
-import prk.ski.jumping.model.dao.impl.TournamentJumperResultDaoDefault;
-import prk.ski.jumping.model.dao.impl.TournamentWorldCupDaoDefault;
 import prk.ski.jumping.model.domain.Country;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class Main {
