@@ -3,7 +3,7 @@ package prk.ski.jumping.model.dao.impl.memory;
 import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.dao.TournamentJumperResultDao;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
-import prk.ski.jumping.model.domain.TournamentJumperResultDB;
+import prk.ski.jumping.model.domain.memory.TournamentJumperResultDB;
 
 import java.util.List;
 import java.util.Optional;

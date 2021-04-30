@@ -3,7 +3,7 @@ package prk.ski.jumping.model.dao.impl.memory;
 import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.dao.HistorySearchDao;
 import prk.ski.jumping.model.domain.HistorySearch;
-import prk.ski.jumping.model.domain.HistorySearchDB;
+import prk.ski.jumping.model.domain.memory.HistorySearchDB;
 
 import java.util.List;
 import java.util.Optional;
