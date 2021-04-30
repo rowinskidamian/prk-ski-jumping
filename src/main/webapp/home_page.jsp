@@ -10,32 +10,7 @@
 </head>
 <body>
 <nav class="navbar is-fixed-top">
-    <div class="container" id="wrapper">
-        <div class="navbar-brand">
-            <img src="./logo/logo.png" class="logo"/>
-        </div>
-
-        <div id="navMenu" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item">Strona główna</a>
-                <a class="navbar-item">JavaDoc</a>
-                <a class="navbar-item">Autorzy</a>
-            </div>
-
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-info" href="TournamentChooser.html">
-                            <strong>Rozpocznij analizę</strong>
-                        </a>
-                        <a class="button is-light" href="HistorySearch.html"
-                        >Historia analiz</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <jsp:include page="WEB-INF/navbar.jsp"/>
 </nav>
 <!-- -------------------------------------------------------------------------------------------------------- -->
 <section class="hero is-info is-fullheight">
@@ -43,14 +18,11 @@
         <div class="container">
             <p class="title is-1">Witaj w Ski Jumping Analyzer</p>
             <p class="subtitle is-4">
-<%--                Miejscu gdzie możesz dokonać analizy ostatnich wyników turniejów w--%>
-<%--                skokach narciarskich!--%>
-    ${country1.name}
+                Miejscu gdzie możesz dokonać analizy ostatnich wyników turniejów w
+                skokach narciarskich!
             </p>
         </div>
     </div>
 </section>
-
-
 </body>
 </html>
