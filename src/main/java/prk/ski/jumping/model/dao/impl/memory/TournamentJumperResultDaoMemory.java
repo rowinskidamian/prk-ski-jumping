@@ -30,6 +30,11 @@ public class TournamentJumperResultDaoMemory implements TournamentJumperResultDa
     }
 
     @Override
+    public List<TournamentJumperResult> getByTournamentId(long id) throws DataBaseException {
+        return null;
+    }
+
+    @Override
     public List<TournamentJumperResult> getAll() throws DataBaseException {
         return tournamentJumperResultDB.getAll();
     }

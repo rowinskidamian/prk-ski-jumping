@@ -36,7 +36,6 @@ public class TournamentJumperResultDaoDefault implements TournamentJumperResultD
                     tjr.setId(id);
                 }
             }
-
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw new DataBaseException("Nie można dodać nowego rekordu do bazy danych.");
@@ -63,12 +62,32 @@ public class TournamentJumperResultDaoDefault implements TournamentJumperResultD
                     tjr.setTournamentId(rs.getLong("tournament_world_cup_id"));
                 }
             }
-
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw new DataBaseException("Nie można pobrać rekordu z bazy danych.");
         }
         return Optional.ofNullable(tjr);
+    }
+
+    @Override
+    public List<TournamentJumperResult> getByTournamentId(long id) throws DataBaseException {
+        List<TournamentJumperResult> tjrList = new ArrayList<>();
+
+        try (Connection cn = DbUtils.connectToDatabase();
+        PreparedStatement ps = cn.prepareStatement(TournamentJumperResultQuery.READ_BY_TOURNAMENT_ID.getSqlQuery())) {
+            ps.setLong(1, id);
+
+            try(ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    TournamentJumperResult tjr = getTournamentFromResultSet(rs);
+                    tjrList.add(tjr);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new DataBaseException("Błąd przy wczytywaniu danych z bazy");
+        }
+        return tjrList;
     }
 
     @Override
@@ -80,29 +99,31 @@ public class TournamentJumperResultDaoDefault implements TournamentJumperResultD
              ResultSet rs = statement.executeQuery(TournamentJumperResultQuery.GET_ALL.getSqlQuery())) {
 
             while (rs.next()) {
-                TournamentJumperResult tjr = new TournamentJumperResult();
-                tjr.setTournamentId(rs.getLong("tjr_id"));
-                tjr.setRank(rs.getInt("tjr_rank"));
-                tjr.setOrigin(rs.getString("origin"));
-                tjr.setAthleteName(rs.getString("athlete_name"));
-                tjr.setTotalPoints(rs.getDouble("total_points"));
-                tjr.setTournamentId(rs.getLong("tournament_world_cup_id"));
+                TournamentJumperResult tjr = getTournamentFromResultSet(rs);
                 tjrList.add(tjr);
             }
-
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw new DataBaseException("Nie można pobrać wszystkich rekordów z bazy");
         }
-
         return tjrList;
+    }
+
+    private TournamentJumperResult getTournamentFromResultSet(ResultSet rs) throws SQLException {
+        TournamentJumperResult tjr = new TournamentJumperResult();
+        tjr.setTournamentId(rs.getLong("tjr_id"));
+        tjr.setRank(rs.getInt("tjr_rank"));
+        tjr.setOrigin(rs.getString("origin"));
+        tjr.setAthleteName(rs.getString("athlete_name"));
+        tjr.setTotalPoints(rs.getDouble("total_points"));
+        tjr.setTournamentId(rs.getLong("tournament_world_cup_id"));
+        return tjr;
     }
 
     @Override
     public void update(TournamentJumperResult tjr) throws DataBaseException {
         try (PreparedStatement ps = DbUtils.connectToDatabase()
                 .prepareStatement(TournamentJumperResultQuery.UPDATE.getSqlQuery())) {
-
             ps.setInt(1, tjr.getRank());
             ps.setString(2, tjr.getOrigin());
             ps.setString(3, tjr.getAthleteName());
@@ -110,12 +131,10 @@ public class TournamentJumperResultDaoDefault implements TournamentJumperResultD
             ps.setLong(5, tjr.getTournamentId());
             ps.setLong(6, tjr.getId());
             ps.executeUpdate();
-
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw new DataBaseException("Błąd podczas aktualizowania danych w bazie");
         }
-
     }
 
     @Override
@@ -124,11 +143,9 @@ public class TournamentJumperResultDaoDefault implements TournamentJumperResultD
                 .prepareStatement(TournamentJumperResultQuery.DELETE.getSqlQuery())) {
             ps.setLong(1, id);
             ps.executeUpdate();
-
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw new DataBaseException("Problem podczas usuwania rekordu z bazy danych");
         }
-
     }
 }
