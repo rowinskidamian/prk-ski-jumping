@@ -108,6 +108,8 @@ public class TournamentJumperResultDaoDefault implements TournamentJumperResultD
             ps.setString(3, tjr.getAthleteName());
             ps.setDouble(4, tjr.getTotalPoints());
             ps.setLong(5, tjr.getTournamentId());
+            ps.setLong(6, tjr.getId());
+            ps.executeUpdate();
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -117,9 +119,9 @@ public class TournamentJumperResultDaoDefault implements TournamentJumperResultD
     }
 
     @Override
-    public void delete(long id) throws DataBaseException{
-        try(PreparedStatement ps = DbUtils.connectToDatabase()
-        .prepareStatement(TournamentJumperResultQuery.DELETE.getSqlQuery())) {
+    public void delete(long id) throws DataBaseException {
+        try (PreparedStatement ps = DbUtils.connectToDatabase()
+                .prepareStatement(TournamentJumperResultQuery.DELETE.getSqlQuery())) {
             ps.setLong(1, id);
             ps.executeUpdate();
 
