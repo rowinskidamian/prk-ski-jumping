@@ -1,8 +1,8 @@
-package prk.ski.jumping.model.dao.impl;
+package prk.ski.jumping.model.dao.impl.additional;
 
 import prk.ski.jumping.controller.utils.DbUtils;
 import prk.ski.jumping.exception.DataBaseException;
-import prk.ski.jumping.model.dao.query.TournamentIdListQuery;
+import prk.ski.jumping.model.dao.query.additional.TournamentIdListQuery;
 import prk.ski.jumping.model.domain.additional.TournamentIdList;
 
 import java.sql.*;

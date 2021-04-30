@@ -1,4 +1,4 @@
-package prk.ski.jumping.model.dao.query;
+package prk.ski.jumping.model.dao.query.additional;
 
 /**
  * @author DamianRowinski
