@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "JumperResultController", value = "/jumperResult")
+@WebServlet(name = "JumperResultController", value = "/jumper_result")
 public class JumperResultController extends HttpServlet {
 
     private TournamentJumperResultDao tjrDao = new TournamentJumperResultDaoDefault();
@@ -29,6 +29,26 @@ public class JumperResultController extends HttpServlet {
         List<TournamentJumperResult> tjrList = getTJRfromTournamentId(tournamentIdList, request, response);
 
         List<Jumper> jumperList = jumperAnalyzer.getJumperAnalysisFor(tjrList, countryAthleteList);
+
+//        test Jumper List
+//        Jumper j1 = new Jumper();
+//        j1.setBronzeMedals(2);
+//        j1.setGoldMedals(3);
+//        j1.setAthleteName("Damian Rowiński");
+//        j1.setTotalPoints(100101);
+//        j1.setOrigin("Polska");
+//        j1.setIdHistory(1);
+//
+//        Jumper j2 = new Jumper();
+//        j2.setBronzeMedals(111);
+//        j2.setGoldMedals(22);
+//        j2.setSilverMedals(99);
+//        j2.setAthleteName("Jan Nowak");
+//        j2.setTotalPoints(2323);
+//        j2.setOrigin("Grecja");
+//        j2.setIdHistory(2);
+//        List<Jumper> jumperList = List.of(j1, j2);
+
         request.setAttribute("jumperList", jumperList);
 
         request.getRequestDispatcher("jumper_result.jsp")

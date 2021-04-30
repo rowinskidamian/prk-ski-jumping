@@ -17,43 +17,44 @@
 <section class="table list">
     <div class="container">
         <div class="table-container">
+
+            <div class="control-panel container is-flex is-justify-content-space-between is-align-items-center">
+                <p class="title is-3" style="margin: 0">
+                    Wyniki skoczków z wybranych konkursów:
+                </p>
+            </div>
             <div class="container is-flex is-justify-content-flex-start is-align-items-center">
                 <input type="text" style="font-size: 1rem; padding: 5px" placeholder="nazwa"/>
                 <a href="/history_search" class="button is-primary is-link"  style="margin-left: 30px">
                     Zapisz analizę
                 </a>
             </div>
-            <div class="control-panel container is-flex is-justify-content-space-between is-align-items-center">
-                <p class="title is-3" style="margin: 0">
-                    Wyniki skoczków z wybranych konkursów:
-                </p>
-            </div>
-            <table class="table is-striped is-hoverable is-fullwidth">
-                <thead>
-                <tr>
-                    <th title="name">Imię i nazwisko</th>
-                    <th title="origin">Kraj</th>
-                    <th title="gold">Liczba zwycięstw</th>
-                    <th title="silver">L.2. miejsc</th>
-                    <th title="bronze">L.3. miejsc</th>
-                    <th title="total">Suma punktów</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="jumperList" var="jumper">
+            <div class="container">
+                <table class="table is-striped is-hoverable is-fullwidth">
+                    <thead>
                     <tr>
-                        <th>${jumper.athleteName}</th>
-                        <th>${jumper.origin}}</th>
-                        <th>${jumper.goldMedals}</th>
-                        <th>${jumper.silverMedals}</th>
-                        <th>${jumper.bronzeMedals}</th>
-                        <th>${jumper.totalPoints}</th>
+                        <th title="name">Imię i nazwisko</th>
+                        <th title="origin">Kraj</th>
+                        <th title="gold">Liczba zwycięstw</th>
+                        <th title="silver">L.2. miejsc</th>
+                        <th title="bronze">L.3. miejsc</th>
+                        <th title="total">Suma punktów</th>
                     </tr>
-                </c:forEach>
-
-                </tbody>
-            </table>
-
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${jumperList}" var="jumper">
+                        <tr>
+                            <th>${jumper.athleteName}</th>
+                            <th>${jumper.origin}</th>
+                            <th>${jumper.goldMedals}</th>
+                            <th>${jumper.silverMedals}</th>
+                            <th>${jumper.bronzeMedals}</th>
+                            <th>${jumper.totalPoints}</th>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </section>
