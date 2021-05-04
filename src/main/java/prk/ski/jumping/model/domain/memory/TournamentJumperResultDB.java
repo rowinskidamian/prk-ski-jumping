@@ -1,4 +1,6 @@
-package prk.ski.jumping.model.domain;
+package prk.ski.jumping.model.domain.memory;
+
+import prk.ski.jumping.model.domain.TournamentJumperResult;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,10 +21,11 @@ public class TournamentJumperResultDB {
         if(database == null) database = new HashMap<>();
     }
 
-    public void create(TournamentJumperResult tjr) {
+    public TournamentJumperResult create(TournamentJumperResult tjr) {
         tjr.setId(currentDbIndex);
         database.put(currentDbIndex, tjr);
         currentDbIndex++;
+        return tjr;
     }
 
     public Optional<TournamentJumperResult> getById(long id) {
@@ -36,16 +39,18 @@ public class TournamentJumperResultDB {
                 .collect(Collectors.toList());
     }
 
-    public void update(TournamentJumperResult tjr, long id) {
-        Optional<TournamentJumperResult> optionalResult = getById(id);
-        optionalResult.orElseThrow(() -> new NoSuchElementException("There is no record for given id."));
-        database.put(id, tjr);
+    public void update(TournamentJumperResult tjr) {
+        Optional<TournamentJumperResult> optionalResult = getById(tjr.getId());
+        optionalResult.orElseThrow(() -> new NoSuchElementException
+                ("Nie można usunąć z bazy. Nie ma rekordu o podanym id."));
+        database.put(tjr.getId(), tjr);
     }
 
-    public void delete(TournamentJumperResult tjr, long id) {
+    public void delete(long id) {
         Optional<TournamentJumperResult> optionalResult = getById(id);
-        optionalResult.orElseThrow(() -> new NoSuchElementException("There is no record for given id."));
-        database.remove(id, tjr);
+        optionalResult.orElseThrow(() -> new NoSuchElementException
+                ("Nie można usunąć z bazy. Nie ma rekordu o podanym id."));
+        database.remove(id);
     }
 
 }

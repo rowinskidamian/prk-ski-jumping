@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>Ski Jumping Analyzer</title>
+  </head>
+  <body>
+    <nav class="navbar is-fixed-top">
+      <div class="container">
+        <div class="navbar-brand">
+          <img src="./logo/logo.png" class="logo" />
+        </div>
+
+        <div id="navMenu" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="index.html">Strona główna</a>
+            <a class="navbar-item">JavaDoc</a>
+            <a class="navbar-item">Autorzy</a>
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-info" href="TournamentChooser.html">
+                  <strong>Rozpocznij analizę</strong>
+                </a>
+                <a class="button is-light" href="HistorySearch.html"
+                  >Historia analiz</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- -------------------------------------------------------------------------------------------------------- -->
+    <section class="table list">
+      <div class="container">
+        <div class="table-container">
+          <div
+            class="control-panel container is-flex is-justify-content-space-between is-align-items-center"
+          >
+            <p class="title is-3" style="margin: 0">
+              Wyniki skoczków z wybranych konkursów:
+            </p>
+          </div>
+          <table class="table is-striped is-hoverable is-fullwidth">
+            <thead>
+              <tr>
+                <th title="rank">Rank</th>
+                <th title="name">Athlete</th>
+                <th title="origin">Origin</th>
+                <th title="gold">Gold</th>
+                <th title="silver">Silver</th>
+                <th title="bronze">Bronze</th>
+                <th title="total">Total points</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>1</th>
+                <th>Ryoyu KOBAYASHI</th>
+                <th>JPN</th>
+                <th>3</th>
+                <th>1</th>
+                <th>1</th>
+                <th>299,86</th>
+              </tr>
+              <tr>
+                <th>2</th>
+                <th>Kamil STOCH</th>
+                <th>POL</th>
+                <th>2</th>
+                <th>2</th>
+                <th>1</th>
+                <th>265,26</th>
+              </tr>
+              <tr>
+                <th>3</th>
+                <th>Karl GEIGER</th>
+                <th>GER</th>
+                <th>1</th>
+                <th>2</th>
+                <th>1</th>
+                <th>229,22</th>
+              </tr>
+              <tr>
+                <th>4</th>
+                <th>Dawid KUBACKI</th>
+                <th>JPN</th>
+                <th>1</th>
+                <th>1</th>
+                <th>1</th>
+                <th>219,46</th>
+              </tr>
+              <tr>
+                <th>5</th>
+                <th>Pius PASCHKE</th>
+                <th>POL</th>
+                <th>0</th>
+                <th>1</th>
+                <th>2</th>
+                <th>195,26</th>
+              </tr>
+              <tr>
+                <th>6</th>
+                <th>Robert JOHANSSON</th>
+                <th>GER</th>
+                <th>0</th>
+                <th>1</th>
+                <th>2</th>
+                <th>179,22</th>
+              </tr>
+              <tr>
+                <th>7</th>
+                <th>Gregor DESCHWANDEN</th>
+                <th>JPN</th>
+                <th>0</th>
+                <th>1</th>
+                <th>2</th>
+                <th>156,83</th>
+              </tr>
+              <tr>
+                <th>8</th>
+                <th>Marius LINDVIK</th>
+                <th>POL</th>
+                <th>0</th>
+                <th>1</th>
+                <th>1</th>
+                <th>135,26</th>
+              </tr>
+              <tr>
+                <th>9</th>
+                <th>Ziga JELAR</th>
+                <th>GER</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>119,22</th>
+              </tr>
+              <tr>
+                <th>10</th>
+                <th>Severin FREUND</th>
+                <th>JPN</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>99,84</th>
+              </tr>
+              <tr>
+                <th>11</th>
+                <th>Cene PREVC</th>
+                <th>POL</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>89,21</th>
+              </tr>
+              <tr>
+                <th>12</th>
+                <th>David HAAGEN</th>
+                <th>GER</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>79,22</th>
+              </tr>
+            </tbody>
+          </table>
+          <div
+            class="container is-flex is-justify-content-flex-start is-align-items-center"
+          >
+            <input
+              type="text"
+              style="font-size: 1rem; padding: 5px"
+              placeholder="nazwa"
+            />
+            <a
+              href="HistorySearch.html"
+              class="button is-primary is-link"
+              style="margin-left: 30px"
+            >
+              Zapisz analizę
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

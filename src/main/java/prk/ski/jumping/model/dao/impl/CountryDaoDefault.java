@@ -5,9 +5,7 @@ import java.util.Optional;
 
 import prk.ski.jumping.model.dao.CountryDao;
 import prk.ski.jumping.model.domain.Country;
-import prk.ski.jumping.model.domain.CountryDB;
-import prk.ski.jumping.model.domain.TournamentWorldCup;
-import prk.ski.jumping.model.domain.TournamentWorldCupDB;
+import prk.ski.jumping.model.domain.memory.CountryDB;
 
 public class CountryDaoDefault implements CountryDao {
 

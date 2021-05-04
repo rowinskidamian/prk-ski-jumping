@@ -5,6 +5,17 @@
 
     <display-name>Ski Jumping Results Analyzer App</display-name>
 
+    <filter>
+        <filter-name>CharacterFilter</filter-name>
+        <filter-class>
+            prk.ski.jumping.filter.CharacterFilter
+        </filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>
