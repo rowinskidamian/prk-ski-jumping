@@ -87,6 +87,7 @@ public class HistorySearchDaoDefault implements HistorySearchDao {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     hs = new HistorySearch();
+                    hs.setId(id);
                     hs.setSearchName(rs.getString("search_name"));
                     Date searchDate = rs.getDate("search_date");
                     LocalDate searchLocalDate = searchDate.toLocalDate();
