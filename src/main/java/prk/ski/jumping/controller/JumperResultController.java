@@ -26,8 +26,10 @@ public class JumperResultController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<String> countryAthleteList = (List<String>) request.getAttribute("countryAthleteList");
-        List<Long> tournamentIdList = (List<Long>) request.getAttribute("tournamentIdList");
+//        List<String> countryAthleteList = (List<String>) request.getAttribute("countryAthleteList");
+//        List<Long> tournamentIdList = (List<Long>) request.getAttribute("tournamentIdList");
+        List<String> countryAthleteList = List.of("GEIGER Karl", "KOBAYASHI Ryoyu", "JOHANSSON Robert");
+        List<Long> tournamentIdList = List.of(2L, 3L, 4L, 5L);
 
         List<TournamentJumperResult> tjrList = getTJRfromTournamentId(tournamentIdList, request, response);
         List<Jumper> jumperList = jumperAnalyzer.getJumperAnalysisFor(tjrList, countryAthleteList);
@@ -56,8 +58,10 @@ public class JumperResultController extends HttpServlet {
         historySearch.setAthleteCountryList(countryAthleteList);
         historySearch.setTournamentIdList(tournamentIdList);
         historySearch.setSearchDate(LocalDate.now());
+        historySearch.setTournamentAmount(tournamentIdList.size());
 
-        request.setAttribute("historySearch", historySearch);
+        request.getSession()
+                .setAttribute("historySearch", historySearch);
         request.setAttribute("jumperList", jumperList);
 
         request.getRequestDispatcher("jumper_result.jsp")

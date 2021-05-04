@@ -68,6 +68,7 @@ public class JumperAnalyzer {
         if (!containsJumper) {
             Jumper jumper = new Jumper();
             jumper.setAthleteName(athleteName);
+            jumperMap.put(athleteName, jumper);
         }
     }
 
