@@ -26,39 +26,13 @@ public class JumperResultController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        List<String> countryAthleteList = (List<String>) request.getAttribute("countryAthleteList");
-//        List<Long> tournamentIdList = (List<Long>) request.getAttribute("tournamentIdList");
-        List<String> countryAthleteList = List.of("GEIGER Karl", "KOBAYASHI Ryoyu", "JOHANSSON Robert");
-        List<Long> tournamentIdList = List.of(2L, 3L, 4L, 5L);
+        List<String> countryAthleteList = (List<String>) request.getAttribute("countryAthleteList");
+        List<Long> tournamentIdList = (List<Long>) request.getAttribute("tournamentIdList");
 
         List<TournamentJumperResult> tjrList = getTJRfromTournamentId(tournamentIdList, request, response);
         List<Jumper> jumperList = jumperAnalyzer.getJumperAnalysisFor(tjrList, countryAthleteList);
 
-//        test Jumper List
-//        Jumper j1 = new Jumper();
-//        j1.setBronzeMedals(2);
-//        j1.setGoldMedals(3);
-//        j1.setAthleteName("Damian Rowiński");
-//        j1.setTotalPoints(100101);
-//        j1.setOrigin("Polska");
-//        j1.setIdHistory(1);
-//
-//        Jumper j2 = new Jumper();
-//        j2.setBronzeMedals(111);
-//        j2.setGoldMedals(22);
-//        j2.setSilverMedals(99);
-//        j2.setAthleteName("Jan Nowak");
-//        j2.setTotalPoints(2323);
-//        j2.setOrigin("Grecja");
-//        j2.setIdHistory(2);
-//        List<Jumper> jumperList = List.of(j1, j2);
-
-        HistorySearch historySearch = new HistorySearch();
-        historySearch.setSearchType("Skoczek");
-        historySearch.setAthleteCountryList(countryAthleteList);
-        historySearch.setTournamentIdList(tournamentIdList);
-        historySearch.setSearchDate(LocalDate.now());
-        historySearch.setTournamentAmount(tournamentIdList.size());
+        HistorySearch historySearch = getHistorySearch(countryAthleteList, tournamentIdList);
 
         request.getSession()
                 .setAttribute("historySearch", historySearch);
@@ -66,6 +40,16 @@ public class JumperResultController extends HttpServlet {
 
         request.getRequestDispatcher("jumper_result.jsp")
                 .forward(request, response);
+    }
+
+    private HistorySearch getHistorySearch(List<String> countryAthleteList, List<Long> tournamentIdList) {
+        HistorySearch historySearch = new HistorySearch();
+        historySearch.setSearchType("Skoczek");
+        historySearch.setAthleteCountryList(countryAthleteList);
+        historySearch.setTournamentIdList(tournamentIdList);
+        historySearch.setSearchDate(LocalDate.now());
+        historySearch.setTournamentAmount(tournamentIdList.size());
+        return historySearch;
     }
 
     private List<TournamentJumperResult> getTJRfromTournamentId(List<Long> tournamentIdList, HttpServletRequest request,
@@ -90,6 +74,7 @@ public class JumperResultController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 
 }

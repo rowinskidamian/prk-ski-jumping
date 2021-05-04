@@ -11,7 +11,7 @@
 </head>
 <body>
 <nav class="navbar is-fixed-top">
-    <jsp:include page="WEB-INF/navbar.jsp"/>
+    <jsp:include page="navbar.jsp"/>
 </nav>
 <!-- -------------------------------------------------------------------------------------------------------- -->
 <section class="table list">
