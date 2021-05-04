@@ -15,8 +15,8 @@ public class JumperResultTest extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<String> countryAthleteList = List.of("GEIGER Karl", "KOBAYASHI Ryoyu", "JOHANSSON Robert");
         List<Long> tournamentIdList = List.of(2L, 3L, 4L, 5L);
-        request.setAttribute("countryAthleteList", countryAthleteList);
-        request.setAttribute("tournamentIdList", tournamentIdList);
+        request.getSession().setAttribute("countryAthleteList", countryAthleteList);
+        request.getSession().setAttribute("tournamentIdList", tournamentIdList);
 
         //        test Jumper List
 //        Jumper j1 = new Jumper();

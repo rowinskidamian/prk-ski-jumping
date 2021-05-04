@@ -13,6 +13,10 @@ import prk.ski.jumping.model.domain.HistorySearch;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author DamianRowinski
+ */
+
 @WebServlet(name = "HistorySearchController", value = "/history_search")
 public class HistorySearchController extends HttpServlet {
 

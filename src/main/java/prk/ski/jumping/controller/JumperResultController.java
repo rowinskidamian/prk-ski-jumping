@@ -21,6 +21,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author DamianRowinski
+ */
+
 @WebServlet(name = "JumperResultController", value = "/jumper_result")
 public class JumperResultController extends HttpServlet {
 
@@ -41,8 +45,8 @@ public class JumperResultController extends HttpServlet {
             tournamentIdList = historySearch.getTournamentIdList();
 
         } else {
-            countryAthleteList = (List<String>) request.getAttribute("countryAthleteList");
-            tournamentIdList = (List<Long>) request.getAttribute("tournamentIdList");
+            countryAthleteList = (List<String>) request.getSession().getAttribute("countryAthleteList");
+            tournamentIdList = (List<Long>) request.getSession().getAttribute("tournamentIdList");
             historySearch = generateHistorySearch(countryAthleteList, tournamentIdList);
         }
 
