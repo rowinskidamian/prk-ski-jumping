@@ -60,6 +60,7 @@ public class JumperAnalyzer {
         double pointsFromTournament = tournamentJumperResult.getTotalPoints();
         totalPoints += pointsFromTournament;
         currentJumper.setTotalPoints(totalPoints);
+        currentJumper.setOrigin(tournamentJumperResult.getOrigin());
         return currentJumper;
     }
 
@@ -68,6 +69,7 @@ public class JumperAnalyzer {
         if (!containsJumper) {
             Jumper jumper = new Jumper();
             jumper.setAthleteName(athleteName);
+            jumperMap.put(athleteName, jumper);
         }
     }
 

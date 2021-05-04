@@ -1,4 +1,4 @@
-package prk.ski.jumping;
+package prk.ski.jumping.testing;
 
 import prk.ski.jumping.controller.analyzer.CountryAnalyzer;
 import prk.ski.jumping.controller.parser.ResultParser;

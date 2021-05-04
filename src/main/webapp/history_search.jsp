@@ -9,21 +9,28 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" />
     <link rel="stylesheet" href="./style/style.css"/>
 </head>
-<body>
+<body class="has-navbar-fixed-top">
 <nav class="navbar is-fixed-top">
-    <jsp:include page="WEB-INF/navbar.jsp"/>
+    <jsp:include page="navbar.jsp"/>
 </nav>
-<!-- -------------------------------------------------------------------------------------------------------- -->
+
+<section class="hero is-info">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Zapisane analizy
+            </h1>
+        </div>
+    </div>
+</section>
+
 <section class="table list">
     <div class="container">
         <div class="table-container">
-            <div class="control-panel container is-flex is-justify-content-space-between is-align-items-center">
-                <p class="title is-3" style="margin: 0">Zapisane analizy:</p>
-            </div>
+
             <table class="table is-striped is-hoverable is-fullwidth">
                 <thead>
                 <tr>
-
                     <th title="date">Data zapisania</th>
                     <th title="date">Nazwa</th>
                     <th title="place">Typ</th>
@@ -39,14 +46,14 @@
                         <td>${historySearch.searchType}</td>
                         <td>${historySearch.tournamentAmount}</td>
                         <td>
-                            <c:if test="${historySearch eq 'Skoczek'}">
+                            <c:if test="${historySearch.searchType eq 'Skoczek'}">
                                 <c:set var="resultPage" scope="request" value="jumper_result"/>
                             </c:if>
-                            <c:if test="${historySearch eq 'Kraj'}">
+                            <c:if test="${historySearch.searchType eq 'Kraj'}">
                                 <c:set var="resultPage" scope="request" value="country_result"/>
                             </c:if>
-                            <button href="/${resultPage}?historySearch=${historySearch.id}"
-                                    class="button is-info is-light">Wyświetl</button></td>
+                            <a class="button is-info is-light" href="/${resultPage}?historySearch=${historySearch.id}">
+                                Wyświetl</a></td>
                     </tr>
                 </c:forEach>
 

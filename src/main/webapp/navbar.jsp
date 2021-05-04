@@ -1,6 +1,6 @@
 <div class="container" id="wrapper">
     <div class="navbar-brand">
-        <img src="../logo/logo.png" class="logo"/>
+        <img src="logo/logo.png" class="logo"/>
     </div>
 
     <div id="navMenu" class="navbar-menu">
@@ -22,4 +22,3 @@
         </div>
     </div>
 </div>
-</body>

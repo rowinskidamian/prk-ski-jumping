@@ -13,6 +13,10 @@ import prk.ski.jumping.model.domain.HistorySearch;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author DamianRowinski
+ */
+
 @WebServlet(name = "HistorySearchController", value = "/history_search")
 public class HistorySearchController extends HttpServlet {
 
@@ -37,6 +41,22 @@ public class HistorySearchController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HistorySearch historySearch = (HistorySearch) request.getSession()
+                .getAttribute("historySearch");
+
+        String hsName = (String) request.getParameter("historySearchName");
+        historySearch.setSearchName(hsName);
+
+        try {
+            hsDao.create(historySearch);
+        } catch (DataBaseException ex) {
+            String exMessage = ex.getMessage();
+            request.setAttribute("message", exMessage);
+            request.getRequestDispatcher("error_page.jsp")
+                    .forward(request, response);
+        }
+
+        response.sendRedirect("/history_search");
     }
 
 }
