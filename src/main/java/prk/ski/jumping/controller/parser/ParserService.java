@@ -60,6 +60,18 @@ public class ParserService {
         }
     }
 
+    public void addResultListByTournamentURL(String tournamentURL, Long tournamentId) throws DataBaseException {
+        try {
+            List<TournamentJumperResult> tournamentJumperResultList = resultParser.getResultListFor(tournamentURL);
+            for (TournamentJumperResult tjr : tournamentJumperResultList) {
+                tjr.setTournamentId(tournamentId);
+                tournamentJumperResultDao.create(tjr);
+            }
+        } catch (ParsingException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void addResultListByTournamentURL(String tournamentURL) throws DataBaseException {
         try {
             List<TournamentJumperResult> tournamentJumperResultList = resultParser.getResultListFor(tournamentURL);

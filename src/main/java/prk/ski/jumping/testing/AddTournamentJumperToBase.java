@@ -1,4 +1,4 @@
-package prk.ski.jumping;
+package prk.ski.jumping.testing;
 
 import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.dao.TournamentJumperResultDao;

@@ -24,10 +24,12 @@
                 </p>
             </div>
             <div class="container is-flex is-justify-content-flex-start is-align-items-center">
-                <input type="text" style="font-size: 1rem; padding: 5px" placeholder="nazwa"/>
-                <a href="/history_search" class="button is-primary is-link"  style="margin-left: 30px">
-                    Zapisz analizę
-                </a>
+                <form action="/history_search" method="post">
+                <input type="text" style="font-size: 1rem; padding: 5px" name="historySearchName" placeholder="nazwa"/>
+                    <div class="control">
+                        <button class="button is-link">Zapisz analizę</button>
+                    </div>
+                </form>
             </div>
             <div class="container">
                 <table class="table is-striped is-hoverable is-fullwidth">

@@ -9,10 +9,12 @@ import prk.ski.jumping.controller.analyzer.JumperAnalyzer;
 import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.dao.TournamentJumperResultDao;
 import prk.ski.jumping.model.dao.impl.TournamentJumperResultDaoDefault;
+import prk.ski.jumping.model.domain.HistorySearch;
 import prk.ski.jumping.model.domain.Jumper;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +28,8 @@ public class JumperResultController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<String> countryAthleteList = (List<String>) request.getAttribute("countryAthleteList");
         List<Long> tournamentIdList = (List<Long>) request.getAttribute("tournamentIdList");
-        List<TournamentJumperResult> tjrList = getTJRfromTournamentId(tournamentIdList, request, response);
 
+        List<TournamentJumperResult> tjrList = getTJRfromTournamentId(tournamentIdList, request, response);
         List<Jumper> jumperList = jumperAnalyzer.getJumperAnalysisFor(tjrList, countryAthleteList);
 
 //        test Jumper List
@@ -49,6 +51,13 @@ public class JumperResultController extends HttpServlet {
 //        j2.setIdHistory(2);
 //        List<Jumper> jumperList = List.of(j1, j2);
 
+        HistorySearch historySearch = new HistorySearch();
+        historySearch.setSearchType("Skoczek");
+        historySearch.setAthleteCountryList(countryAthleteList);
+        historySearch.setTournamentIdList(tournamentIdList);
+        historySearch.setSearchDate(LocalDate.now());
+
+        request.setAttribute("historySearch", historySearch);
         request.setAttribute("jumperList", jumperList);
 
         request.getRequestDispatcher("jumper_result.jsp")
