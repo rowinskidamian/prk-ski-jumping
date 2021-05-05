@@ -32,3 +32,12 @@ CREATE TABLE history_search
     search_type             VARCHAR(255),
     tournament_amount       INT
 );
+
+CREATE TABLE tournament_world_cup
+(
+    twc_id                      BIGINT AUTO_INCREMENT PRIMARY KEY,
+    date                        DATE,
+    place                       VARCHAR(255),
+    gender                      VARCHAR(255),
+    link                        VARCHAR(255)
+);

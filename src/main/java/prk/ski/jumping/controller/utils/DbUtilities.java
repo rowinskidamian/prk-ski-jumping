@@ -10,6 +10,8 @@ public class DbUtilities {
     static final String DATABASE_PASSWORD = "root";
 
     public static Connection connectToDatabase() throws SQLException {
+        DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+
         return DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
     }
 }

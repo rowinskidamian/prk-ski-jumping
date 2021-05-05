@@ -26,14 +26,14 @@ public class ParserService {
         this.tournamentParser = new TournamentParser();
     }
 
-    public void addTournamentListToDatabase() {
+    public void addTournamentListToDatabase() throws DataBaseException {
         List<TournamentWorldCup> tournamentWorldCupList = tournamentParser.getAll();
         for (TournamentWorldCup twc : tournamentWorldCupList) {
             tournamentWorldCupDao.create(twc);
         }
     }
 
-    public void printTournamentWorldCupList() {
+    public void printTournamentWorldCupList() throws DataBaseException {
         List<TournamentWorldCup> databaseRecordList = tournamentWorldCupDao.getAll();
         databaseRecordList.forEach(System.out::println);
     }
@@ -45,7 +45,7 @@ public class ParserService {
         }
     }
 
-    public void addTournamentListByURL(String URL) {
+    public void addTournamentListByURL(String URL) throws DataBaseException {
         List<TournamentWorldCup> tournamentWorldCupList = null;
         try {
             tournamentWorldCupList = tournamentParser.getTournamentList(URL);
@@ -55,8 +55,6 @@ public class ParserService {
 
         for (TournamentWorldCup twc : tournamentWorldCupList) {
             tournamentWorldCupDao.create(twc);
-            //Parser test below
-            System.out.println(twc.getId() + " " + twc.getPlace() + " " + twc.getDate() + "\n link: " + twc.getLink());
         }
     }
 

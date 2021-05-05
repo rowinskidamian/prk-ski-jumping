@@ -20,22 +20,6 @@ public class Main {
 
 	public static void main(String[] args) {
 
-
-
-		TournamentWorldCupDao twcDao = new TournamentWorldCupDaoDefault();
-
-		TournamentWorldCup twc = new TournamentWorldCup();
-
-		System.out.println("Tworze twc: ");
-		twc.setDate(LocalDate.parse("24-04-2002", DateTimeFormatter.ofPattern("dd-MM-uuuu")));
-		twc.setPlace("Zakopane");
-		twc.setGender("M");
-		twc.setLink("link");
-		System.out.println(twc.getDate());
-
-		System.out.println("Do bazy: ");
-		twcDao.create(twc);
-
 	}
 
 }

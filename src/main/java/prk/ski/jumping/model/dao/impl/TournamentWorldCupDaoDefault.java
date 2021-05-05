@@ -75,6 +75,7 @@ public class TournamentWorldCupDaoDefault implements TournamentWorldCupDao {
 
             while (rs.next()) {
                 TournamentWorldCup twc = new TournamentWorldCup();
+                twc.setId(rs.getLong("twc_id"));
                 twc.setDate((rs.getDate("date")).toLocalDate());
                 twc.setPlace(rs.getString("place"));
                 twc.setGender(rs.getString("gender"));
