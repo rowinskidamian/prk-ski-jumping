@@ -32,7 +32,12 @@ public class SelectorController extends HttpServlet {
             //list with ids of tournaments selected from checkboxes
         List<String> selectedTournaments = Arrays.asList(request.getParameterValues("tournament_id"));
 
+            //clean session
+        request.getSession().removeAttribute("tournamentIdList");
+
         for (String s : selectedTournaments) tournamentIds.add(Long.parseLong(s));
+
+            //set new tournamentIds in session
         request.getSession().setAttribute("tournamentIdList", tournamentIds);
 
         // show jumper selection view
