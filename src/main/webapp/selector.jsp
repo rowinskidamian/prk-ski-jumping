@@ -11,19 +11,28 @@
 </head>
 <body>
 
-<nav class="navbar is-fixed-top">
+<nav class="navbar" style="padding: 20px 0">
     <jsp:include page="navbar.jsp"/>
 </nav>
 <!-- -------------------------------------------------------------------------------------------------------- -->
 <form action="/${view}_result" method="get">
-    <section class="table list">
+    <section class="hero is-info">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Wybierz do analizy:
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section class="table list" style="margin-top: 10px">
         <div class="container">
             <div class="table-container" style="max-width: 1000px; margin: 0 auto">
                 <div class="control-panel container is-flex is-justify-content-space-between is-align-items-center">
                     <p class="title is-3" style="margin: 0">
-                        Wybierz do analizy:
+
                     </p>
-                    <div class="is-flex is-justify-content-flex-start is-align-items-center">
+                    <div class="is-flex is-justify-content-flex-start is-align-items-center" style="padding: 5px 0">
                         <button type="submit" name="selector_btn" value="value" class="button is-primary is-link" style="margin-left: 10px">
                             Pokaż analizę
                         </button>

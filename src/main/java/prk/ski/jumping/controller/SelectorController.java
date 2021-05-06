@@ -77,6 +77,7 @@ public class SelectorController extends HttpServlet {
         //use Analyzer to get set of jumpers to display in the view
         Set<String> analyzedCountries = countryAnalyzer.getCountryListForTournaments(tjrList);
 
+
         request.setAttribute("view", "country");
         request.setAttribute("items", analyzedCountries);
         request.getRequestDispatcher("selector.jsp").forward(request, response);
@@ -105,6 +106,7 @@ public class SelectorController extends HttpServlet {
         }
         //use Analyzer to get set of jumpers to display in the view
         Set<String> analyzedJumpers = jumperAnalyzer.getJumperNamesListForTournament(tjrList);
+
 
         request.setAttribute("view", "jumper");
         request.setAttribute("items", analyzedJumpers);
