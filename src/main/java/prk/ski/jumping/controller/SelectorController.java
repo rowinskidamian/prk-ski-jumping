@@ -3,6 +3,7 @@ package prk.ski.jumping.controller;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import prk.ski.jumping.controller.analyzer.CountryAnalyzer;
 import prk.ski.jumping.controller.analyzer.JumperAnalyzer;
 import prk.ski.jumping.controller.parser.ParserService;
 import prk.ski.jumping.exception.DataBaseException;
@@ -16,22 +17,45 @@ import java.util.*;
 
 @WebServlet(name = "selector_controller", value = "/selector_controller")
 public class SelectorController extends HttpServlet {
+
+    private List<Long> tournamentIds = new ArrayList<>();
+    private JumperAnalyzer jumperAnalyzer = new JumperAnalyzer();
+    private CountryAnalyzer countryAnalyzer = new CountryAnalyzer();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        //list with ids of tournaments selected from checkboxes
-        List<String> selectedTournaments = Arrays.asList(request.getParameterValues("tournament_id"));
-        List<Long> tournamentIds = new ArrayList<>();
-        for (String s : selectedTournaments) tournamentIds.add(Long.parseLong(s));
+            //selected button (jumper or country)
+        String jumper_btn = request.getParameter("jumper_btn");
+        String country_btn = request.getParameter("country_btn");
 
+            //list with ids of tournaments selected from checkboxes
+        List<String> selectedTournaments = Arrays.asList(request.getParameterValues("tournament_id"));
+
+        for (String s : selectedTournaments) tournamentIds.add(Long.parseLong(s));
         request.getSession().setAttribute("tournamentIdList", tournamentIds);
+
+        // show jumper selection view
+        if (jumper_btn != null) {
+            createJumperSelectionView(request, response);
+        }
+
+        // show country selection view
+        if (country_btn != null) {
+            createCountrySelectionView(request, response);
+        }
+
+
+    }
+
+    private void createCountrySelectionView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //list with every jumper from every tournament
         List<TournamentJumperResult> tjrList = new ArrayList<>();
         TournamentJumperResultDao tjrDao = new TournamentJumperResultDaoDefault();
+
         //loop over all selected tournaments
         for (Long id : tournamentIds) {
-
             //get list of jumpers from n-tournament
             List<TournamentJumperResult> list = null;
             try {
@@ -46,11 +70,39 @@ public class SelectorController extends HttpServlet {
             }
         }
         //use Analyzer to get set of jumpers to display in the view
-        JumperAnalyzer analyzer = new JumperAnalyzer();
-        Set<String> analyzedJumpers = analyzer.getJumperNamesListForTournament(tjrList);
+        Set<String> analyzedCountries = countryAnalyzer.getCountryListForTournaments(tjrList);
 
+        request.setAttribute("view", "country");
+        request.setAttribute("items", analyzedCountries);
+        request.getRequestDispatcher("selector.jsp").forward(request, response);
+    }
 
-        request.setAttribute("analyzedJumpers", analyzedJumpers);
+    private void createJumperSelectionView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+            //list with every jumper from every tournament
+        List<TournamentJumperResult> tjrList = new ArrayList<>();
+        TournamentJumperResultDao tjrDao = new TournamentJumperResultDaoDefault();
+
+            //loop over all selected tournaments
+        for (Long id : tournamentIds) {
+            //get list of jumpers from n-tournament
+            List<TournamentJumperResult> list = null;
+            try {
+                list = tjrDao.getByTournamentId(id);
+            } catch (DataBaseException e) {
+                e.printStackTrace();
+            }
+
+            //add every jumper from n-tournament to list with all jumpers from all selected tournaments
+            for (TournamentJumperResult tjr : list) {
+                tjrList.add(tjr);
+            }
+        }
+        //use Analyzer to get set of jumpers to display in the view
+        Set<String> analyzedJumpers = jumperAnalyzer.getJumperNamesListForTournament(tjrList);
+
+        request.setAttribute("view", "jumper");
+        request.setAttribute("items", analyzedJumpers);
         request.getRequestDispatcher("selector.jsp").forward(request, response);
     }
 

@@ -5,14 +5,17 @@ import prk.ski.jumping.model.domain.Jumper;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author RadosławParol
  */
 public class CountryAnalyzer {
 
-    public Set<String> getCountryListForTournaments(List<TournamentJumperResult> tjr) {
-        return new HashSet<>();
+    public Set<String> getCountryListForTournaments(List<TournamentJumperResult> tournamentParticipantsResults) {
+        return tournamentParticipantsResults.stream()
+                .map(TournamentJumperResult::getOrigin)
+                .collect(Collectors.toSet());
     }
 
     public List<Country> getCountryAnalysis(List<TournamentJumperResult> resultTournamentList) {

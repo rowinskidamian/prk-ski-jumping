@@ -40,10 +40,11 @@ public class JumperResultController extends HttpServlet {
         List<String> countryAthleteList;
         List<Long> tournamentIdList;
 
-
-        // List<String> athletes = Arrays.asList(request.getParameterValues("selected_jumper"));
-        // request.getSession().setAttribute("countryAthleteList", athletes);
-
+        //
+        //code added
+        List<String> athletes = Arrays.asList(request.getParameterValues("selected_item"));
+        request.getSession().setAttribute("countryAthleteList", athletes);
+        //
 
         if (hsParam != null) {
            historySearch = getHistorySearch(request, response, hsParam);

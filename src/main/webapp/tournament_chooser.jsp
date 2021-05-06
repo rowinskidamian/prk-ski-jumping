@@ -25,10 +25,10 @@
                 </p>
                 <div class="is-flex is-justify-content-flex-start is-align-items-center">
                     <p class="title is-4" style="margin: 0">Analizuj według:</p>
-                    <button type="submit" name="selector_btn" value="jumper" class="button is-primary is-link" style="margin-left: 10px">
+                    <button type="submit" name="jumper_btn" value="jumper" class="button is-primary is-link" style="margin-left: 10px">
                         Skoczek
                     </button>
-                    <button type="submit" name="selector_btn" value="country" class="button is-primary is-link" style="margin-left: 10px">
+                    <button type="submit" name="country_btn" value="country" class="button is-primary is-link" style="margin-left: 10px">
                         Kraj
                     </button>
                 </div>
