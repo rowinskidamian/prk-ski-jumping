@@ -15,18 +15,22 @@
     <jsp:include page="navbar.jsp"/>
 </nav>
 <!-- -------------------------------------------------------------------------------------------------------- -->
-<form>
+<form action="/jumper_result" method="get">
     <section class="table list">
         <div class="container">
-            <div class="table-container">
+            <div class="table-container" style="max-width: 1000px; margin: 0 auto">
                 <div class="control-panel container is-flex is-justify-content-space-between is-align-items-center">
                     <p class="title is-3" style="margin: 0">
                         Wybierz skoczków do analizy:
                     </p>
-
+                    <div class="is-flex is-justify-content-flex-start is-align-items-center">
+                        <button type="submit" name="selector_btn" value="jumper" class="button is-primary is-link" style="margin-left: 10px">
+                            Pokaż analizę
+                        </button>
+                    </div>
                 </div>
             </div>
-                <table class="table is-striped is-hoverable is-fullwidth">
+                <table class="table is-striped is-hoverable is-fullwidth" style="max-width: 800px; margin: 0 auto">
                     <thead>
                     <tr>
                         <th title="check"></th>
@@ -48,5 +52,6 @@
         </div>
     </section>
 </form>
+
 </body>
 </html>

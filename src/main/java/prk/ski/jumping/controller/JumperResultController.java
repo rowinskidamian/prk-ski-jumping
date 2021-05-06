@@ -18,6 +18,7 @@ import prk.ski.jumping.model.domain.TournamentJumperResult;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +39,11 @@ public class JumperResultController extends HttpServlet {
         HistorySearch historySearch;
         List<String> countryAthleteList;
         List<Long> tournamentIdList;
+
+
+        // List<String> athletes = Arrays.asList(request.getParameterValues("selected_jumper"));
+        // request.getSession().setAttribute("countryAthleteList", athletes);
+
 
         if (hsParam != null) {
            historySearch = getHistorySearch(request, response, hsParam);

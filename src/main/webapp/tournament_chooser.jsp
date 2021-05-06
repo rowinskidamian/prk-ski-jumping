@@ -15,10 +15,10 @@
     <jsp:include page="navbar.jsp"/>
 </nav>
 <!-- -------------------------------------------------------------------------------------------------------- -->
-<form action="/selector_controller" method="post">
+<form action="/selector_controller" method="get">
 <section class="table list">
     <div class="container">
-        <div class="table-container">
+        <div class="table-container" style="max-width: 1000px; margin: 0 auto">
             <div class="control-panel container is-flex is-justify-content-space-between is-align-items-center">
                 <p class="title is-3" style="margin: 0">
                     Wybierz konkursy do analizy:
@@ -33,7 +33,7 @@
                     </button>
                 </div>
             </div>
-            <table class="table is-striped is-hoverable is-fullwidth">
+            <table class="table is-striped is-hoverable is-fullwidth" style="max-width: 800px; margin: 0 auto">
                 <thead>
                 <tr>
                     <th title="check"></th>
