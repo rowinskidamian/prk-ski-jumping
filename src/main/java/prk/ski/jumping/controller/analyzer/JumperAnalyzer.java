@@ -46,14 +46,17 @@ public class JumperAnalyzer {
                 int goldMedals = currentJumper.getGoldMedals();
                 goldMedals++;
                 currentJumper.setGoldMedals(goldMedals);
+                break;
             case 2:
                 int silverMedals = currentJumper.getSilverMedals();
                 silverMedals++;
                 currentJumper.setSilverMedals(silverMedals);
+                break;
             case 3:
                 int bronzeMedals = currentJumper.getBronzeMedals();
                 bronzeMedals++;
                 currentJumper.setBronzeMedals(bronzeMedals);
+                break;
         }
 
         double totalPoints = currentJumper.getTotalPoints();

@@ -13,7 +13,7 @@ import java.util.List;
 public class JumperResultTest extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<String> countryAthleteList = List.of("GEIGER Karl", "KOBAYASHI Ryoyu", "JOHANSSON Robert");
+        List<String> countryAthleteList = List.of("GEIGER Karl", "KOBAYASHI Ryoyu", "JOHANSSON Robert", "KUBACKI Dawid", "PREVC Peter", "ZYLA Piotr");
         List<Long> tournamentIdList = List.of(2L, 3L, 4L, 5L);
         request.getSession().setAttribute("countryAthleteList", countryAthleteList);
         request.getSession().setAttribute("tournamentIdList", tournamentIdList);
