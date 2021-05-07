@@ -43,11 +43,11 @@ public class JumperResultController extends HttpServlet {
 
             // code added
             // clean session
-        request.getSession().removeAttribute("countryAthleteList");
+        request.getSession().setAttribute("countryAthleteList", null);
 
             // add new athletes to session
         List<String> athletes = Arrays.asList(request.getParameterValues("selected_item"));
-        request.getSession().setAttribute("countryAthleteList", athletes);
+        request.getSession().setAttribute("countryAthleteList",athletes);
             // code added end
 
         if (hsParam != null) {

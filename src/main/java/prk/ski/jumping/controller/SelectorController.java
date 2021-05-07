@@ -33,7 +33,7 @@ public class SelectorController extends HttpServlet {
         List<String> selectedTournaments = Arrays.asList(request.getParameterValues("tournament_id"));
 
             //clean session
-        request.getSession().removeAttribute("tournamentIdList");
+        request.getSession().setAttribute("tournamentIdList", null);
 
         for (String s : selectedTournaments) tournamentIds.add(Long.parseLong(s));
 
@@ -115,8 +115,6 @@ public class SelectorController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
 
     }
 }

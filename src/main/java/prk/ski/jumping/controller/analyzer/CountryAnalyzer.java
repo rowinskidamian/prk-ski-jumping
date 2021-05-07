@@ -36,7 +36,6 @@ public class CountryAnalyzer {
 
 
             //setting medals medals
-
             if (tjr.getRank() == 1) {
                 currentCountry.setGoldMedals(currentCountry.getGoldMedals() + 1);
             } else if (tjr.getRank() == 2) {
