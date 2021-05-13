@@ -19,6 +19,12 @@ import java.util.List;
 public class Main {
 
 	public static void main(String[] args) {
+		CountryAnalyzer ctr = new CountryAnalyzer();
+
+		TournamentJumperResult tjr1 = new TournamentJumperResult();
+
+		tjr1.setId(1);
+		tjr1.setAthleteName("Marek");
 
 	}
 

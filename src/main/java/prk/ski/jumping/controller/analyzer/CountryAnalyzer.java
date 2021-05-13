@@ -18,49 +18,53 @@ public class CountryAnalyzer {
                 .collect(Collectors.toSet());
     }
 
-    public List<Country> getCountryAnalysis(List<TournamentJumperResult> resultTournamentList) {
-        List<Country> countryList = new ArrayList<>();
+    public List<Country> getCountryAnalysis(List<TournamentJumperResult> resultTournamentList, List<String> countries) {
         Map<String, Country> countryMap = new HashMap<>();
 
         for (TournamentJumperResult tjr : resultTournamentList) {
             String countryName = tjr.getOrigin();
-            Country currentCountry;
+            boolean isCurrentJumperInList = countries.contains(countryName);
 
-            if (!countryMap.containsKey(countryName)) {
-                currentCountry = new Country();
-                currentCountry.setName(countryName);
-            } else {
-                currentCountry = countryMap.get(countryName);
+            if (isCurrentJumperInList) {
+                addCountryToMapIfNotPresent(countryMap, countryName);
+                Country currentCountry = getCurrentCountry(countryMap, tjr, countryName);
+                countryMap.put(countryName, currentCountry);
             }
-
-
-
-            //setting medals medals
-            if (tjr.getRank() == 1) {
-                currentCountry.setGoldMedals(currentCountry.getGoldMedals() + 1);
-            } else if (tjr.getRank() == 2) {
-                currentCountry.setSilverMedals(currentCountry.getSilverMedals() + 1);
-            } else if (tjr.getRank() == 3) {
-                currentCountry.setBronzeMedals(currentCountry.getBronzeMedals() + 1);
-            }
-
-            //setting total points
-            currentCountry.setTotalPoints(currentCountry.getTotalPoints() + tjr.getTotalPoints());
-
-            countryMap.put(countryName, currentCountry);
         }
 
-        for (Map.Entry<String, Country> entry : countryMap.entrySet()) {
+        return countryMap.keySet().stream()
+                .map(countryMap::get)
+                .collect(Collectors.toList());
+
+
+    }
+
+    private Country getCurrentCountry(Map<String, Country> countryMap, TournamentJumperResult tournamentJumperResult, String countryName) {
+        Country currentCountry = countryMap.get(countryName);
+
+        int rank = tournamentJumperResult.getRank();
+        if (rank == 1) {
+            currentCountry.setGoldMedals(currentCountry.getGoldMedals() + 1);
+        } else if (rank == 2) {
+            currentCountry.setSilverMedals(currentCountry.getSilverMedals() + 1);
+        } else if (rank == 3) {
+            currentCountry.setBronzeMedals(currentCountry.getBronzeMedals() + 1);
+        }
+
+        double totalPoints = currentCountry.getTotalPoints();
+        double pointsFromTournament = tournamentJumperResult.getTotalPoints();
+        totalPoints += pointsFromTournament;
+        currentCountry.setTotalPoints(totalPoints);
+
+        return currentCountry;
+    }
+
+    private void addCountryToMapIfNotPresent(Map<String, Country> countryMap, String countryName) {
+        boolean containsCountry = countryMap.containsKey(countryName);
+        if (!containsCountry) {
             Country country = new Country();
-            country.setName(entry.getValue().getName());
-            country.setGoldMedals(entry.getValue().getGoldMedals());
-            country.setSilverMedals(entry.getValue().getSilverMedals());
-            country.setBronzeMedals(entry.getValue().getBronzeMedals());
-            country.setTotalPoints(entry.getValue().getTotalPoints());
-            countryList.add(entry.getValue());
+            country.setName(countryName);
+            countryMap.put(countryName, country);
         }
-
-        return countryList;
-
     }
 }
