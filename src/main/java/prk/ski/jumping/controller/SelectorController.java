@@ -22,7 +22,7 @@ import java.util.*;
 @WebServlet(name = "selector_controller", value = "/selector_controller")
 public class SelectorController extends HttpServlet {
 
-    private List<Long> tournamentIds = new ArrayList<>();
+    private List<Long> tournamentIds;
     private JumperAnalyzer jumperAnalyzer = new JumperAnalyzer();
     private CountryAnalyzer countryAnalyzer = new CountryAnalyzer();
 
@@ -40,13 +40,16 @@ public class SelectorController extends HttpServlet {
 
             //list with ids of tournaments selected from checkboxes
         List<String> selectedTournaments = Arrays.asList(request.getParameterValues("tournament_id"));
+        System.out.println(selectedTournaments);
 
+        tournamentIds = new ArrayList<>();
 
         for (String s : selectedTournaments) tournamentIds.add(Long.parseLong(s));
 
+
             //set new tournamentIds in session
         request.getSession().setAttribute("tournamentIdList", tournamentIds);
-
+        System.out.println(tournamentIds);
             //list with every jumper from every tournament
         List<TournamentJumperResult> tjrList = new ArrayList<>();
         TournamentJumperResultDao tjrDao = new TournamentJumperResultDaoDefault();

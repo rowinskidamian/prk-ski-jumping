@@ -36,33 +36,19 @@ public class CountryResultController extends HttpServlet {
         List<String> countryAthleteList;
         List<Long> tournamentIdList;
 
-//        if (request.getParameterValues("countryList") == null) {
-//            request.setAttribute("message", "Musisz wybrać co najmniej jeden kraj do analizy!");
-//            request.getRequestDispatcher("error_page.jsp").forward(request, response);
-//        }
-        // code added
-        // clean session
-        request.getSession().setAttribute("countryList", null);
-
-
-        // code added end
-
         if (hsParam != null) {
             historySearch = getHistorySearch(request, response, hsParam);
             countryAthleteList = historySearch.getAthleteCountryList();
             tournamentIdList = historySearch.getTournamentIdList();
-
-
         } else {
-            countryAthleteList = (List<String>) request.getSession().getAttribute("countryList");
-
+            if (request.getParameterValues("selected_item") == null) {
+                request.setAttribute("message", "Musisz wybrać co najmniej jeden kraj do analizy!");
+                request.getRequestDispatcher("error_page.jsp").forward(request, response);
+            }
+            countryAthleteList = Arrays.asList(request.getParameterValues("selected_item"));
             tournamentIdList = (List<Long>) request.getSession().getAttribute("tournamentIdList");
             historySearch = generateHistorySearch(countryAthleteList, tournamentIdList);
         }
-
-        // add new athletes to session
-        List<String> countries = Arrays.asList(request.getParameterValues("selected_item"));
-        request.getSession().setAttribute("countryList", countries);
 
         List<TournamentJumperResult> tjrList = getTJRfromTournamentId(tournamentIdList, request, response);
         List<Country> countryList = countryAnalyzer.getCountryAnalysis(tjrList, countryAthleteList);

@@ -40,23 +40,18 @@ public class JumperResultController extends HttpServlet {
         List<String> countryAthleteList;
         List<Long> tournamentIdList;
 
-
-            // code added
-            // clean session
-        request.getSession().setAttribute("countryAthleteList", null);
-
-            // add new athletes to session
-        List<String> athletes = Arrays.asList(request.getParameterValues("selected_item"));
-        request.getSession().setAttribute("countryAthleteList",athletes);
-            // code added end
-
         if (hsParam != null) {
            historySearch = getHistorySearch(request, response, hsParam);
             countryAthleteList = historySearch.getAthleteCountryList();
             tournamentIdList = historySearch.getTournamentIdList();
 
         } else {
-            countryAthleteList = (List<String>) request.getSession().getAttribute("countryAthleteList");
+            if (request.getParameterValues("selected_item") == null) {
+                request.setAttribute("message", "Musisz wybrać co najmniej jednego skoczka do analizy!");
+                request.getRequestDispatcher("error_page.jsp").forward(request, response);
+            }
+            countryAthleteList = Arrays.asList(request.getParameterValues("selected_item"));
+//            List<String> list = (List<String>) request.getSession().getAttribute("tournamentIdList");
             tournamentIdList = (List<Long>) request.getSession().getAttribute("tournamentIdList");
             historySearch = generateHistorySearch(countryAthleteList, tournamentIdList);
         }
