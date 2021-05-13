@@ -1,5 +1,6 @@
 package prk.ski.jumping.model.dao.impl;
 
+import prk.ski.jumping.controller.utils.DbUtilities;
 import prk.ski.jumping.controller.utils.DbUtils;
 import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.dao.HistorySearchDao;
@@ -28,7 +29,7 @@ public class HistorySearchDaoDefault implements HistorySearchDao {
 
     @Override
     public HistorySearch create(HistorySearch historySearch) throws DataBaseException {
-        try (Connection connection = DbUtils.connectToDatabase();
+        try (Connection connection = DbUtilities.connectToDatabase();
              PreparedStatement ps = connection.prepareStatement(
                      HistorySearchQuery.CREATE.getSqlQuery(), PreparedStatement.RETURN_GENERATED_KEYS)) {
 
@@ -80,7 +81,7 @@ public class HistorySearchDaoDefault implements HistorySearchDao {
     public Optional<HistorySearch> getById(long id) throws DataBaseException {
         HistorySearch hs = null;
 
-        try (Connection con = DbUtils.connectToDatabase();
+        try (Connection con = DbUtilities.connectToDatabase();
              PreparedStatement ps = con.prepareStatement(HistorySearchQuery.READ.getSqlQuery())) {
             ps.setLong(1, id);
 
@@ -127,7 +128,7 @@ public class HistorySearchDaoDefault implements HistorySearchDao {
     public List<HistorySearch> getAll() throws DataBaseException {
         List<HistorySearch> hsList = new ArrayList<>();
 
-        try (Connection con = DbUtils.connectToDatabase();
+        try (Connection con = DbUtilities.connectToDatabase();
              Statement statement = con.createStatement();
              ResultSet rs = statement.executeQuery(HistorySearchQuery.GET_ALL.getSqlQuery())) {
 
@@ -154,7 +155,7 @@ public class HistorySearchDaoDefault implements HistorySearchDao {
 
     @Override
     public void update(HistorySearch historySearch) throws DataBaseException {
-        try (PreparedStatement ps = DbUtils.connectToDatabase()
+        try (PreparedStatement ps = DbUtilities.connectToDatabase()
                 .prepareStatement(HistorySearchQuery.UPDATE.getSqlQuery())) {
 
             ps.setString(1, historySearch.getSearchName());
@@ -173,7 +174,7 @@ public class HistorySearchDaoDefault implements HistorySearchDao {
 
     @Override
     public void delete(long id) throws DataBaseException {
-        try (PreparedStatement ps = DbUtils.connectToDatabase()
+        try (PreparedStatement ps = DbUtilities.connectToDatabase()
                 .prepareStatement(HistorySearchQuery.DELETE.getSqlQuery())) {
             ps.setLong(1, id);
             ps.executeUpdate();

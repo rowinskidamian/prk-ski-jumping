@@ -46,15 +46,27 @@ public class JumperAnalyzer {
                 int goldMedals = currentJumper.getGoldMedals();
                 goldMedals++;
                 currentJumper.setGoldMedals(goldMedals);
+                break;
             case 2:
                 int silverMedals = currentJumper.getSilverMedals();
                 silverMedals++;
                 currentJumper.setSilverMedals(silverMedals);
+                break;
             case 3:
                 int bronzeMedals = currentJumper.getBronzeMedals();
                 bronzeMedals++;
                 currentJumper.setBronzeMedals(bronzeMedals);
+                break;
+
         }
+
+//        if (rank == 1) {
+//            currentJumper.setGoldMedals(currentJumper.getGoldMedals() + 1);
+//        } else if (rank == 2) {
+//            currentJumper.setSilverMedals(currentJumper.getSilverMedals() + 1);
+//        } else if (rank == 3) {
+//            currentJumper.setBronzeMedals(currentJumper.getBronzeMedals() + 1);
+//        }
 
         double totalPoints = currentJumper.getTotalPoints();
         double pointsFromTournament = tournamentJumperResult.getTotalPoints();

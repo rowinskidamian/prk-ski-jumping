@@ -18,6 +18,7 @@ import prk.ski.jumping.model.domain.TournamentJumperResult;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,7 +46,12 @@ public class JumperResultController extends HttpServlet {
             tournamentIdList = historySearch.getTournamentIdList();
 
         } else {
-            countryAthleteList = (List<String>) request.getSession().getAttribute("countryAthleteList");
+            if (request.getParameterValues("selected_item") == null) {
+                request.setAttribute("message", "Musisz wybrać co najmniej jednego skoczka do analizy!");
+                request.getRequestDispatcher("error_page.jsp").forward(request, response);
+            }
+            countryAthleteList = Arrays.asList(request.getParameterValues("selected_item"));
+//            List<String> list = (List<String>) request.getSession().getAttribute("tournamentIdList");
             tournamentIdList = (List<Long>) request.getSession().getAttribute("tournamentIdList");
             historySearch = generateHistorySearch(countryAthleteList, tournamentIdList);
         }

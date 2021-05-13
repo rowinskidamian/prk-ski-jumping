@@ -1,16 +1,17 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Ski Jumping Analyzer - Wyniki dla skoczków</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"/>
-    <link rel="stylesheet" href="./style/style.css"/>
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>Ski Jumping Analyzer</title>
 </head>
-<body class="has-navbar-fixed-top">
-<nav class="navbar is-fixed-top">
+<body>
+
+<nav class="navbar" style="padding: 20px 0">
     <jsp:include page="navbar.jsp"/>
 </nav>
 
@@ -45,7 +46,7 @@
         </c:choose>
     </div>
 </section>
-<section class="table list">
+<section class="table list" style="margin-top: 0;">
     <div class="container">
         <div class="table-container">
             <table class="table is-striped is-hoverable is-fullwidth">

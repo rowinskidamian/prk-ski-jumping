@@ -1,6 +1,6 @@
 package prk.ski.jumping.model.dao.impl.additional;
 
-import prk.ski.jumping.controller.utils.DbUtils;
+import prk.ski.jumping.controller.utils.DbUtilities;
 import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.dao.query.additional.TournamentIdListQuery;
 import prk.ski.jumping.model.domain.additional.TournamentIdList;
@@ -13,7 +13,7 @@ import java.util.Optional;
 public class TournamentIdListDao {
 
     public TournamentIdList create(TournamentIdList til) throws DataBaseException {
-        try (Connection connection = DbUtils.connectToDatabase();
+        try (Connection connection = DbUtilities.connectToDatabase();
              PreparedStatement ps = connection.prepareStatement(
                      TournamentIdListQuery.CREATE.getSqlQuery(), PreparedStatement.RETURN_GENERATED_KEYS)) {
 
@@ -38,7 +38,7 @@ public class TournamentIdListDao {
     public Optional<TournamentIdList> getById(long id) throws DataBaseException {
         TournamentIdList til = null;
 
-        try (Connection connection = DbUtils.connectToDatabase();
+        try (Connection connection = DbUtilities.connectToDatabase();
              PreparedStatement ps = connection.prepareStatement(TournamentIdListQuery.READ.getSqlQuery())) {
             ps.setLong(1, id);
 
@@ -61,7 +61,7 @@ public class TournamentIdListDao {
     public List<TournamentIdList> getByHistorySearchId(long id) throws DataBaseException {
         List<TournamentIdList> tilList = new ArrayList<>();
 
-        try (Connection con = DbUtils.connectToDatabase();
+        try (Connection con = DbUtilities.connectToDatabase();
              PreparedStatement ps = con.prepareStatement(TournamentIdListQuery.READ_BY_HISTORY_SEARCH.getSqlQuery())) {
             ps.setLong(1, id);
 
