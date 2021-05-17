@@ -5,6 +5,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import prk.ski.jumping.controller.analyzer.CountryAnalyzer;
 import prk.ski.jumping.controller.analyzer.JumperAnalyzer;
+import prk.ski.jumping.controller.sort.CountrySort;
 import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.dao.HistorySearchDao;
 import prk.ski.jumping.model.dao.TournamentJumperResultDao;
@@ -17,10 +18,7 @@ import prk.ski.jumping.model.domain.TournamentJumperResult;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @WebServlet(name = "CountryResultController", value = "/country_result")
 public class CountryResultController extends HttpServlet {
@@ -52,6 +50,7 @@ public class CountryResultController extends HttpServlet {
 
         List<TournamentJumperResult> tjrList = getTJRfromTournamentId(tournamentIdList, request, response);
         List<Country> countryList = countryAnalyzer.getCountryAnalysis(tjrList, countryAthleteList);
+
 
         request.getSession()
                 .setAttribute("historySearch", historySearch);

@@ -1,5 +1,6 @@
 package prk.ski.jumping.controller.analyzer;
 
+import prk.ski.jumping.controller.sort.CountrySort;
 import prk.ski.jumping.model.domain.Country;
 import prk.ski.jumping.model.domain.Jumper;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
@@ -32,9 +33,13 @@ public class CountryAnalyzer {
             }
         }
 
-        return countryMap.keySet().stream()
+        List<Country> countryList = countryMap.keySet().stream()
                 .map(countryMap::get)
                 .collect(Collectors.toList());
+
+        Collections.sort(countryList, new CountrySort());
+
+        return countryList;
 
 
     }
@@ -51,7 +56,7 @@ public class CountryAnalyzer {
             currentCountry.setBronzeMedals(currentCountry.getBronzeMedals() + 1);
         }
 
-        double totalPoints = currentCountry.getTotalPoints();
+        double totalPoints = Math.round((currentCountry.getTotalPoints()*100.0)/100.0);
         double pointsFromTournament = tournamentJumperResult.getTotalPoints();
         totalPoints += pointsFromTournament;
         currentCountry.setTotalPoints(totalPoints);

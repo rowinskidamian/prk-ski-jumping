@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"/>
     <link rel="stylesheet" href="./style/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js" integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Ski Jumping Analyzer</title>
 </head>
 <body>
@@ -63,19 +64,24 @@
                 <tbody>
                 <c:forEach items="${jumperList}" var="jumper">
                     <tr>
-                        <td>${jumper.athleteName}</td>
+                        <td class="chart-label">${jumper.athleteName}</td>
                         <td>${jumper.origin}</td>
                         <td>${jumper.goldMedals}</td>
                         <td>${jumper.silverMedals}</td>
                         <td>${jumper.bronzeMedals}</td>
-                        <td>${jumper.totalPoints}</td>
+                        <td class="chart-points">${jumper.totalPoints}</td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
         </div>
     </div>
-
 </section>
+
+<div class="container" style="margin: 70px auto; max-width: 600px">
+    <canvas id="myChart"></canvas>
+</div>
+
+<script src="chart.js"></script>
 </body>
 </html>
