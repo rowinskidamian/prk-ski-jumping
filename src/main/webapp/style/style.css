@@ -5,7 +5,6 @@
   margin: 0;
   box-sizing: border-box;
 }
-
 /* nawigacja */
 .navbar.is-fixed-top {
   padding: 16px 0;
@@ -24,11 +23,11 @@
 }
 
 /* tabelki */
-.table.list {
-  margin: 20px;
-  margin-top: 140px;
-}
 
+.table.list .container .table-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
 .table tr {
   font-size: 0.95rem;
   letter-spacing: 1px;

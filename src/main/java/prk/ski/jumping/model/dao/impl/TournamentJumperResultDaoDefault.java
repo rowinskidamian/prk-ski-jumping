@@ -1,5 +1,6 @@
 package prk.ski.jumping.model.dao.impl;
 
+import prk.ski.jumping.controller.utils.DbUtilities;
 import prk.ski.jumping.controller.utils.DbUtils;
 import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.dao.TournamentJumperResultDao;
@@ -17,9 +18,10 @@ import java.util.Optional;
 
 public class TournamentJumperResultDaoDefault implements TournamentJumperResultDao {
 
+
     @Override
     public TournamentJumperResult create(TournamentJumperResult tjr) throws DataBaseException {
-        try (Connection connection = DbUtils.connectToDatabase();
+        try (Connection connection = DbUtilities.connectToDatabase();
              PreparedStatement ps = connection.prepareStatement(
                      TournamentJumperResultQuery.CREATE.getSqlQuery(), PreparedStatement.RETURN_GENERATED_KEYS)) {
 
@@ -73,7 +75,7 @@ public class TournamentJumperResultDaoDefault implements TournamentJumperResultD
     public List<TournamentJumperResult> getByTournamentId(long id) throws DataBaseException {
         List<TournamentJumperResult> tjrList = new ArrayList<>();
 
-        try (Connection cn = DbUtils.connectToDatabase();
+        try (Connection cn = DbUtilities.connectToDatabase();
         PreparedStatement ps = cn.prepareStatement(TournamentJumperResultQuery.READ_BY_TOURNAMENT_ID.getSqlQuery())) {
             ps.setLong(1, id);
 

@@ -11,6 +11,14 @@
 <body>
 
 <!-- -------------------------------------------------------------------------------------------------------- -->
-<jsp:include page="homepage"/>
+<section class="hero is-danger is-fullheight">
+    <div class="hero-body">
+        <div class="">
+            <p class="title">
+                ${message}
+            </p>
+        </div>
+    </div>
+</section>
 </body>
 </html>

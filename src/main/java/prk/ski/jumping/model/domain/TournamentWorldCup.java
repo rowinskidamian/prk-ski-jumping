@@ -19,6 +19,10 @@ public class TournamentWorldCup {
         this.link = link;
     }
 
+    public TournamentWorldCup() {
+
+    }
+
     // getters
     public long getId() {
         return id;

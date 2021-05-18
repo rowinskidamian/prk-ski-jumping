@@ -1,6 +1,6 @@
 package prk.ski.jumping.model.dao.impl.additional;
 
-import prk.ski.jumping.controller.utils.DbUtils;
+import prk.ski.jumping.controller.utils.DbUtilities;
 import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.dao.query.additional.AthleteCountryListQuery;
 import prk.ski.jumping.model.domain.additional.AthleteCountryList;
@@ -20,7 +20,7 @@ import java.util.Optional;
 public class AthleteCountryListDao {
 
     public AthleteCountryList create(AthleteCountryList acl) throws DataBaseException {
-        try (Connection connection = DbUtils.connectToDatabase();
+        try (Connection connection = DbUtilities.connectToDatabase();
              PreparedStatement ps = connection.prepareStatement(
                      AthleteCountryListQuery.CREATE.getSqlQuery(), PreparedStatement.RETURN_GENERATED_KEYS)) {
 
@@ -45,7 +45,7 @@ public class AthleteCountryListDao {
     public Optional<AthleteCountryList> getById(long id) throws DataBaseException {
         AthleteCountryList acl = null;
 
-        try (Connection connection = DbUtils.connectToDatabase();
+        try (Connection connection = DbUtilities.connectToDatabase();
              PreparedStatement ps = connection.prepareStatement(AthleteCountryListQuery.READ.getSqlQuery())) {
             ps.setLong(1, id);
 
@@ -68,7 +68,7 @@ public class AthleteCountryListDao {
     public List<AthleteCountryList> getByHistorySearchId(long id) throws DataBaseException {
         List<AthleteCountryList> aclList = new ArrayList<>();
 
-        try (Connection con = DbUtils.connectToDatabase();
+        try (Connection con = DbUtilities.connectToDatabase();
              PreparedStatement ps = con.prepareStatement(AthleteCountryListQuery.READ_BY_HISTORY_SEARCH.getSqlQuery())) {
             ps.setLong(1, id);
 
