@@ -14,6 +14,10 @@ import java.util.List;
 
 // link "https://www.fis-ski.com/DB/general/statistics.html?statistictype=positions&positionstype=position&offset=250&sectorcode=JP&seasoncode=&categorycode=WC&gendercode=&competitornationcode=&place=&nationcode=&position=4&disciplinecode="
 
+/**
+ * @author RadosławParol
+ */
+
 public class TournamentParser {
 
     public List<TournamentWorldCup> getAll() {

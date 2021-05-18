@@ -64,12 +64,12 @@
                 <tbody>
                 <c:forEach items="${jumperList}" var="jumper">
                     <tr>
-                        <td class="chart-label">${jumper.athleteName}</td>
+                        <td>${jumper.athleteName}</td>
                         <td>${jumper.origin}</td>
                         <td>${jumper.goldMedals}</td>
                         <td>${jumper.silverMedals}</td>
                         <td>${jumper.bronzeMedals}</td>
-                        <td class="chart-points">${jumper.totalPoints}</td>
+                        <td>${jumper.totalPoints}</td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -77,11 +77,5 @@
         </div>
     </div>
 </section>
-
-<div class="container" style="margin: 70px auto; max-width: 600px">
-    <canvas id="myChart"></canvas>
-</div>
-
-<script src="chart.js"></script>
 </body>
 </html>

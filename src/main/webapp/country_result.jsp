@@ -27,6 +27,13 @@
 </section>
 <section class="section">
   <div class="container">
+    <div class="table-container" style="max-width: 1000px; margin: 0 auto">
+      <div class="control-panel container is-flex is-justify-content-space-between is-align-items-center">
+          <button class="toggle-view" type="submit" name="country_btn" value="country" class="button is-primary is-link" style="margin-left: 10px">
+            Pokaż wykres
+          </button>
+        </div>
+      </div>
     <c:choose>
       <c:when test="${empty historySearch.searchName}">
         <form action="/history_search" method="post">
@@ -78,10 +85,12 @@
 
 </section>
 
-<div class="container" style="margin: 70px auto; max-width: 600px">
+<div class="container" style="margin: 70px auto; max-width: 700px">
   <canvas id="myChart"></canvas>
 </div>
-
+<script>
+  let btn =
+</script>
 <script src="chart.js"></script>
 </body>
 </html>

@@ -2,7 +2,11 @@ package prk.ski.jumping.model.domain;
 
 import java.util.Objects;
 
-public class Country {
+/**
+ * @author RadosławParol
+ */
+
+public class Country implements Comparable {
     private long id;
     private String name;
     private int goldMedals;
@@ -88,5 +92,21 @@ public class Country {
         String country = "Country {" + "id = " + id + ", name = " + name + ", goldMedals = " + goldMedals + ", silverMedals = "
                 + silverMedals + ", bronzeMedals = " + bronzeMedals + ", totalPoints = " + totalPoints + ", idHistory = " + idHistory + "}";
         return country;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if (o instanceof Country) {
+            Country country = (Country) o;
+
+            if (totalPoints > country.getTotalPoints())
+                return -1;
+            else if (totalPoints < country.getTotalPoints())
+                return 1;
+
+            return 0;
+        }
+
+        throw new IllegalArgumentException();
     }
 }

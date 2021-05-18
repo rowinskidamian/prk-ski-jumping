@@ -4,6 +4,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * @author RadosławParol
+ */
+
 public class TournamentWorldCup {
     private long id;
     private LocalDate date;

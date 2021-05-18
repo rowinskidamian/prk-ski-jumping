@@ -6,6 +6,10 @@ import java.util.Optional;
 import prk.ski.jumping.model.domain.Country;
 import prk.ski.jumping.model.domain.TournamentWorldCup;
 
+/**
+ * @author RadosławParol
+ */
+
 public interface CountryDao {
 	
 	public void create(Country country);

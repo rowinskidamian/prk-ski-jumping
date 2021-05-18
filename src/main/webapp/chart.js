@@ -1,4 +1,4 @@
-console.log("hello")
+
 let label = document.querySelectorAll(".chart-label");
 let points = document.querySelectorAll(".chart-points");
 let ctx = document.getElementById('myChart').getContext('2d');
@@ -7,7 +7,6 @@ let values = [];
 
 ctx.canvas.width = 600;
 ctx.canvas.height = 400;
-
 
 for (let i = 0; i < label.length; i++) {
     labels = [...labels, label[i].innerHTML];
@@ -19,7 +18,6 @@ let myChart = new Chart(ctx, {
     data: {
         labels: [...labels],
         datasets: [{
-            label: '# of Votes',
             data: [...values],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

@@ -1,5 +1,9 @@
 package prk.ski.jumping.model.dao.query;
 
+/**
+ * @author RadosławParol
+ */
+
 public enum TournamentWorldCupQuery {
     CREATE ("insert into tournament_world_cup (date, place, gender, link) values (?,?,?,?)"),
     READ ("SELECT * FROM tournament_world_cup where id = ?"),

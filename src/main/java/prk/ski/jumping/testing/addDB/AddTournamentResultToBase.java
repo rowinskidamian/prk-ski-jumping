@@ -9,6 +9,10 @@ import prk.ski.jumping.model.domain.TournamentWorldCup;
 
 import java.util.List;
 
+/**
+ * @author RadosławParol
+ */
+
 public class AddTournamentResultToBase {
 
     public static void main(String[] args) throws DataBaseException {

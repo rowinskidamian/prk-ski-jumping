@@ -8,6 +8,10 @@ import prk.ski.jumping.model.domain.TournamentWorldCup;
 
 import java.util.List;
 
+/**
+ * @author RadosławParol
+ */
+
 public class AddTournamentWorldCupToBase {
     private static TournamentWorldCupDao twcDao = new TournamentWorldCupDaoDefault();
     public static void main(String[] args) throws DataBaseException {
