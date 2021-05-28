@@ -38,7 +38,7 @@ public class JumperAnalyzer {
                 .collect(Collectors.toList());
     }
 
-    private Jumper getCurrentJumper(Map<String, Jumper> jumperMap, TournamentJumperResult tournamentJumperResult, String athleteName) {
+    Jumper getCurrentJumper(Map<String, Jumper> jumperMap, TournamentJumperResult tournamentJumperResult, String athleteName) {
         Jumper currentJumper = jumperMap.get(athleteName);
 
         int rank = tournamentJumperResult.getRank();
@@ -68,7 +68,7 @@ public class JumperAnalyzer {
         return currentJumper;
     }
 
-    private void addJumperToMapIfNotPresent(Map<String, Jumper> jumperMap, String athleteName) {
+    void addJumperToMapIfNotPresent(Map<String, Jumper> jumperMap, String athleteName) {
         boolean containsJumper = jumperMap.containsKey(athleteName);
         if (!containsJumper) {
             Jumper jumper = new Jumper();
