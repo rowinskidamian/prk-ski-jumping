@@ -61,6 +61,8 @@ public class JumperResultController extends HttpServlet {
 
         request.getSession()
                 .setAttribute("historySearch", historySearch);
+        request.getSession()
+                .setAttribute("jumperChartList", jumperList);
         request.setAttribute("jumperList", jumperList);
 
         request.getRequestDispatcher("jumper_result.jsp")

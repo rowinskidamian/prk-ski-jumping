@@ -2,7 +2,7 @@ package prk.ski.jumping.model.domain;
 
 import java.util.Objects;
 
-public class Jumper {
+public class Jumper implements Comparable<Jumper>{
     private long id;
     private String athleteName;
     private String origin;
@@ -106,5 +106,10 @@ public class Jumper {
                 + ",goldMedals = " + goldMedals + ",silverMedals = " + silverMedals + ",bronzeMedals = "
                 + bronzeMedals + ",totalPoints = " + totalPoints +  ",idHistory = " + idHistory + "}";
         return jumper;
+    }
+
+    @Override
+    public int compareTo(Jumper j) {
+        return athleteName.compareTo(j.getAthleteName());
     }
 }

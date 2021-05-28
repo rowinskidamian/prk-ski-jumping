@@ -34,7 +34,15 @@ public class JumperAnalyzer {
 
         return jumperMap.keySet().stream()
                 .map(jumperMap::get)
+                .sorted(new JumperPointsComparator())
                 .collect(Collectors.toList());
+    }
+
+    static class JumperPointsComparator implements Comparator<Jumper> {
+        @Override
+        public int compare(Jumper j1, Jumper j2) {
+            return Double.compare(j1.getTotalPoints(), j2.getTotalPoints());
+        }
     }
 
     private Jumper getCurrentJumper(Map<String, Jumper> jumperMap, TournamentJumperResult tournamentJumperResult, String athleteName) {
@@ -57,16 +65,7 @@ public class JumperAnalyzer {
                 bronzeMedals++;
                 currentJumper.setBronzeMedals(bronzeMedals);
                 break;
-
         }
-
-//        if (rank == 1) {
-//            currentJumper.setGoldMedals(currentJumper.getGoldMedals() + 1);
-//        } else if (rank == 2) {
-//            currentJumper.setSilverMedals(currentJumper.getSilverMedals() + 1);
-//        } else if (rank == 3) {
-//            currentJumper.setBronzeMedals(currentJumper.getBronzeMedals() + 1);
-//        }
 
         double totalPoints = currentJumper.getTotalPoints();
         double pointsFromTournament = tournamentJumperResult.getTotalPoints();
