@@ -34,15 +34,8 @@ public class JumperAnalyzer {
 
         return jumperMap.keySet().stream()
                 .map(jumperMap::get)
-                .sorted(new JumperPointsComparator())
+                .sorted((j1, j2) -> Double.compare(j1.getTotalPoints(), j2.getTotalPoints()))
                 .collect(Collectors.toList());
-    }
-
-    static class JumperPointsComparator implements Comparator<Jumper> {
-        @Override
-        public int compare(Jumper j1, Jumper j2) {
-            return Double.compare(j1.getTotalPoints(), j2.getTotalPoints());
-        }
     }
 
     private Jumper getCurrentJumper(Map<String, Jumper> jumperMap, TournamentJumperResult tournamentJumperResult, String athleteName) {
