@@ -56,7 +56,7 @@ public class JumperResultController extends HttpServlet {
         }
 
         List<TournamentJumperResult> tjrList = getTJRfromTournamentId(tournamentIdList, request, response);
-        List<Jumper> jumperList = jumperAnalyzer.getJumperAnalysisFor(tjrList, countryAthleteList);
+        List<Jumper> jumperList = jumperAnalyzer.makeJumperAnalysis(tjrList, countryAthleteList);
 
         request.getSession()
                 .setAttribute("historySearch", historySearch);
@@ -118,7 +118,7 @@ public class JumperResultController extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 
     }
 

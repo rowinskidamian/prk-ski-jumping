@@ -18,7 +18,8 @@ public class JumperAnalyzer {
                 .collect(Collectors.toSet());
     }
 
-    public List<Jumper> getJumperAnalysisFor(List<TournamentJumperResult> resultTournamentList, List<String> jumperNamesList) {
+    public List<Jumper> makeJumperAnalysis(List<TournamentJumperResult> resultTournamentList,
+                                           List<String> jumperNamesList) {
         Map<String, Jumper> jumperMap = new HashMap<>();
 
         for (TournamentJumperResult tournamentJumperResult : resultTournamentList) {
@@ -27,45 +28,52 @@ public class JumperAnalyzer {
 
             if (isCurrentJumperInList) {
                 addJumperToMapIfNotPresent(jumperMap, athleteName);
-                Jumper currentJumper = getCurrentJumper(jumperMap, tournamentJumperResult, athleteName);
-                jumperMap.put(athleteName, currentJumper);
+                Optional<Jumper> optionalJumper = updateCurrentJumper(jumperMap, tournamentJumperResult, athleteName);
+                optionalJumper.ifPresent(currentJumper -> jumperMap.put(athleteName, currentJumper));
             }
         }
 
         return jumperMap.keySet().stream()
                 .map(jumperMap::get)
-                .sorted((j1, j2) -> Double.compare(j1.getTotalPoints(), j2.getTotalPoints()))
+                .sorted(Comparator.comparingDouble(Jumper::getTotalPoints))
                 .collect(Collectors.toList());
     }
 
-    Jumper getCurrentJumper(Map<String, Jumper> jumperMap, TournamentJumperResult tournamentJumperResult, String athleteName) {
-        Jumper currentJumper = jumperMap.get(athleteName);
+    Optional<Jumper> updateCurrentJumper(Map<String, Jumper> currentJumpersMap, TournamentJumperResult providedJumperData,
+                               String jumperNamePresentInMap) {
+        Jumper currentJumperToUpdate = currentJumpersMap.get(jumperNamePresentInMap);
 
-        int rank = tournamentJumperResult.getRank();
+        if(currentJumperToUpdate == null) return Optional.empty();
+
+        if (currentJumperToUpdate.getOrigin() == null)
+            currentJumperToUpdate.setOrigin(providedJumperData.getOrigin());
+
+        int rank = providedJumperData.getRank();
         switch (rank) {
             case 1:
-                int goldMedals = currentJumper.getGoldMedals();
+                int goldMedals = currentJumperToUpdate.getGoldMedals();
                 goldMedals++;
-                currentJumper.setGoldMedals(goldMedals);
+                currentJumperToUpdate.setGoldMedals(goldMedals);
                 break;
             case 2:
-                int silverMedals = currentJumper.getSilverMedals();
+                int silverMedals = currentJumperToUpdate.getSilverMedals();
                 silverMedals++;
-                currentJumper.setSilverMedals(silverMedals);
+                currentJumperToUpdate.setSilverMedals(silverMedals);
                 break;
             case 3:
-                int bronzeMedals = currentJumper.getBronzeMedals();
+                int bronzeMedals = currentJumperToUpdate.getBronzeMedals();
                 bronzeMedals++;
-                currentJumper.setBronzeMedals(bronzeMedals);
+                currentJumperToUpdate.setBronzeMedals(bronzeMedals);
                 break;
         }
 
-        double totalPoints = currentJumper.getTotalPoints();
-        double pointsFromTournament = tournamentJumperResult.getTotalPoints();
+        double totalPoints = currentJumperToUpdate.getTotalPoints();
+        double pointsFromTournament = providedJumperData.getTotalPoints();
         totalPoints += pointsFromTournament;
-        currentJumper.setTotalPoints(totalPoints);
-        currentJumper.setOrigin(tournamentJumperResult.getOrigin());
-        return currentJumper;
+        currentJumperToUpdate.setTotalPoints(totalPoints);
+
+
+        return Optional.of(currentJumperToUpdate);
     }
 
     void addJumperToMapIfNotPresent(Map<String, Jumper> jumperMap, String athleteName) {
