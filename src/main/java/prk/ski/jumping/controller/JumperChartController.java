@@ -11,6 +11,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author DamianRowinski
+ */
+
 @WebServlet(name = "JumperChartController", value = "/jumper_chart")
 public class JumperChartController extends HttpServlet {
     @Override

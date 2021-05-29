@@ -5,6 +5,7 @@ package prk.ski.jumping.exception;
  */
 
 public class DataBaseException extends Exception {
+    public static final long serialVersionUID = 1L;
     public DataBaseException (String message) {
         super(message);
     }
