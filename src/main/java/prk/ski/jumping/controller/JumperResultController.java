@@ -51,7 +51,6 @@ public class JumperResultController extends HttpServlet {
                 request.getRequestDispatcher("error_page.jsp").forward(request, response);
             }
             countryAthleteList = Arrays.asList(request.getParameterValues("selected_item"));
-//            List<String> list = (List<String>) request.getSession().getAttribute("tournamentIdList");
             tournamentIdList = (List<Long>) request.getSession().getAttribute("tournamentIdList");
             historySearch = generateHistorySearch(countryAthleteList, tournamentIdList);
         }

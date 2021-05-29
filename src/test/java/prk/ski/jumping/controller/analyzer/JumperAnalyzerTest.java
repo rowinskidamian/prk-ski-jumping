@@ -12,6 +12,10 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author DamianRowinski
+ */
+
 class JumperAnalyzerTest {
     private JumperAnalyzer jumperAnalyzer;
     private Jumper givenJumper;
