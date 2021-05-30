@@ -43,8 +43,9 @@ public class TournamentParser {
 
             if(checkIfTournamentIsGroup(link)) {
                 TournamentWorldCup cup = new TournamentWorldCup(123, date, place, gender, link);
+                System.out.println("Parsed: " + cup);
                 listOfTournaments.add(cup);
-            };
+            }
 
         }
         return listOfTournaments;
