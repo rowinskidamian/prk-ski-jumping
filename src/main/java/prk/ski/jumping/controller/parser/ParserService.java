@@ -45,6 +45,19 @@ public class ParserService {
         }
     }
 
+    public void addSmallTournamentListByURL(String URL) throws DataBaseException {
+        List<TournamentWorldCup> tournamentWorldCupList = null;
+        try {
+            tournamentWorldCupList = tournamentParser.getSmallTournamentList(URL);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (TournamentWorldCup twc : tournamentWorldCupList) {
+            tournamentWorldCupDao.create(twc);
+        }
+    }
+
     public void addTournamentListByURL(String URL) throws DataBaseException {
         List<TournamentWorldCup> tournamentWorldCupList = null;
         try {

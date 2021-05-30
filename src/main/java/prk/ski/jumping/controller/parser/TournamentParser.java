@@ -20,6 +20,18 @@ public class TournamentParser {
         return null;
     }
 
+    public List<TournamentWorldCup> getSmallTournamentList(String URL) throws IOException {
+        List<TournamentWorldCup> listOfTournaments = new ArrayList<>();
+
+        Document document = Jsoup.connect(URL).get();
+        Elements cupElements = document.getElementsByClass("table-row table-row_theme_small");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-uuuu");
+        for (int i = 0; i < 15; i++) {
+            getTournamentAndAddToList(listOfTournaments, formatter, cupElements.get(i));
+        }
+        return listOfTournaments;
+    }
+
     public List<TournamentWorldCup> getTournamentList(String URL) throws IOException {
         List<TournamentWorldCup> listOfTournaments = new ArrayList<>();
 
@@ -27,28 +39,31 @@ public class TournamentParser {
         Elements cupElements = document.getElementsByClass("table-row table-row_theme_small");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-uuuu");
         for (Element e : cupElements) {
-
-            Document cupElement = Jsoup.parse(e.toString());
-
-            Elements dateElement = cupElement.getElementsByClass("bb-xs pb-xs-1_1 pl-xs-1 g-xs-6 g-sm-3 g-md-2 g-lg-2 justify-left");
-            Elements placeElement = cupElement.getElementsByClass("bb-xs pb-xs-1_1 g-xs-11 g-sm-6 g-md-4 g-lg-4 justify-left bold");
-            Elements genderElement = cupElement.getElementsByClass("split-row__item split-row__item_text_medium justify-center reset-padding bold");
-
-
-            LocalDate date = LocalDate.parse(dateElement.text(), formatter);
-            String place = placeElement.text();
-            String gender = genderElement.text();
-            String link = placeElement.attr("href");
-
-
-            if(checkIfTournamentIsGroup(link)) {
-                TournamentWorldCup cup = new TournamentWorldCup(123, date, place, gender, link);
-                System.out.println("Parsed: " + cup);
-                listOfTournaments.add(cup);
-            }
+            getTournamentAndAddToList(listOfTournaments, formatter, e);
 
         }
         return listOfTournaments;
+    }
+
+    private void getTournamentAndAddToList(List<TournamentWorldCup> listOfTournaments, DateTimeFormatter formatter,
+                                           Element element) throws IOException {
+        Document cupElement = Jsoup.parse(element.toString());
+
+        Elements dateElement = cupElement.getElementsByClass("bb-xs pb-xs-1_1 pl-xs-1 g-xs-6 g-sm-3 g-md-2 g-lg-2 justify-left");
+        Elements placeElement = cupElement.getElementsByClass("bb-xs pb-xs-1_1 g-xs-11 g-sm-6 g-md-4 g-lg-4 justify-left bold");
+        Elements genderElement = cupElement.getElementsByClass("split-row__item split-row__item_text_medium justify-center reset-padding bold");
+
+
+        LocalDate date = LocalDate.parse(dateElement.text(), formatter);
+        String place = placeElement.text();
+        String gender = genderElement.text();
+        String link = placeElement.attr("href");
+
+        if(checkIfTournamentIsGroup(link)) {
+            TournamentWorldCup cup = new TournamentWorldCup(123, date, place, gender, link);
+            System.out.println("Parsed: " + cup);
+            listOfTournaments.add(cup);
+        }
     }
 
     public boolean checkIfTournamentIsGroup(String link) throws IOException {
