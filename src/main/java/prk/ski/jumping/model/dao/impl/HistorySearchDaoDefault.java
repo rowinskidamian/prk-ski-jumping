@@ -1,7 +1,6 @@
 package prk.ski.jumping.model.dao.impl;
 
 import prk.ski.jumping.controller.utils.DbUtilities;
-import prk.ski.jumping.controller.utils.DbUtils;
 import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.dao.HistorySearchDao;
 import prk.ski.jumping.model.dao.impl.additional.AthleteCountryListDao;
