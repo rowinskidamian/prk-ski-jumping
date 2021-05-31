@@ -14,14 +14,20 @@ public class DbUtilities {
         if (dataSource == null) {
             try {
                 Context initContext = new InitialContext();
-                Context envContext = (Context)initContext.lookup("java:/comp/env");
-                dataSource = (DataSource)envContext.lookup("jdbc/prk-ski-jumping");
-            } catch (NamingException e) { e.printStackTrace(); }
+                Context envContext = (Context) initContext.lookup("java:/comp/env");
+                dataSource = (DataSource) envContext.lookup("jdbc/prk-ski-jumping");
+            } catch (NamingException e) {
+                e.printStackTrace();
+            }
         }
         return dataSource;
     }
 
     public static Connection connectToDatabase() throws SQLException {
         return getInstance().getConnection();
+    }
+
+    public static void close() throws SQLException {
+        dataSource.getConnection().close();
     }
 }
