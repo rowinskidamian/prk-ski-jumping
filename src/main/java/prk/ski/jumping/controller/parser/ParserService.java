@@ -45,10 +45,10 @@ public class ParserService {
         }
     }
 
-    public void addSmallTournamentListByURL(String URL) throws DataBaseException {
+    public void addSmallTournamentListByURL(String URL, int noOfMaxResults) throws DataBaseException {
         List<TournamentWorldCup> tournamentWorldCupList = null;
         try {
-            tournamentWorldCupList = tournamentParser.getSmallTournamentList(URL);
+            tournamentWorldCupList = tournamentParser.getSmallTournamentList(URL, noOfMaxResults);
         } catch (IOException e) {
             e.printStackTrace();
         }

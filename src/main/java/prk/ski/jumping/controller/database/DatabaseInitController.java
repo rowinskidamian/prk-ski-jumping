@@ -1,4 +1,4 @@
-package prk.ski.jumping.controller;
+package prk.ski.jumping.controller.database;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,8 +19,8 @@ import java.util.List;
  * @author DamianRowinski
  */
 
-@WebServlet(name = "DatabaseLoadSmallController", value = "/database_load_small")
-public class DatabaseLoadSmallController extends HttpServlet {
+@WebServlet(name = "DatabaseInitController", value = "/database_init")
+public class DatabaseInitController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +31,7 @@ public class DatabaseLoadSmallController extends HttpServlet {
         ParserService parserService = new ParserService();
         parserService.setTournamentWorldCupDao(twcDao);
         try {
-            parserService.addSmallTournamentListByURL(url);
+            parserService.addTournamentListByURL(url);
             parserService.setTournamentJumperResultDao(new TournamentJumperResultDaoDefault());
             List<TournamentWorldCup> twcList = twcDao.getAll();
 
@@ -47,6 +47,6 @@ public class DatabaseLoadSmallController extends HttpServlet {
             request.getRequestDispatcher("error_page.jsp")
                     .forward(request, response);
         }
-
+        response.sendRedirect("/database_admin");
     }
 }

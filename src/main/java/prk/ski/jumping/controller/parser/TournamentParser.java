@@ -20,17 +20,18 @@ public class TournamentParser {
         return null;
     }
 
-    public List<TournamentWorldCup> getSmallTournamentList(String URL) throws IOException {
+    public List<TournamentWorldCup> getSmallTournamentList(String URL, int maxResults) throws IOException {
         List<TournamentWorldCup> listOfTournaments = new ArrayList<>();
 
         Document document = Jsoup.connect(URL).get();
         Elements cupElements = document.getElementsByClass("table-row table-row_theme_small");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-uuuu");
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < maxResults; i++) {
             getTournamentAndAddToList(listOfTournaments, formatter, cupElements.get(i));
         }
         return listOfTournaments;
     }
+
 
     public List<TournamentWorldCup> getTournamentList(String URL) throws IOException {
         List<TournamentWorldCup> listOfTournaments = new ArrayList<>();
