@@ -28,6 +28,7 @@ public class DbUtilities {
     }
 
     public static void close() throws SQLException {
-        dataSource.getConnection().close();
+        if (dataSource != null)
+            dataSource.getConnection().close();
     }
 }
