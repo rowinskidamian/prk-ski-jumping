@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 public class CountryAnalyzer {
 
     public Set<String> getCountryListForTournaments(List<TournamentJumperResult> tournamentParticipantsResults) {
+
         return tournamentParticipantsResults.stream()
                 .map(TournamentJumperResult::getOrigin)
                 .collect(Collectors.toSet());

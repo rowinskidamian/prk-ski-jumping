@@ -9,9 +9,13 @@
   <link rel="stylesheet" href="./style/style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js" integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <title>Ski Jumping Analyzer</title>
+  <style>
+    .hide {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-
 <nav class="navbar" style="padding: 20px 0">
   <jsp:include page="navbar.jsp"/>
 </nav>
@@ -27,22 +31,20 @@
 </section>
 <section class="section">
   <div class="container">
-    <div class="table-container" style="max-width: 1000px; margin: 0 auto">
-      <div class="control-panel container is-flex is-justify-content-space-between is-align-items-center">
-          <button class="toggle-view" type="submit" name="country_btn" value="country" class="button is-primary is-link" style="margin-left: 10px">
-            Pokaż wykres
-          </button>
-        </div>
-      </div>
+
+
     <c:choose>
       <c:when test="${empty historySearch.searchName}">
         <form action="/history_search" method="post">
-          <div class="field has-addons">
+          <div class="field has-addons" style="position: relative">
             <div class="control">
               <input class="input" type="text" placeholder="nazwa analizy" name="historySearchName">
             </div>
             <div class="control">
               <button class="button is-link">Zapisz analizę</button>
+            </div>
+            <div class="control-btn button is-primary is-link" style="margin-right: 90px; position: absolute; right: 0" >
+              Pokaż wykres
             </div>
           </div>
         </form>
@@ -50,17 +52,20 @@
       <c:otherwise>
         <h4 class="title is-4"> Przeglądasz zapisaną analizę o nazwie: ${historySearch.searchName}
         </h4>
+        <div class="control-btn button is-primary is-link" style="margin-left: 10px;" >
+          Pokaż wykres
+        </div>
       </c:otherwise>
     </c:choose>
+
   </div>
 </section>
-<section class="table list" style="margin-top: 0;">
+<section class=" table list" style="margin-top: 0;">
   <div class="container">
     <div class="table-container">
-      <table class="table is-striped is-hoverable is-fullwidth">
+      <table class=" table is-striped is-hoverable is-fullwidth">
         <thead>
         <tr>
-
           <th title="origin">Nazwa kraju</th>
           <th title="gold">Liczba zwycięstw</th>
           <th title="silver">L.2. miejsc</th>
@@ -85,11 +90,25 @@
 
 </section>
 
-<div class="container" style="margin: 70px auto; max-width: 700px">
+<div class="chart-container hide"  style="margin: 70px auto; max-width: 700px">
   <canvas id="myChart"></canvas>
 </div>
 <script>
-  let btn =
+  let btn = document.querySelector(".control-btn");
+  let chartContainer = document.querySelector(".chart-container");
+  let tableContainer = document.querySelector(".table-container");
+
+  btn.addEventListener("click", () => {
+    chartContainer.classList.toggle("hide");
+    tableContainer.classList.toggle("hide");
+    if (btn.innerText.toLowerCase() === "pokaż wykres") {
+      btn.innerText = "Pokaż tabelę"
+    } else {
+      btn.innerHTML = "Pokaż wykres";
+    }
+
+  })
+
 </script>
 <script src="chart.js"></script>
 </body>

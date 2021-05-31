@@ -43,6 +43,11 @@ let myChart = new Chart(ctx, {
             y: {
                 beginAtZero: true
             }
+        },
+        plugins: {
+            legend: {
+                display: false
+            }
         }
     }
 });
