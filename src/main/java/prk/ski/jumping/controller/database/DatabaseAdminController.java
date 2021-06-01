@@ -24,8 +24,11 @@ public class DatabaseAdminController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
-            int resultsNumber = dbOperations.getTotalTournamentNumber();
-            request.setAttribute("nazwa", resultsNumber);
+            int twc = dbOperations.getTotalTournamentNumber();
+            int tjr = dbOperations.getTotalJumperResultsNumber();
+
+            request.setAttribute("twc", twc);
+            request.setAttribute("tjr", tjr);
         } catch (DataBaseException e) {
             e.printStackTrace();
         }

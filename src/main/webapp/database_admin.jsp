@@ -21,7 +21,7 @@
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
-                    Panel administratora ${nazwa}
+                    Panel administratora
                 </h1>
             </div>
         </div>
@@ -29,28 +29,28 @@
         <table class="table is-striped" style="margin: 50px auto; width: 70%">
             <tbody>
                 <tr>
-                    <form method="get" action="/dbinit">
+                    <form method="get" action="/database_init">
                         <th>Wgraj dużo danych</th>
                         <th>operacja wgrywa wszystkie dane do bazy</th>
                         <th><Button type="submit" class="button is-info" >wykonaj</Button></th>
                     </form>
                 </tr>
                 <tr>
-                    <form method="get" action="/dbsmall">
+                    <form method="get" action="/database_load_small">
                         <th>Wgraj małą partię</th>
                         <th><input style="max-width: 200px;" name="maxTournaments" class="input is-info" type="number" placeholder="podaj ilość"></th>
                         <th><Button type="submit" class="button is-info" href="#">wykonaj</Button></th>
                     </form>
                 </tr>
                 <tr>
-                    <form method="get" action="/dbmin">
+                    <form method="get" action="/database_load_small">
                         <th>Wgraj minimalną partię</th>
                         <th>operacja wgrywa 5 turniejów</th>
                         <th><Button type="submit" class="button is-info" href="#">wykonaj</Button></th>
                     </form>
                 </tr>
                 <tr>
-                    <form method="get" action="/dbdel">
+                    <form method="get" action="/database_clean">
                         <th>Wyczyść bazę danych</th>
                         <th>operacja czyści bazę danych</th>
                         <th><Button type="submit" class="button is-danger" href="#">wykonaj</Button></th>
@@ -58,26 +58,18 @@
                 </tr>
             </tbody>
         </table>
-<%--    <table class="table is-striped" style="margin: 50px auto; width: 70%">--%>
-<%--        <thead>--%>
-<%--        <tr>--%>
-<%--            <form method="get" action="/dbdel">--%>
-<%--                <th>Wyczyść bazę danych</th>--%>
-<%--                <th>operacja czyści bazę danych</th>--%>
-<%--                <th><Button type="submit" class="button is-danger" href="#">wykonaj</Button></th>--%>
-<%--            </form>--%>
-<%--        </tr>--%>
-<%--        </thead>--%>
-<%--        <tbody>--%>
-<%--        <tr>--%>
-<%--            <form method="get" action="/dbdel">--%>
-<%--                <th>Wyczyść bazę danych</th>--%>
-<%--                <th>operacja czyści bazę danych</th>--%>
-<%--                <th><Button type="submit" class="button is-danger" href="#">wykonaj</Button></th>--%>
-<%--            </form>--%>
-<%--        </tr>--%>
-<%--        </tbody>--%>
-<%--    </table>--%>
+    <table class="table is-bordered" style="margin: 50px auto; width: 35%">
+        <tbody>
+            <tr>
+                <th>Ilość turniejów w bazie</th>
+                <th>${twc}</th>
+            </tr>
+            <tr>
+                <th>Ilość rezultatów z turniejów w bazie</th>
+                <th>${tjr}</th>
+            </tr>
+        </tbody>
+    </table>
 </section>
 </body>
 </html>
