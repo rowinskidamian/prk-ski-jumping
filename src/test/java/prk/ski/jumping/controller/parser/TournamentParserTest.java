@@ -1,7 +1,12 @@
 package prk.ski.jumping.controller.parser;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
-class TournamentParserTest {
+public class TournamentParserTest {
+
+    @Test
+    public void test1() {
+
+    }
 
 }

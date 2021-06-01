@@ -8,6 +8,10 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * @author RadosławParol
+ */
+
 public class TournamentWorldCupDB {
     private static long currentDbIndex = 0;
     private static HashMap<Long, TournamentWorldCup> database;
