@@ -11,11 +11,21 @@ import prk.ski.jumping.model.dao.impl.DBOperationsDaoDefault;
 
 import java.io.IOException;
 
+/**
+ * @author DamianRowinski
+ */
+
 @WebServlet(name = "DatabaseCleanController", value = "/database_clean")
 public class DatabaseCleanController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/database_delete_confirm.jsp")
+                .forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             DBOperationsDao dbOperations = new DBOperationsDaoDefault();
             dbOperations.cleanDatabase();
