@@ -14,10 +14,6 @@ import java.util.List;
 
 // link "https://www.fis-ski.com/DB/general/statistics.html?statistictype=positions&positionstype=position&offset=250&sectorcode=JP&seasoncode=&categorycode=WC&gendercode=&competitornationcode=&place=&nationcode=&position=4&disciplinecode="
 
-/**
- * @author RadosławParol
- */
-
 public class TournamentParser {
 
     public List<TournamentWorldCup> getAll() {
@@ -65,7 +61,6 @@ public class TournamentParser {
             /**
              * Created smaller Document class object from list of Elements
              */
-            Document cupElement = Jsoup.parse(e.toString());
             getTournamentAndAddToList(listOfTournaments, formatter, e);
 
         }
@@ -76,46 +71,43 @@ public class TournamentParser {
                                            Element element) throws IOException {
         Document cupElement = Jsoup.parse(element.toString());
 
-            /**
-             * Extracted a date, place and gender element by selecting given element with following classes
-             */
+        /**
+         * Extracted a date, place and gender element by selecting given element with following classes
+         */
             Elements dateElement = cupElement.getElementsByClass("bb-xs pb-xs-1_1 pl-xs-1 g-xs-6 g-sm-3 g-md-2 g-lg-2 justify-left");
             Elements placeElement = cupElement.getElementsByClass("bb-xs pb-xs-1_1 g-xs-11 g-sm-6 g-md-4 g-lg-4 justify-left bold");
             Elements genderElement = cupElement.getElementsByClass("split-row__item split-row__item_text_medium justify-center reset-padding bold");
 
-            /**
-             * Declared LocalDate object and initialised by parsing date from String object with the use of date formatter
-             */
+        /**
+        * Declared LocalDate object and initialised by parsing date from String object with the use of date formatter
+        */
             LocalDate date = LocalDate.parse(dateElement.text(), formatter);
-
-            /**
-             * Declared a place String object and initialised with the text from placeElement for a given cupElement
-             */
+        /**
+         * Declared a place String object and initialised with the text from placeElement for a given cupElement
+         */
             String place = placeElement.text();
-            /**
-             * Declared a gender String object and initialised with the text from genderElement for a given cupElement
-             */
+        /**
+         * Declared a gender String object and initialised with the text from genderElement for a given cupElement
+         */
             String gender = genderElement.text();
-            /**
-             * Declared a link String object and initialised with the href attribute from genderElement for a given cupElement
-             */
+        /**
+         * Declared a link String object and initialised with the href attribute from genderElement for a given cupElement
+         */
             String link = placeElement.attr("href");
-
+        /**
+         * Checked if the given cupElement represent a group tournament
+         */
+        if(checkIfTournamentIsGroup(link)) {
             /**
-             * Checked if the given cupElement represent a group tournament
+             * Declared a TournamentWorldCup class object and initialised with previously gathered data
              */
-            if(checkIfTournamentIsGroup(link)) {
-                /**
-                 * Declared a TournamentWorldCup class object and initialised with previously gathered data
-                 */
-                TournamentWorldCup cup = new TournamentWorldCup(123, date, place, gender, link);
-                System.out.println("Parsed: " + cup);
-                /**
-                 * Added tournament to the list of tournaments
-                 */
-                listOfTournaments.add(cup);
-            };
-
+            TournamentWorldCup cup = new TournamentWorldCup(123, date, place, gender, link);
+            System.out.println("Parsed: " + cup);
+            /**
+             * Added tournament to the list of tournaments
+             */
+            listOfTournaments.add(cup);
+        }
     }
 
     /**
