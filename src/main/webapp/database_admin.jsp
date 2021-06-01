@@ -38,7 +38,7 @@
                 <tr>
                     <form method="get" action="/database_load_small">
                         <th>Wgraj małą partię</th>
-                        <th><input style="max-width: 200px;" name="maxTournaments" class="input is-info" type="number" placeholder="podaj ilość"></th>
+                        <th><input style="max-width: 200px;" name="tournamentAmount" class="input is-info" type="number" placeholder="podaj ilość"></th>
                         <th><Button type="submit" class="button is-info" href="#">wykonaj</Button></th>
                     </form>
                 </tr>
