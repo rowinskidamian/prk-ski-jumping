@@ -51,16 +51,17 @@ public class JumperResultController extends HttpServlet {
                 request.getRequestDispatcher("error_page.jsp").forward(request, response);
             }
             countryAthleteList = Arrays.asList(request.getParameterValues("selected_item"));
-//            List<String> list = (List<String>) request.getSession().getAttribute("tournamentIdList");
             tournamentIdList = (List<Long>) request.getSession().getAttribute("tournamentIdList");
             historySearch = generateHistorySearch(countryAthleteList, tournamentIdList);
         }
 
         List<TournamentJumperResult> tjrList = getTJRfromTournamentId(tournamentIdList, request, response);
-        List<Jumper> jumperList = jumperAnalyzer.getJumperAnalysisFor(tjrList, countryAthleteList);
+        List<Jumper> jumperList = jumperAnalyzer.makeJumperAnalysis(tjrList, countryAthleteList);
 
         request.getSession()
                 .setAttribute("historySearch", historySearch);
+        request.getSession()
+                .setAttribute("jumperChartList", jumperList);
         request.setAttribute("jumperList", jumperList);
 
         request.getRequestDispatcher("jumper_result.jsp")
@@ -117,7 +118,7 @@ public class JumperResultController extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 
     }
 

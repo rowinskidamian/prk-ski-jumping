@@ -23,8 +23,8 @@ public class ResultParser {
             " AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36";
 
     public List<TournamentJumperResult> getResultListFor(TournamentWorldCup tournamentWorldCup) throws ParsingException {
-//        String link = tournamentWorldCup.getLink();
-        return getResultListFor("link");
+        String link = tournamentWorldCup.getLink();
+        return getResultListFor(link);
     }
 
     public List<TournamentJumperResult> getResultListFor(String resultURL) throws ParsingException {
@@ -50,6 +50,7 @@ public class ResultParser {
                 tjr.setAthleteName(athleteName);
                 tjr.setTotalPoints(Double.parseDouble(totalPoints));
                 tjr.setOrigin(originElement.text());
+                System.out.println("Parsed: " + tjr);
                 tjrList.add(tjr);
             }
             return tjrList;

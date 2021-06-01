@@ -23,12 +23,16 @@ public class DbUtils {
     static final String DB_USERNAME = "root";
     static final String DB_PASSWORD = "coderowo";
 
+
+
     private DbUtils() {
-        HikariConfig config = new HikariConfig();
-        config.setJdbcUrl(DATABASE_URL);
-        config.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        config.setUsername(DB_USERNAME);
-        config.setPassword(DB_PASSWORD);
+        String configFile = "src/main/resources/db.properties";
+
+        HikariConfig config = new HikariConfig(configFile);
+//        config.setJdbcUrl(DATABASE_URL);
+//        config.setDriverClassName("com.mysql.cj.jdbc.Driver");
+//        config.setUsername(DB_USERNAME);
+//        config.setPassword(DB_PASSWORD);
         dataSource = new HikariDataSource(config);
     }
 

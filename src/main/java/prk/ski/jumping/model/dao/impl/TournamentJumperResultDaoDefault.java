@@ -1,7 +1,6 @@
 package prk.ski.jumping.model.dao.impl;
 
 import prk.ski.jumping.controller.utils.DbUtilities;
-import prk.ski.jumping.controller.utils.DbUtils;
 import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.dao.TournamentJumperResultDao;
 import prk.ski.jumping.model.dao.query.TournamentJumperResultQuery;
@@ -49,7 +48,7 @@ public class TournamentJumperResultDaoDefault implements TournamentJumperResultD
     public Optional<TournamentJumperResult> getById(long id) throws DataBaseException {
         TournamentJumperResult tjr = null;
 
-        try (Connection connection = DbUtils.connectToDatabase();
+        try (Connection connection = DbUtilities.connectToDatabase();
              PreparedStatement ps = connection.prepareStatement(TournamentJumperResultQuery.READ.getSqlQuery())) {
             ps.setLong(1, id);
 
@@ -96,7 +95,7 @@ public class TournamentJumperResultDaoDefault implements TournamentJumperResultD
     public List<TournamentJumperResult> getAll() throws DataBaseException {
         List<TournamentJumperResult> tjrList = new ArrayList<>();
 
-        try (Connection cn = DbUtils.connectToDatabase();
+        try (Connection cn = DbUtilities.connectToDatabase();
              Statement statement = cn.createStatement();
              ResultSet rs = statement.executeQuery(TournamentJumperResultQuery.GET_ALL.getSqlQuery())) {
 
@@ -124,7 +123,7 @@ public class TournamentJumperResultDaoDefault implements TournamentJumperResultD
 
     @Override
     public void update(TournamentJumperResult tjr) throws DataBaseException {
-        try (PreparedStatement ps = DbUtils.connectToDatabase()
+        try (PreparedStatement ps = DbUtilities.connectToDatabase()
                 .prepareStatement(TournamentJumperResultQuery.UPDATE.getSqlQuery())) {
             ps.setInt(1, tjr.getRank());
             ps.setString(2, tjr.getOrigin());
@@ -141,7 +140,7 @@ public class TournamentJumperResultDaoDefault implements TournamentJumperResultD
 
     @Override
     public void delete(long id) throws DataBaseException {
-        try (PreparedStatement ps = DbUtils.connectToDatabase()
+        try (PreparedStatement ps = DbUtilities.connectToDatabase()
                 .prepareStatement(TournamentJumperResultQuery.DELETE.getSqlQuery())) {
             ps.setLong(1, id);
             ps.executeUpdate();

@@ -1,18 +1,34 @@
 package prk.ski.jumping.controller.utils;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DbUtilities {
+    private static DataSource dataSource;
 
-    static final String DATABASE_URL = "jdbc:mysql://localhost:3306/prk_ski_jumping?serverTimezone=UTC";
-    static final String DATABASE_USERNAME = "root";
-    static final String DATABASE_PASSWORD = "root";
+    private static DataSource getInstance() {
+        if (dataSource == null) {
+            try {
+                Context initContext = new InitialContext();
+                Context envContext = (Context) initContext.lookup("java:/comp/env");
+                dataSource = (DataSource) envContext.lookup("jdbc/prk-ski-jumping");
+            } catch (NamingException e) {
+                e.printStackTrace();
+            }
+        }
+        return dataSource;
+    }
 
     public static Connection connectToDatabase() throws SQLException {
-        DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+        return getInstance().getConnection();
+    }
 
-        return DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+    public static void close() throws SQLException {
+        if (dataSource != null)
+            dataSource.getConnection().close();
     }
 }

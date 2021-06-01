@@ -20,17 +20,23 @@ import java.util.List;
 
 public class TournamentParser {
 
-    /**
-     * This class is responsible for retrieving data from given website.
-     */
+    public List<TournamentWorldCup> getAll() {
+        return null;
+    }
+
+    public List<TournamentWorldCup> getSmallTournamentList(String URL, int maxResults) throws IOException {
+        List<TournamentWorldCup> listOfTournaments = new ArrayList<>();
+
+        Document document = Jsoup.connect(URL).get();
+        Elements cupElements = document.getElementsByClass("table-row table-row_theme_small");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-uuuu");
+        for (int i = 0; i < maxResults; i++) {
+            getTournamentAndAddToList(listOfTournaments, formatter, cupElements.get(i));
+        }
+        return listOfTournaments;
+    }
 
 
-    /**
-     * This method is the most important method in this class
-     * @param URL to existing website with the most recent ski jumping results
-     * @return List<TournamentWorldCup> list of TournamentWorldCup classes of the most recent tournaments
-     * @throws IOException
-     */
     public List<TournamentWorldCup> getTournamentList(String URL) throws IOException {
         /**
          * Declared a List of TournamentWorldCup which will be returned at the end of method
@@ -60,6 +66,15 @@ public class TournamentParser {
              * Created smaller Document class object from list of Elements
              */
             Document cupElement = Jsoup.parse(e.toString());
+            getTournamentAndAddToList(listOfTournaments, formatter, e);
+
+        }
+        return listOfTournaments;
+    }
+
+    private void getTournamentAndAddToList(List<TournamentWorldCup> listOfTournaments, DateTimeFormatter formatter,
+                                           Element element) throws IOException {
+        Document cupElement = Jsoup.parse(element.toString());
 
             /**
              * Extracted a date, place and gender element by selecting given element with following classes
@@ -94,17 +109,13 @@ public class TournamentParser {
                  * Declared a TournamentWorldCup class object and initialised with previously gathered data
                  */
                 TournamentWorldCup cup = new TournamentWorldCup(123, date, place, gender, link);
+                System.out.println("Parsed: " + cup);
                 /**
                  * Added tournament to the list of tournaments
                  */
                 listOfTournaments.add(cup);
             };
 
-        }
-        /**
-         * Returned complete list of tournaments
-         */
-        return listOfTournaments;
     }
 
     /**

@@ -30,21 +30,37 @@
         <c:choose>
         <c:when test="${empty historySearch.searchName}">
         <form action="/history_search" method="post">
-            <div class="field has-addons">
-                <div class="control">
-                    <input class="input" type="text" placeholder="nazwa analizy" name="historySearchName">
+            <div class="columns">
+                <div class="column">
+                    <div class="field has-addons">
+                        <div class="control">
+                            <input class="input" type="text" placeholder="nazwa analizy" name="historySearchName">
+                        </div>
+                        <div class="control">
+                            <button class="button is-link">Zapisz analizę</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="control">
-                    <button class="button is-link">Zapisz analizę</button>
+                <div class="column">
+                    <a class="button is-info is-light" href="/jumper_chart">
+                        Pokaż wykres</a>
                 </div>
+                <div class="column"></div>
+                <div class="column"></div>
+
             </div>
+
         </form>
+
         </c:when>
         <c:otherwise>
             <h4 class="title is-4"> Przeglądasz zapisaną analizę o nazwie: ${historySearch.searchName}
             </h4>
+            <a class="button is-info is-light" href="/jumper_chart">
+                Pokaż wykres</a>
         </c:otherwise>
         </c:choose>
+
     </div>
 </section>
 <section class="table list" style="margin-top: 0;">
