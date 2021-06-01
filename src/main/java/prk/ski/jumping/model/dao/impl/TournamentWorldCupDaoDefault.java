@@ -9,8 +9,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-/*
-* @author RadosławParol
+/**
+ * @author RadosławParol
  */
 public class TournamentWorldCupDaoDefault implements TournamentWorldCupDao {
 

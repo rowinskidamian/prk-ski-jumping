@@ -7,6 +7,10 @@ import prk.ski.jumping.model.dao.CountryDao;
 import prk.ski.jumping.model.domain.Country;
 import prk.ski.jumping.model.domain.memory.CountryDB;
 
+/**
+ * @author RadosławParol
+ */
+
 public class CountryDaoDefault implements CountryDao {
 
 	private CountryDB countryDB;

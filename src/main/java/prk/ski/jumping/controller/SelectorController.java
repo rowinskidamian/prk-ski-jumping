@@ -14,6 +14,7 @@ import prk.ski.jumping.model.domain.TournamentJumperResult;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author RadosławParol
@@ -40,7 +41,7 @@ public class SelectorController extends HttpServlet {
 
             //list with ids of tournaments selected from checkboxes
         List<String> selectedTournaments = Arrays.asList(request.getParameterValues("tournament_id"));
-        System.out.println(selectedTournaments);
+
 
         tournamentIds = new ArrayList<>();
 
@@ -49,7 +50,7 @@ public class SelectorController extends HttpServlet {
 
             //set new tournamentIds in session
         request.getSession().setAttribute("tournamentIdList", tournamentIds);
-        System.out.println(tournamentIds);
+
             //list with every jumper from every tournament
         List<TournamentJumperResult> tjrList = new ArrayList<>();
         TournamentJumperResultDao tjrDao = new TournamentJumperResultDaoDefault();
@@ -88,10 +89,12 @@ public class SelectorController extends HttpServlet {
 
         //use Analyzer to get set of jumpers to display in the view
         Set<String> analyzedCountries = countryAnalyzer.getCountryListForTournaments(tjrList);
+        List<String> sortedList = new ArrayList<>(analyzedCountries);
+        Collections.sort(sortedList);
 
 
         request.setAttribute("view", "country");
-        request.setAttribute("items", analyzedCountries);
+        request.setAttribute("items", sortedList);
         request.getRequestDispatcher("selector.jsp").forward(request, response);
     }
 
@@ -99,10 +102,11 @@ public class SelectorController extends HttpServlet {
 
         //use Analyzer to get set of jumpers to display in the view
         Set<String> analyzedJumpers = jumperAnalyzer.getJumperNamesListForTournament(tjrList);
-
+        List<String> sortedList = new ArrayList<>(analyzedJumpers);
+        Collections.sort(sortedList);
 
         request.setAttribute("view", "jumper");
-        request.setAttribute("items", analyzedJumpers);
+        request.setAttribute("items", sortedList);
         request.getRequestDispatcher("selector.jsp").forward(request, response);
     }
 

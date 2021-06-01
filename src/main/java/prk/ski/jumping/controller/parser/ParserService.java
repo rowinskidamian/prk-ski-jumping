@@ -26,12 +26,12 @@ public class ParserService {
         this.tournamentParser = new TournamentParser();
     }
 
-    public void addTournamentListToDatabase() throws DataBaseException {
-        List<TournamentWorldCup> tournamentWorldCupList = tournamentParser.getAll();
-        for (TournamentWorldCup twc : tournamentWorldCupList) {
-            tournamentWorldCupDao.create(twc);
-        }
-    }
+//    public void addTournamentListToDatabase() throws DataBaseException {
+//        List<TournamentWorldCup> tournamentWorldCupList = tournamentParser.getAll();
+//        for (TournamentWorldCup twc : tournamentWorldCupList) {
+//            tournamentWorldCupDao.create(twc);
+//        }
+//    }
 
     public void printTournamentWorldCupList() throws DataBaseException {
         List<TournamentWorldCup> databaseRecordList = tournamentWorldCupDao.getAll();
