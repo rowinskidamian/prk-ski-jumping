@@ -13,6 +13,7 @@ import java.io.IOException;
 
 @WebServlet(name = "DatabaseCleanController", value = "/database_clean")
 public class DatabaseCleanController extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
