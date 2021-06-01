@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
     <meta charset="UTF-8" />
@@ -85,7 +86,8 @@
                         <td>${jumper.goldMedals}</td>
                         <td>${jumper.silverMedals}</td>
                         <td>${jumper.bronzeMedals}</td>
-                        <td>${jumper.totalPoints}</td>
+
+                        <td><fmt:formatNumber type="number" maxFractionDigits="2" value="${jumper.totalPoints}" /></td>
                     </tr>
                 </c:forEach>
                 </tbody>
