@@ -13,26 +13,63 @@ import java.util.ArrayList;
 import java.util.List;
 
 // link "https://www.fis-ski.com/DB/general/statistics.html?statistictype=positions&positionstype=position&offset=250&sectorcode=JP&seasoncode=&categorycode=WC&gendercode=&competitornationcode=&place=&nationcode=&position=4&disciplinecode="
-
+/**
+ * @author RadosławParol
+ *
+ */
 public class TournamentParser {
+    /**
+     * This class is responsible for retrieving data from given website.
+     */
 
-    public List<TournamentWorldCup> getAll() {
-        return null;
-    }
-
+    /**
+     * Method connects with website with the use of Jsoup library,
+     * retrieve data from certain amount of html elements with a given class name and returns it as a list.
+     * @param URL is a link to a website with a list of current tournaments
+     * @param maxResults total number of results that are needed to retrieve
+     * @return List filled with TournamentWorldCup class objects
+     * @throws IOException
+     */
     public List<TournamentWorldCup> getSmallTournamentList(String URL, int maxResults) throws IOException {
+        /**
+         * Declared a List of TournamentWorldCup which will be returned at the end of method
+         */
         List<TournamentWorldCup> listOfTournaments = new ArrayList<>();
 
+        /**
+         * Declared a Document class object which connects to a given URL with the use of Jsoup library
+         */
         Document document = Jsoup.connect(URL).get();
+        /**
+         * Declared a Element class object which extracts every element with a given class from the document connected to a website
+         */
         Elements cupElements = document.getElementsByClass("table-row table-row_theme_small");
+        /**
+         * Declared a date formatter which will be used in transforming string that contains data to a LocalDate class object
+         */
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-uuuu");
+        /**
+         * Looped over limited elements in the cupElements object
+         */
         for (int i = 0; i < maxResults; i++) {
+            /**
+             * Called method that fills the list with the complete objects
+             */
             getTournamentAndAddToList(listOfTournaments, formatter, cupElements.get(i));
         }
+        /**
+         * Returned list of tournaments limited by the maxResult parameter
+         */
         return listOfTournaments;
     }
 
-
+    /**
+     * Method connects with website with the use of Jsoup library,
+     * retrieve data from html elements with a given class name and returns it as a list.
+     * @param URL is a link to a website with a list of current tournaments
+     * @return List filled with TournamentWorldCup class objects
+     * @throws IOException
+     */
     public List<TournamentWorldCup> getTournamentList(String URL) throws IOException {
         /**
          * Declared a List of TournamentWorldCup which will be returned at the end of method
@@ -59,14 +96,25 @@ public class TournamentParser {
          */
         for (Element e : cupElements) {
             /**
-             * Created smaller Document class object from list of Elements
+             * Called method that fills the list with the complete objects
              */
             getTournamentAndAddToList(listOfTournaments, formatter, e);
 
         }
+        /**
+         * Returned list full of tournaments
+         */
         return listOfTournaments;
     }
 
+
+    /**
+     * Method responsible for creating TournamentWorldCup class type object and adding it into the list.
+     * @param listOfTournaments list to be filled with the TournamentWorldCup class type objects
+     * @param formatter a date formatter that helps converting string type date to LocalDate class type object
+     * @param element a html element containing details about every object in a listOfTournaments
+     * @throws IOException
+     */
     private void getTournamentAndAddToList(List<TournamentWorldCup> listOfTournaments, DateTimeFormatter formatter,
                                            Element element) throws IOException {
         Document cupElement = Jsoup.parse(element.toString());
