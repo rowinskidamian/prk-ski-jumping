@@ -29,8 +29,8 @@ public class JumperAnalyzer {
     /**
      * Essential method which makes analysis from provided tournament results for chosen jumpers. First it checks
      * if jumper from resultTournamentList is present in provided jumperNamesList. Then it uses
-     * @see JumperAnalyzer#addJumperToMapIfNotPresent(Map, String) to populate auxiliary jumperMap and also
-     * @see JumperAnalyzer#updateCurrentJumper(Map, TournamentJumperResult, String) method which updates auxiliary
+     * {@link JumperAnalyzer#addJumperToMapIfNotPresent(Map, String)} to populate auxiliary jumperMap and also
+     * {@link JumperAnalyzer#updateCurrentJumper(Map, TournamentJumperResult, String)} method which updates auxiliary
      * jumperMap with current jumper from provided resultTournamentList.
      *
      * @param resultTournamentList is a list of results for jumpers from tournaments.
@@ -60,7 +60,7 @@ public class JumperAnalyzer {
 
     /**
      * Method which generates ski jumper with updated fields by provided results from tournament result list. Used by:
-     * @see JumperAnalyzer#makeJumperAnalysis(List, List) which is method used to show application user analysed outcome.
+     * {@link JumperAnalyzer#makeJumperAnalysis(List, List)} which is method used to show application user analysed outcome.
      *
      * @param currentJumpersMap is a auxiliary map which will be updated by new or updated jumper
      * @param providedJumperData jumper is updated by this provided data
@@ -107,7 +107,7 @@ public class JumperAnalyzer {
     /**
      * Auxiliary method, populates given jumperMap with new Jumper object created with provided athleteName if jumper for given name
      * is not currently present in map. It is used by:
-     * @see JumperAnalyzer#makeJumperAnalysis(List, List) which is method used to show application user analysed outcome.
+     * {@link JumperAnalyzer#makeJumperAnalysis(List, List)} which is method used to show application user analysed outcome.
      *
      * @param jumperMap provided map with jumper objects organized by key as athleteNames
      * @param athleteName is a String jumper (most likely first and last name).

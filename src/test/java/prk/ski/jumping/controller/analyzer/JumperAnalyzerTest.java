@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author DamianRowinski
  */
 
-class JumperAnalyzerTest {
+public class JumperAnalyzerTest {
     private JumperAnalyzer jumperAnalyzer;
     private Jumper givenJumper;
     private String athleteName;
@@ -69,9 +69,7 @@ class JumperAnalyzerTest {
             Set<String> outcomeSet = jumperAnalyzer.getJumperNamesListForTournament(givenResultList);
 
             assertEquals(expectedSet, outcomeSet);
-
         }
-
     }
 
     @Nested
@@ -127,6 +125,35 @@ class JumperAnalyzerTest {
             expectedJumper.setAthleteName(athleteName);
             expectedJumper.setTotalPoints(1000);
             expectedJumper.setGoldMedals(1);
+            expectedJumper.setOrigin("POLSKA");
+
+            Jumper returnedJumper = null;
+            Optional<Jumper> optionalJumper = jumperAnalyzer.updateCurrentJumper(jumperMap, providedJumperData, athleteName);
+            if (optionalJumper.isPresent()) {
+                returnedJumper = optionalJumper.get();
+            }
+            assertEquals(expectedJumper, returnedJumper);
+        }
+
+        @ParameterizedTest(name = "Given jumper rank {0} should update jumper gold:{1} silver:{2} bronze:{3} medals")
+        @CsvSource({"1,1,0,0",
+                "2,0,1,0",
+                "3,0,0,1"})
+        void givenJumperRankShouldUpdateJumperMedals(int rank, int goldMedals, int silverMedals, int bronzeMedals) {
+            jumperMap.put(athleteName, givenJumper);
+
+            TournamentJumperResult providedJumperData = new TournamentJumperResult();
+            providedJumperData.setAthleteName(athleteName);
+            providedJumperData.setTotalPoints(1000);
+            providedJumperData.setRank(rank);
+            providedJumperData.setOrigin("POLSKA");
+
+            Jumper expectedJumper = new Jumper();
+            expectedJumper.setAthleteName(athleteName);
+            expectedJumper.setTotalPoints(1000);
+            expectedJumper.setGoldMedals(goldMedals);
+            expectedJumper.setSilverMedals(silverMedals);
+            expectedJumper.setBronzeMedals(bronzeMedals);
             expectedJumper.setOrigin("POLSKA");
 
             Jumper returnedJumper = null;
