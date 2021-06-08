@@ -6,7 +6,6 @@
     <div id="navMenu" class="navbar-menu">
         <div class="navbar-start">
             <a class="navbar-item" href="/homepage">Strona główna</a>
-            <a class="navbar-item" href="/javadoc">JavaDoc</a>
             <a class="navbar-item" href="/database_admin">Panel administratora</a>
 
         </div>
