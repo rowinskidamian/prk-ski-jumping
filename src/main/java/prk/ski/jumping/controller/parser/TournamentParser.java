@@ -39,7 +39,7 @@ public class TournamentParser {
         /**
          * Declared a Document class object which connects to a given URL with the use of Jsoup library
          */
-        Document document = Jsoup.connect(URL).get();
+        Document document = getDocumentFromURL(URL);
         /**
          * Declared a Element class object which extracts every element with a given class from the document connected to a website
          */
@@ -61,6 +61,10 @@ public class TournamentParser {
          * Returned list of tournaments limited by the maxResult parameter
          */
         return listOfTournaments;
+    }
+
+    protected Document getDocumentFromURL(String URL) throws IOException {
+        return Jsoup.connect(URL).get();
     }
 
     /**
