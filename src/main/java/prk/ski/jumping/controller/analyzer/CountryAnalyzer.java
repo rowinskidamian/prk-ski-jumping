@@ -55,7 +55,6 @@ public class CountryAnalyzer {
         } else if (rank == 3) {
             currentCountry.setBronzeMedals(currentCountry.getBronzeMedals() + 1);
         }
-
         double totalPoints = Math.round((currentCountry.getTotalPoints()*100.0)/100.0);
         double pointsFromTournament = tournamentJumperResult.getTotalPoints();
         totalPoints += pointsFromTournament;

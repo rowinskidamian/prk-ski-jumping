@@ -6,6 +6,10 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+/**
+ * @author RadosławParol
+ */
+
 @WebServlet(name = "HomePageController", value = "/homepage")
 public class HomePageController extends HttpServlet {
 
