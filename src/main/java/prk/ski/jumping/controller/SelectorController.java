@@ -5,16 +5,13 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import prk.ski.jumping.controller.analyzer.CountryAnalyzer;
 import prk.ski.jumping.controller.analyzer.JumperAnalyzer;
-import prk.ski.jumping.controller.parser.ParserService;
 import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.dao.TournamentJumperResultDao;
 import prk.ski.jumping.model.dao.impl.TournamentJumperResultDaoDefault;
-import prk.ski.jumping.model.domain.HistorySearch;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @author RadosławParol

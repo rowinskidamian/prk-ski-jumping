@@ -1,14 +1,11 @@
 package prk.ski.jumping.controller.analyzer;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import prk.ski.jumping.model.domain.Country;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
