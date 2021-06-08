@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 public class JumperDaoDefault implements JumperDao {
-    private JumperDB jumperDB;
+    private final JumperDB jumperDB;
 
     public JumperDaoDefault() {
         jumperDB = new JumperDB();

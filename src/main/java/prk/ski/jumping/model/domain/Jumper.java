@@ -108,7 +108,7 @@ public class Jumper implements Comparable<Jumper>{
     }
 
     public int hashCode() {
-        return (int) Objects.hash(athleteName, origin, goldMedals, silverMedals, bronzeMedals, totalPoints, idHistory);
+        return Objects.hash(athleteName, origin, goldMedals, silverMedals, bronzeMedals, totalPoints, idHistory);
     }
 
     public String toString() {

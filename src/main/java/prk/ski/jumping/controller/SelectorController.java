@@ -24,8 +24,8 @@ import java.util.stream.Collectors;
 public class SelectorController extends HttpServlet {
 
     private List<Long> tournamentIds;
-    private JumperAnalyzer jumperAnalyzer = new JumperAnalyzer();
-    private CountryAnalyzer countryAnalyzer = new CountryAnalyzer();
+    private final JumperAnalyzer jumperAnalyzer = new JumperAnalyzer();
+    private final CountryAnalyzer countryAnalyzer = new CountryAnalyzer();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,7 +40,7 @@ public class SelectorController extends HttpServlet {
         }
 
             //list with ids of tournaments selected from checkboxes
-        List<String> selectedTournaments = Arrays.asList(request.getParameterValues("tournament_id"));
+        String[] selectedTournaments = request.getParameterValues("tournament_id");
 
 
         tournamentIds = new ArrayList<>();
@@ -81,8 +81,6 @@ public class SelectorController extends HttpServlet {
         if (country_btn != null) {
             createCountrySelectionView(request, response, tjrList);
         }
-
-
     }
 
     private void createCountrySelectionView(HttpServletRequest request, HttpServletResponse response, List<TournamentJumperResult> tjrList) throws ServletException, IOException {
@@ -108,10 +106,5 @@ public class SelectorController extends HttpServlet {
         request.setAttribute("view", "jumper");
         request.setAttribute("items", sortedList);
         request.getRequestDispatcher("selector.jsp").forward(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

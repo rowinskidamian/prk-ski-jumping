@@ -19,7 +19,7 @@ import java.util.List;
 @WebServlet(name = "TournamentChooserController", value = "/tournament_chooser")
 public class TournamentChooserController extends HttpServlet {
 
-    private TournamentWorldCupDao twcDao = new TournamentWorldCupDaoDefault();
+    private final TournamentWorldCupDao twcDao = new TournamentWorldCupDaoDefault();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,10 +37,5 @@ public class TournamentChooserController extends HttpServlet {
 
 
         request.getRequestDispatcher("tournament_chooser.jsp").forward(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

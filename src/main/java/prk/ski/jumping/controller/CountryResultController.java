@@ -27,9 +27,9 @@ import java.util.*;
 @WebServlet(name = "CountryResultController", value = "/country_result")
 public class CountryResultController extends HttpServlet {
 
-    private TournamentJumperResultDao tjrDao = new TournamentJumperResultDaoDefault();
-    private HistorySearchDao hsDao = new HistorySearchDaoDefault();
-    private CountryAnalyzer countryAnalyzer = new CountryAnalyzer();
+    private final TournamentJumperResultDao tjrDao = new TournamentJumperResultDaoDefault();
+    private final HistorySearchDao hsDao = new HistorySearchDaoDefault();
+    private final CountryAnalyzer countryAnalyzer = new CountryAnalyzer();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -111,10 +111,5 @@ public class CountryResultController extends HttpServlet {
                     .forward(request, response);
         }
         return outcome;
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

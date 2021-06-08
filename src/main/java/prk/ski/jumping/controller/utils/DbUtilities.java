@@ -7,6 +7,10 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+/**
+ * @author DamianRowinski
+ */
+
 public class DbUtilities {
     private static DataSource dataSource;
 

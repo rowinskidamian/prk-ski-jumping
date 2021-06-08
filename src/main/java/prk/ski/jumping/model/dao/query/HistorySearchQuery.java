@@ -1,5 +1,9 @@
 package prk.ski.jumping.model.dao.query;
 
+/**
+ * @author DamianRowinski
+ */
+
 public enum HistorySearchQuery {
 
     CREATE ("INSERT INTO history_search (search_name, search_date, search_type, tournament_amount) " +
@@ -10,7 +14,7 @@ public enum HistorySearchQuery {
     DELETE ("DELETE FROM history_search WHERE hs_id = ?"),
     GET_ALL ("SELECT * FROM history_search");
 
-    private String sqlQuery;
+    private final String sqlQuery;
 
     HistorySearchQuery(String sqlQuery) {
         this.sqlQuery = sqlQuery;

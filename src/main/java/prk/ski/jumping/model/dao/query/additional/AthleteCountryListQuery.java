@@ -10,7 +10,7 @@ public enum AthleteCountryListQuery {
     READ("SELECT * FROM athlete_country_list WHERE acl_id = ?"),
     READ_BY_HISTORY_SEARCH("SELECT * FROM athlete_country_list WHERE search_id = ?");
 
-    private String sqlQuery;
+    private final String sqlQuery;
 
     AthleteCountryListQuery(String sqlQuery) {
         this.sqlQuery = sqlQuery;

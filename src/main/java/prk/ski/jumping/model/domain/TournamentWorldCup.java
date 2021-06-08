@@ -84,7 +84,7 @@ public class TournamentWorldCup {
     }
 
     public int hashCode() {
-        return (int) Objects.hash(id, date, place, gender, link);
+        return Objects.hash(id, date, place, gender, link);
     }
 
     public String toString() {

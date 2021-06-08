@@ -20,7 +20,7 @@ import java.util.List;
 @WebServlet(name = "HistorySearchController", value = "/history_search")
 public class HistorySearchController extends HttpServlet {
 
-    private HistorySearchDao hsDao = new HistorySearchDaoDefault();
+    private final HistorySearchDao hsDao = new HistorySearchDaoDefault();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,7 +44,7 @@ public class HistorySearchController extends HttpServlet {
         HistorySearch historySearch = (HistorySearch) request.getSession()
                 .getAttribute("historySearch");
 
-        String hsName = (String) request.getParameter("historySearchName");
+        String hsName = request.getParameter("historySearchName");
         historySearch.setSearchName(hsName);
 
         try {

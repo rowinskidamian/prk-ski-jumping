@@ -23,8 +23,8 @@ import java.util.stream.Collectors;
 
 public class HistorySearchDaoDefault implements HistorySearchDao {
 
-    private AthleteCountryListDao athleteCountryDao = new AthleteCountryListDao();
-    private TournamentIdListDao tournamentIdDao = new TournamentIdListDao();
+    private final AthleteCountryListDao athleteCountryDao = new AthleteCountryListDao();
+    private final TournamentIdListDao tournamentIdDao = new TournamentIdListDao();
 
     @Override
     public HistorySearch create(HistorySearch historySearch) throws DataBaseException {

@@ -11,9 +11,13 @@ import java.util.Optional;
  */
 
 public interface TournamentWorldCupDao {
-    public TournamentWorldCup create(TournamentWorldCup cup) throws DataBaseException;;
-    public Optional<TournamentWorldCup> getById(long id) throws DataBaseException;;
-    public List<TournamentWorldCup> getAll() throws DataBaseException;;
-    public void update(TournamentWorldCup cup, long id) throws DataBaseException;;
-    public void delete(TournamentWorldCup cup, long id) throws DataBaseException;;
+    TournamentWorldCup create(TournamentWorldCup cup) throws DataBaseException;
+
+    Optional<TournamentWorldCup> getById(long id) throws DataBaseException;
+
+    List<TournamentWorldCup> getAll() throws DataBaseException;
+
+    void update(TournamentWorldCup cup, long id) throws DataBaseException;
+
+    void delete(TournamentWorldCup cup, long id) throws DataBaseException;
 }

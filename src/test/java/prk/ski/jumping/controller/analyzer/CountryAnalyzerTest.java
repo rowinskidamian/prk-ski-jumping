@@ -12,6 +12,10 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author RadoslawParol
+ */
+
 public class CountryAnalyzerTest {
     private CountryAnalyzer analyzer;
     private List<TournamentJumperResult> tjrList;

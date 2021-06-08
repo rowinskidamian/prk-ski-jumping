@@ -12,7 +12,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-// link "https://www.fis-ski.com/DB/general/statistics.html?statistictype=positions&positionstype=position&offset=250&sectorcode=JP&seasoncode=&categorycode=WC&gendercode=&competitornationcode=&place=&nationcode=&position=4&disciplinecode="
 /**
  * @author RadosławParol
  *
@@ -182,12 +181,9 @@ public class TournamentParser {
         /**
          * Checking if the Element contains text "Team" and returning false if it doesnt
          */
-        if (cupElements.text().contains("Team")) {
-            return false;
-        }
+        return !cupElements.text().contains("Team");
         /**
          * Returning true if given Element contain "Team" text
          */
-        return true;
     }
 }

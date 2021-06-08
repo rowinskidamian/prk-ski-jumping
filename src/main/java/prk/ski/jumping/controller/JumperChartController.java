@@ -33,9 +33,4 @@ public class JumperChartController extends HttpServlet {
         request.getRequestDispatcher("jumper_chart.jsp")
                 .forward(request, response);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }

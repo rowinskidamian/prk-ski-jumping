@@ -10,9 +10,9 @@ import java.util.Optional;
  */
 
 public interface JumperDao {
-    public void create(Jumper jumper);
-    public Optional<Jumper> getById(long id);
-    public List<Jumper> getAll();
-    public void update(Jumper jumper, long id);
-    public void delete(Jumper jumper, long id);
+    void create(Jumper jumper);
+    Optional<Jumper> getById(long id);
+    List<Jumper> getAll();
+    void update(Jumper jumper, long id);
+    void delete(Jumper jumper, long id);
 }

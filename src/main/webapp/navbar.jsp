@@ -1,3 +1,4 @@
+<%--autor:Damian Rowiński--%>
 <div class="container" id="wrapper">
     <div class="navbar-brand">
         <img src="logo/logo.png" class="logo"/>

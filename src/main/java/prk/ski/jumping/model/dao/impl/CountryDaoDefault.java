@@ -13,7 +13,7 @@ import prk.ski.jumping.model.domain.memory.CountryDB;
 
 public class CountryDaoDefault implements CountryDao {
 
-	private CountryDB countryDB;
+	private final CountryDB countryDB;
 
 	public CountryDaoDefault() {
 		countryDB = new CountryDB();
