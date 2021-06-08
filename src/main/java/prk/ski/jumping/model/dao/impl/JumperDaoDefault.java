@@ -7,6 +7,10 @@ import prk.ski.jumping.model.domain.memory.JumperDB;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author RadosławParol
+ */
+
 public class JumperDaoDefault implements JumperDao {
     private JumperDB jumperDB;
 

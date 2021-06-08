@@ -23,8 +23,8 @@ public class DBOperationsDaoDefault implements DBOperationsDao {
         try (Connection cn = DbUtilities.connectToDatabase();
              Statement statement = cn.createStatement();
              ResultSet resultSet = statement.executeQuery(sqlQuery)) {
-            totalResults = resultSet.getInt(1);
 
+            if(resultSet.next()) totalResults = resultSet.getInt(1);
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
             ex.printStackTrace();
@@ -41,8 +41,8 @@ public class DBOperationsDaoDefault implements DBOperationsDao {
         try (Connection cn = DbUtilities.connectToDatabase();
              Statement statement = cn.createStatement();
              ResultSet resultSet = statement.executeQuery(sqlQuery)) {
-            totalTournamentNumber = resultSet.getInt(1);
 
+            if(resultSet.next()) totalTournamentNumber = resultSet.getInt(1);
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
             ex.printStackTrace();

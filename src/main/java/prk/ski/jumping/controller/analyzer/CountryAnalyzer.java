@@ -44,7 +44,7 @@ public class CountryAnalyzer {
 
     }
 
-    private Country getCurrentCountry(Map<String, Country> countryMap, TournamentJumperResult tournamentJumperResult, String countryName) {
+    public Country getCurrentCountry(Map<String, Country> countryMap, TournamentJumperResult tournamentJumperResult, String countryName) {
         Country currentCountry = countryMap.get(countryName);
 
         int rank = tournamentJumperResult.getRank();
@@ -55,7 +55,6 @@ public class CountryAnalyzer {
         } else if (rank == 3) {
             currentCountry.setBronzeMedals(currentCountry.getBronzeMedals() + 1);
         }
-
         double totalPoints = Math.round((currentCountry.getTotalPoints()*100.0)/100.0);
         double pointsFromTournament = tournamentJumperResult.getTotalPoints();
         totalPoints += pointsFromTournament;
@@ -64,7 +63,7 @@ public class CountryAnalyzer {
         return currentCountry;
     }
 
-    private void addCountryToMapIfNotPresent(Map<String, Country> countryMap, String countryName) {
+    public void addCountryToMapIfNotPresent(Map<String, Country> countryMap, String countryName) {
         boolean containsCountry = countryMap.containsKey(countryName);
         if (!containsCountry) {
             Country country = new Country();
@@ -73,8 +72,4 @@ public class CountryAnalyzer {
         }
     }
 
-    public int compare(Country a, Country b)
-    {
-        return (int) (b.getTotalPoints() -a.getTotalPoints());
-    }
 }

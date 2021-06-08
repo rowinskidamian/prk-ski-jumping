@@ -2,6 +2,9 @@ package prk.ski.jumping.model.domain;
 
 import java.util.Objects;
 
+/**
+ * @author RadosławParol
+ */
 public class Jumper implements Comparable<Jumper>{
     private long id;
     private String athleteName;
@@ -26,12 +29,12 @@ public class Jumper implements Comparable<Jumper>{
     public Jumper() {
     }
 
-    // getters
     public long getId() {
         return id;
     }
-
-    public String getAthleteName() { return athleteName; }
+    public String getAthleteName() {
+        return athleteName;
+    }
 
     public String getOrigin() {
         return origin;
@@ -41,7 +44,9 @@ public class Jumper implements Comparable<Jumper>{
         return goldMedals;
     }
 
-    public int getSilverMedals() { return silverMedals; }
+    public int getSilverMedals() {
+        return silverMedals;
+    }
 
     public int getBronzeMedals() {
         return bronzeMedals;
@@ -51,9 +56,10 @@ public class Jumper implements Comparable<Jumper>{
         return totalPoints;
     }
 
-    public long getIdHistory() { return idHistory; }
+    public long getIdHistory() {
+        return idHistory;
+    }
 
-    // setters
     public void setId(long id) {
         this.id = id;
     }
@@ -70,7 +76,9 @@ public class Jumper implements Comparable<Jumper>{
         this.goldMedals = amount;
     }
 
-    public void setSilverMedals(int amount) { this.silverMedals = amount; }
+    public void setSilverMedals(int amount) {
+        this.silverMedals = amount;
+    }
 
     public void setBronzeMedals(int amount) {
         this.bronzeMedals = amount;
@@ -80,7 +88,9 @@ public class Jumper implements Comparable<Jumper>{
         this.totalPoints = points;
     }
 
-    public void setIdHistory(long idHistory) { this.idHistory = idHistory; }
+    public void setIdHistory(long idHistory) {
+        this.idHistory = idHistory;
+    }
 
     public boolean equals(Object other) {
         if (this == other)
