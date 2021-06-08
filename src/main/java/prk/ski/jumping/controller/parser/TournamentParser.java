@@ -49,13 +49,14 @@ public class TournamentParser {
          */
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-uuuu");
         /**
-         * Looped over limited elements in the cupElements object
+         * Looped over limited elements in the cupElements object until list size is less than 5
          */
-        for (int i = 0; i < maxResults; i++) {
-            /**
-             * Called method that fills the list with the complete objects
-             */
-            getTournamentAndAddToList(listOfTournaments, formatter, cupElements.get(i));
+        int counter = 0;
+        int listSize = 0;
+        while (listSize < maxResults) {
+            getTournamentAndAddToList(listOfTournaments, formatter, cupElements.get(counter));
+            listSize = listOfTournaments.size();
+            counter++;
         }
         /**
          * Returned list of tournaments limited by the maxResult parameter
