@@ -24,7 +24,8 @@ public class Country implements Comparable {
         this.idHistory = idHistory;
         this.totalPoints = totalPoints;
     }
-    public Country(){};
+    public Country(){}
+
     // getters
     public long getId() {
         return id;
@@ -85,7 +86,7 @@ public class Country implements Comparable {
     }
 
     public int hashCode() {
-        return (int) Objects.hash(id, name, goldMedals, silverMedals, bronzeMedals, idHistory, totalPoints);
+        return Objects.hash(id, name, goldMedals, silverMedals, bronzeMedals, idHistory, totalPoints);
     }
 
     public String toString() {

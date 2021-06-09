@@ -9,7 +9,7 @@ public enum TournamentIdListQuery {
     READ ("SELECT * FROM tournament_id_list WHERE til_id = ?"),
     READ_BY_HISTORY_SEARCH("SELECT * FROM tournament_id_list WHERE search_id = ?");
 
-    private String sqlQuery;
+    private final String sqlQuery;
 
     TournamentIdListQuery(String sqlQuery) {
         this.sqlQuery = sqlQuery;

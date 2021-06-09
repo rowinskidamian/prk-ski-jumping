@@ -16,8 +16,8 @@ import java.util.List;
 
 public class ParserService {
 
-    private ResultParser resultParser;
-    private TournamentParser tournamentParser;
+    private final ResultParser resultParser;
+    private final TournamentParser tournamentParser;
     private TournamentWorldCupDao tournamentWorldCupDao;
     private TournamentJumperResultDao tournamentJumperResultDao;
 
@@ -25,13 +25,6 @@ public class ParserService {
         this.resultParser = new ResultParser();
         this.tournamentParser = new TournamentParser();
     }
-
-//    public void addTournamentListToDatabase() throws DataBaseException {
-//        List<TournamentWorldCup> tournamentWorldCupList = tournamentParser.getAll();
-//        for (TournamentWorldCup twc : tournamentWorldCupList) {
-//            tournamentWorldCupDao.create(twc);
-//        }
-//    }
 
     public void printTournamentWorldCupList() throws DataBaseException {
         List<TournamentWorldCup> databaseRecordList = tournamentWorldCupDao.getAll();

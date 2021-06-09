@@ -1,3 +1,6 @@
+
+-- author DamianRowinski
+
 CREATE TABLE tournament_jumper_results
 (
     tjr_id                  BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -32,6 +35,8 @@ CREATE TABLE history_search
     search_type             VARCHAR(255),
     tournament_amount       INT
 );
+
+-- author RadoslawParol
 
 CREATE TABLE tournament_world_cup
 (

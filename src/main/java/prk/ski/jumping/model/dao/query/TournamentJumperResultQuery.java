@@ -15,7 +15,7 @@ public enum TournamentJumperResultQuery {
     DELETE ("DELETE FROM tournament_jumper_results WHERE tjr_id = ?"),
     GET_ALL ("SELECT * FROM tournament_jumper_results");
 
-    private String sqlQuery;
+    private final String sqlQuery;
 
     TournamentJumperResultQuery(String sqlQuery) {
         this.sqlQuery = sqlQuery;

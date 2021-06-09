@@ -29,9 +29,9 @@ import java.util.Optional;
 @WebServlet(name = "JumperResultController", value = "/jumper_result")
 public class JumperResultController extends HttpServlet {
 
-    private TournamentJumperResultDao tjrDao = new TournamentJumperResultDaoDefault();
-    private HistorySearchDao hsDao = new HistorySearchDaoDefault();
-    private JumperAnalyzer jumperAnalyzer = new JumperAnalyzer();
+    private final TournamentJumperResultDao tjrDao = new TournamentJumperResultDaoDefault();
+    private final HistorySearchDao hsDao = new HistorySearchDaoDefault();
+    private final JumperAnalyzer jumperAnalyzer = new JumperAnalyzer();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -116,10 +116,4 @@ public class JumperResultController extends HttpServlet {
         }
         return outcome;
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
-
-    }
-
 }

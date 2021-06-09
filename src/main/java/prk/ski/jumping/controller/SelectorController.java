@@ -5,16 +5,13 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import prk.ski.jumping.controller.analyzer.CountryAnalyzer;
 import prk.ski.jumping.controller.analyzer.JumperAnalyzer;
-import prk.ski.jumping.controller.parser.ParserService;
 import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.dao.TournamentJumperResultDao;
 import prk.ski.jumping.model.dao.impl.TournamentJumperResultDaoDefault;
-import prk.ski.jumping.model.domain.HistorySearch;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @author RadosławParol
@@ -24,8 +21,8 @@ import java.util.stream.Collectors;
 public class SelectorController extends HttpServlet {
 
     private List<Long> tournamentIds;
-    private JumperAnalyzer jumperAnalyzer = new JumperAnalyzer();
-    private CountryAnalyzer countryAnalyzer = new CountryAnalyzer();
+    private final JumperAnalyzer jumperAnalyzer = new JumperAnalyzer();
+    private final CountryAnalyzer countryAnalyzer = new CountryAnalyzer();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,7 +37,7 @@ public class SelectorController extends HttpServlet {
         }
 
             //list with ids of tournaments selected from checkboxes
-        List<String> selectedTournaments = Arrays.asList(request.getParameterValues("tournament_id"));
+        String[] selectedTournaments = request.getParameterValues("tournament_id");
 
 
         tournamentIds = new ArrayList<>();
@@ -81,8 +78,6 @@ public class SelectorController extends HttpServlet {
         if (country_btn != null) {
             createCountrySelectionView(request, response, tjrList);
         }
-
-
     }
 
     private void createCountrySelectionView(HttpServletRequest request, HttpServletResponse response, List<TournamentJumperResult> tjrList) throws ServletException, IOException {
@@ -108,10 +103,5 @@ public class SelectorController extends HttpServlet {
         request.setAttribute("view", "jumper");
         request.setAttribute("items", sortedList);
         request.getRequestDispatcher("selector.jsp").forward(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

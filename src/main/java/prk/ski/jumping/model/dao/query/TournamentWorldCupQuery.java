@@ -11,7 +11,7 @@ public enum TournamentWorldCupQuery {
     DELETE ("DELETE FROM tournament_world_cup WHERE twc_id = ?"),
     GET_ALL ("SELECT * FROM tournament_world_cup");
 
-    private String sqlQuery;
+    private final String sqlQuery;
 
     TournamentWorldCupQuery(String sqlQuery) {
         this.sqlQuery = sqlQuery;

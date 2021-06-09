@@ -3,7 +3,6 @@ package prk.ski.jumping.model.dao;
 import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
 
-import javax.xml.crypto.Data;
 import java.util.List;
 import java.util.Optional;
 

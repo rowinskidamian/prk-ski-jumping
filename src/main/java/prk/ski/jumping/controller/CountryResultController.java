@@ -4,7 +4,6 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import prk.ski.jumping.controller.analyzer.CountryAnalyzer;
-import prk.ski.jumping.controller.analyzer.JumperAnalyzer;
 
 import prk.ski.jumping.exception.DataBaseException;
 import prk.ski.jumping.model.dao.HistorySearchDao;
@@ -13,7 +12,6 @@ import prk.ski.jumping.model.dao.impl.HistorySearchDaoDefault;
 import prk.ski.jumping.model.dao.impl.TournamentJumperResultDaoDefault;
 import prk.ski.jumping.model.domain.Country;
 import prk.ski.jumping.model.domain.HistorySearch;
-import prk.ski.jumping.model.domain.Jumper;
 import prk.ski.jumping.model.domain.TournamentJumperResult;
 
 import java.io.IOException;
@@ -27,9 +25,9 @@ import java.util.*;
 @WebServlet(name = "CountryResultController", value = "/country_result")
 public class CountryResultController extends HttpServlet {
 
-    private TournamentJumperResultDao tjrDao = new TournamentJumperResultDaoDefault();
-    private HistorySearchDao hsDao = new HistorySearchDaoDefault();
-    private CountryAnalyzer countryAnalyzer = new CountryAnalyzer();
+    private final TournamentJumperResultDao tjrDao = new TournamentJumperResultDaoDefault();
+    private final HistorySearchDao hsDao = new HistorySearchDaoDefault();
+    private final CountryAnalyzer countryAnalyzer = new CountryAnalyzer();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -111,10 +109,5 @@ public class CountryResultController extends HttpServlet {
                     .forward(request, response);
         }
         return outcome;
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

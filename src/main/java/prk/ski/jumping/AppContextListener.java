@@ -7,6 +7,10 @@ import prk.ski.jumping.controller.utils.DbUtilities;
 
 import java.sql.SQLException;
 
+/**
+ * @author DamianRowinski
+ */
+
 @WebListener
 public class AppContextListener implements ServletContextListener {
 
@@ -31,6 +35,4 @@ public class AppContextListener implements ServletContextListener {
             e.printStackTrace();
         }
     }
-
-
 }

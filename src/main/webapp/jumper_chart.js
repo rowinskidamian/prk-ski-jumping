@@ -1,3 +1,4 @@
+// autor:Damian Rowiński
 document.addEventListener("DOMContentLoaded", function () {
 
     let json = document.getElementById("jsonData").getAttribute("data-json");

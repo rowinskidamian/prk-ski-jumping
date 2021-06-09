@@ -1,4 +1,4 @@
-
+// autor: Radosław Parol
 let label = document.querySelectorAll(".chart-label");
 let points = document.querySelectorAll(".chart-points");
 let ctx = document.getElementById('myChart').getContext('2d');

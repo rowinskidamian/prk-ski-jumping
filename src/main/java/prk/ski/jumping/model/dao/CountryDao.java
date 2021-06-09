@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import prk.ski.jumping.model.domain.Country;
-import prk.ski.jumping.model.domain.TournamentWorldCup;
 
 /**
  * @author RadosławParol
@@ -12,10 +11,10 @@ import prk.ski.jumping.model.domain.TournamentWorldCup;
 
 public interface CountryDao {
 	
-	public void create(Country country);
-	public Optional<Country> getById(long id);
-	public List<Country> getAll();
-	public void update(Country country, long id);
-	public void delete(Country country, long id);	
+	void create(Country country);
+	Optional<Country> getById(long id);
+	List<Country> getAll();
+	void update(Country country, long id);
+	void delete(Country country, long id);
 
 }
