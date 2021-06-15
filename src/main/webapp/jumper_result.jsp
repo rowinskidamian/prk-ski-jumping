@@ -31,7 +31,7 @@
     <div class="container">
         <c:choose>
         <c:when test="${empty historySearch.searchName}">
-        <form action="/history_search" method="post">
+        <form action="${pageContext.request.contextPath}/history_search" method="post">
             <div class="columns">
                 <div class="column">
                     <div class="field has-addons">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="column">
-                    <a class="button is-info is-light" href="/jumper_chart">
+                    <a class="button is-info is-light" href="${pageContext.request.contextPath}/jumper_chart">
                         Pokaż wykres</a>
                 </div>
                 <div class="column"></div>
@@ -58,7 +58,7 @@
         <c:otherwise>
             <h4 class="title is-4"> Przeglądasz zapisaną analizę o nazwie: ${historySearch.searchName}
             </h4>
-            <a class="button is-info is-light" href="/jumper_chart">
+            <a class="button is-info is-light" href="${pageContext.request.contextPath}/jumper_chart">
                 Pokaż wykres</a>
         </c:otherwise>
         </c:choose>

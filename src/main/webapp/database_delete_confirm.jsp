@@ -31,7 +31,7 @@
             Czy potwierdzasz usunięcie danych z bazy?
         </div>
         <div class="field is-grouped is-grouped-centered">
-            <form method="post" action="/database_clean">
+            <form method="post" action="${pageContext.request.contextPath}/database_clean">
             <p class="control">
                 <button class="button is-primary" type="submit">
                     TAK
@@ -39,7 +39,7 @@
             </p>
             </form>
             <p class="control">
-                <a class="button is-light" href="/database_admin">
+                <a class="button is-light" href="${pageContext.request.contextPath}/database_admin">
                     NIE
                 </a>
             </p>

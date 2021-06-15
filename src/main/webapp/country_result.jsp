@@ -36,7 +36,7 @@
 
     <c:choose>
       <c:when test="${empty historySearch.searchName}">
-        <form action="/history_search" method="post">
+        <form action="${pageContext.request.contextPath}/history_search" method="post">
           <div class="field has-addons" style="position: relative">
             <div class="control">
               <input class="input" type="text" placeholder="nazwa analizy" name="historySearchName">

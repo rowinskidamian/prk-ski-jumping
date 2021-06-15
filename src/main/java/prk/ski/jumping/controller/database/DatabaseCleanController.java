@@ -35,6 +35,6 @@ public class DatabaseCleanController extends HttpServlet {
             request.getRequestDispatcher("error_page.jsp")
                     .forward(request, response);
         }
-        response.sendRedirect("/database_admin");
+        response.sendRedirect("./database_admin");
     }
 }

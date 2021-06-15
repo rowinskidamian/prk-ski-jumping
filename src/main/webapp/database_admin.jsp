@@ -30,31 +30,31 @@
         <table class="table is-striped" style="margin: 50px auto; width: 70%">
             <tbody>
                 <tr>
-                    <form method="get" action="/database_init">
+                    <form method="get" action="${pageContext.request.contextPath}/database_init">
                         <th>Wgraj dużo danych</th>
                         <th>operacja wgrywa wszystkie dane do bazy</th>
                         <th><Button type="submit" class="button is-info" >wykonaj</Button></th>
                     </form>
                 </tr>
                 <tr>
-                    <form method="get" action="/database_load_small">
+                    <form method="get" action="${pageContext.request.contextPath}/database_load_small">
                         <th>Wgraj małą partię</th>
                         <th><input style="max-width: 200px;" name="tournamentAmount" class="input is-info" type="number" placeholder="podaj ilość"></th>
-                        <th><Button type="submit" class="button is-info" href="#">wykonaj</Button></th>
+                        <th><Button type="submit" class="button is-info">wykonaj</Button></th>
                     </form>
                 </tr>
                 <tr>
-                    <form method="get" action="/database_load_small">
+                    <form method="get" action="${pageContext.request.contextPath}/database_load_small">
                         <th>Wgraj minimalną partię</th>
                         <th>operacja wgrywa 5 turniejów</th>
-                        <th><Button type="submit" class="button is-info" href="#">wykonaj</Button></th>
+                        <th><Button type="submit" class="button is-info">wykonaj</Button></th>
                     </form>
                 </tr>
                 <tr>
-                    <form method="get" action="/database_clean">
+                    <form method="get" action="${pageContext.request.contextPath}/database_clean">
                         <th>Wyczyść bazę danych</th>
                         <th>operacja czyści bazę danych</th>
-                        <th><Button type="submit" class="button is-danger" href="#">wykonaj</Button></th>
+                        <th><Button type="submit" class="button is-danger">wykonaj</Button></th>
                     </form>
                 </tr>
             </tbody>

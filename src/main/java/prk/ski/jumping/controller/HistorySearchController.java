@@ -56,7 +56,7 @@ public class HistorySearchController extends HttpServlet {
                     .forward(request, response);
         }
 
-        response.sendRedirect("/history_search");
+        response.sendRedirect("./history_search");
     }
 
 }

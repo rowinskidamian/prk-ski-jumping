@@ -58,7 +58,7 @@ public class DatabaseLoadSmallController extends HttpServlet {
                     .forward(request, response);
         }
 
-        response.sendRedirect("/database_admin");
+        response.sendRedirect("./database_admin");
 
     }
 }

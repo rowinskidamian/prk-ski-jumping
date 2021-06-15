@@ -16,7 +16,7 @@
     <jsp:include page="navbar.jsp"/>
 </nav>
 <!-- -------------------------------------------------------------------------------------------------------- -->
-<form action="/${view}_result" method="get">
+<form action="${pageContext.request.contextPath}/${view}_result" method="get">
     <section class="hero is-info">
         <div class="hero-body">
             <div class="container">

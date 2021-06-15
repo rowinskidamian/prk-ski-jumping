@@ -54,7 +54,7 @@
                             <c:if test="${historySearch.searchType eq 'Kraj'}">
                                 <c:set var="resultPage" scope="request" value="country_result"/>
                             </c:if>
-                            <a class="button is-info is-light" href="/${resultPage}?historySearch=${historySearch.id}">
+                            <a class="button is-info is-light" href="${pageContext.request.contextPath}/${resultPage}?historySearch=${historySearch.id}">
                                 Wyświetl</a></td>
                     </tr>
                 </c:forEach>
